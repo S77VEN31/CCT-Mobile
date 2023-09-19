@@ -1,20 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// React Native
+import { NavigationContainer } from "@react-navigation/native";
+import { SafeAreaView } from "react-native-safe-area-context";
+// React
+import * as React from "react";
+// Fonts
+import { useFonts } from "@expo-google-fonts/kanit";
+import { fonts } from "./assets/fonts/fonts";
+// Colors
+import { Colors } from "./src/constants/Colors";
+// Components
+import StackNavigator from "./src/navigation/StackNavigation/StackNavigation";
+import { StatusBar } from "expo-status-bar";
 
 export default function App() {
+  const [fontsLoaded] = useFonts(fonts);
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      <NavigationContainer>
+        <StackNavigator />
+      </NavigationContainer>
+      <StatusBar backgroundColor={Colors.secondary} />
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

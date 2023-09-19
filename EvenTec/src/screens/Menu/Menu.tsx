@@ -1,13 +1,13 @@
 // React
 import { View, Text } from "react-native";
 // Styles
-import { styles } from "./About.style";
+import { styles } from "./Menu.style";
 
-const About: React.FC = () => {
+const Menu: React.FC = () => {
   return (
     <View style={styles.container}>
-      <Text>About</Text>
+      <Text>Menu</Text>
     </View>
   );
 };
-export default About;
+export default Menu;

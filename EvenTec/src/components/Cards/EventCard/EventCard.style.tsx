@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
   container: {
     display: "flex",
     height: 200,
+    margin: 20,
     padding: 20,
     borderRadius: 10,
     backgroundColor: Colors.white,
@@ -31,11 +32,13 @@ export const styles = StyleSheet.create({
   },
   organizer: {
     color: Colors.primary,
-    ...Fonts.concertOneSubtitle,
+    ...Fonts.textSemiBold,
+    ...Fonts.h2,
   },
   eventName: {
     color: Colors.black,
-    ...Fonts.concertOneTitle,
+    ...Fonts.textBold,
+    ...Fonts.h3,
   },
   imageContainer: {
     display: "flex",
@@ -48,5 +51,31 @@ export const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 16,
+  },
+  dateContainer: {
+    display: "flex",
+  },
+  date: {
+    ...Fonts.textRegular,
+    ...Fonts.h6,
+    color: Colors.primary,
+  },
+  footer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  ubicationContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 16,
+  },
+  locationButton: {
+    borderRadius: 50,
+  },
+  locationText: {
+    ...Fonts.textMedium,
+    ...Fonts.h5,
   },
 });

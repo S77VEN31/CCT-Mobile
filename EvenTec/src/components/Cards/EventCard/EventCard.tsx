@@ -23,8 +23,19 @@ const EventCard = (props: EventCardProps) => {
           <Image style={styles.image} source={{ uri: props.image }}></Image>
         </View>
       </View>
-
-      <IconTextButton icon="badge" text="Registrarse" />
+      <View style={styles.dateContainer}>
+        <Text style={styles.date}>19-20-2023</Text>
+      </View>
+      <View style={styles.footer}>
+        <IconTextButton text="Registrarse" />
+        <View style={styles.ubicationContainer}>
+          <IconTextButton
+            icon="location-pin"
+            className={styles.locationButton}
+          />
+          <Text style={styles.locationText}>Pretil</Text>
+        </View>
+      </View>
     </View>
   );
 };

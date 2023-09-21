@@ -1,5 +1,5 @@
 // React
-import { Pressable, Text } from "react-native";
+import { Pressable, Text, ViewStyle } from "react-native";
 // Styles
 import { styles } from "./IconTextButton.style";
 // Icons
@@ -9,18 +9,23 @@ interface IconTextButtonProps {
   icon?: string;
   text?: string;
   onPress?: () => void;
+  className?: ViewStyle;
 }
 
 const IconTextButton = (props: IconTextButtonProps) => {
   return (
-    <Pressable style={styles.container}>
-      <Text style={styles.text}>{props.text}</Text>
-      <MaterialIcons
-        style={styles.icon}
-        // @ts-ignore
-        name={props.icon}
-        size={30}
-      />
+    <Pressable
+      style={[styles.container, props.className ? props.className : undefined]}
+    >
+      {props.text && <Text style={styles.text}>{props.text}</Text>}
+      {props.icon && (
+        <MaterialIcons
+          style={styles.icon}
+          // @ts-ignore
+          name={props.icon}
+          size={30}
+        />
+      )}
     </Pressable>
   );
 };

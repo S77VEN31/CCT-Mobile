@@ -15,6 +15,7 @@ interface IconTextButtonProps {
 const IconTextButton = (props: IconTextButtonProps) => {
   return (
     <Pressable
+      onPress={props.onPress}
       style={[styles.container, props.className ? props.className : undefined]}
     >
       {props.text && <Text style={styles.text}>{props.text}</Text>}

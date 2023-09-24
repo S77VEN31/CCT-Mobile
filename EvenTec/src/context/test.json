@@ -1,0 +1,127 @@
+{
+  "data": {
+    "_id": "650ff33073cc6e561acfdff4",
+    "userName": "stiven",
+    "email": "a@estudiantec.cr",
+    "password": "$2a$10$mJoKY4JTiiI3.FCsXmXl7.waKXHZk.oXc1stDHDZZoyZReUODAA4y",
+    "isOrganization": true,
+    "createdAt": "2023-09-24T08:28:32.854Z",
+    "updatedAt": "2023-09-24T08:28:32.854Z",
+    "__v": 0
+  },
+  "status": 200,
+  "headers": {
+    "access-control-allow-origin": "http://localhost:5173",
+    "connection": "keep-alive",
+    "content-length": "263",
+    "content-type": "application/json; charset=utf-8",
+    "date": "Sun, 24 Sep 2023 08:36:57 GMT",
+    "etag": "W/\"107-Z9gZ2iLh1M13g++5wTzGIAcq0NE\"",
+    "server": "Cowboy",
+    "set-cookie": "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MGZmMzMwNzNjYzZlNTYxYWNmZGZmNCIsImlhdCI6MTY5NTU0NDYxNywiZXhwIjoxNjk1NTQ4MjE3fQ.V6rMI7t8OyAJHkvfTpT1i1XyMxXTyJsYFjLDrv0uYfI; Path=/",
+    "vary": "Origin",
+    "via": "1.1 vegur",
+    "x-powered-by": "Express"
+  },
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": "xhr",
+    "transformRequest": [null],
+    "transformResponse": [null],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json, text/plain, */*",
+      "Content-Type": "application/json"
+    },
+    "method": "post",
+    "url": "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/login",
+    "data": "{\"email\":\"a@estudiantec.cr\",\"password\":\"123456\"}"
+  },
+  "request": {
+    "UNSENT": 0,
+    "OPENED": 1,
+    "HEADERS_RECEIVED": 2,
+    "LOADING": 3,
+    "DONE": 4,
+    "readyState": 4,
+    "status": 200,
+    "timeout": 0,
+    "withCredentials": true,
+    "upload": {},
+    "_aborted": false,
+    "_hasError": false,
+    "_method": "POST",
+    "_perfKey": "network_XMLHttpRequest_https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/login",
+    "_response": "{\"_id\":\"650ff33073cc6e561acfdff4\",\"userName\":\"stiven\",\"email\":\"a@estudiantec.cr\",\"password\":\"$2a$10$mJoKY4JTiiI3.FCsXmXl7.waKXHZk.oXc1stDHDZZoyZReUODAA4y\",\"isOrganization\":true,\"createdAt\":\"2023-09-24T08:28:32.854Z\",\"updatedAt\":\"2023-09-24T08:28:32.854Z\",\"__v\":0}",
+    "_url": "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/login",
+    "_timedOut": false,
+    "_trackingName": "unknown",
+    "_incrementalEvents": false,
+    "_performanceLogger": {
+      "_timespans": {
+        "network_XMLHttpRequest_http://192.168.18.4:8081/logs": {
+          "startTime": 235205061.142982,
+          "endTime": 235205186.161784,
+          "totalTime": 125.01880198717117
+        },
+        "network_XMLHttpRequest_https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/login": {
+          "startTime": 235216233.924436,
+          "endTime": 235216742.235738,
+          "totalTime": 508.31130200624466
+        }
+      },
+      "_extras": {},
+      "_points": {
+        "initializeCore_start": 235204344.920951,
+        "initializeCore_end": 235204486.118868
+      },
+      "_pointExtras": {},
+      "_closed": false,
+      "_isLoggingForWebPerformance": false
+    },
+    "responseHeaders": {
+      "Access-Control-Allow-Origin": "http://localhost:5173",
+      "Content-Length": "263",
+      "Vary": "Origin",
+      "Date": "Sun, 24 Sep 2023 08:36:57 GMT",
+      "Via": "1.1 vegur",
+      "X-Powered-By": "Express",
+      "Content-Type": "application/json; charset=utf-8",
+      "Etag": "W/\"107-Z9gZ2iLh1M13g++5wTzGIAcq0NE\"",
+      "Connection": "keep-alive",
+      "Server": "Cowboy",
+      "Set-Cookie": "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MGZmMzMwNzNjYzZlNTYxYWNmZGZmNCIsImlhdCI6MTY5NTU0NDYxNywiZXhwIjoxNjk1NTQ4MjE3fQ.V6rMI7t8OyAJHkvfTpT1i1XyMxXTyJsYFjLDrv0uYfI; Path=/"
+    },
+    "_requestId": null,
+    "_headers": {
+      "accept": "application/json, text/plain, */*",
+      "content-type": "application/json"
+    },
+    "_responseType": "",
+    "_sent": true,
+    "_lowerCaseResponseHeaders": {
+      "access-control-allow-origin": "http://localhost:5173",
+      "content-length": "263",
+      "vary": "Origin",
+      "date": "Sun, 24 Sep 2023 08:36:57 GMT",
+      "via": "1.1 vegur",
+      "x-powered-by": "Express",
+      "content-type": "application/json; charset=utf-8",
+      "etag": "W/\"107-Z9gZ2iLh1M13g++5wTzGIAcq0NE\"",
+      "connection": "keep-alive",
+      "server": "Cowboy",
+      "set-cookie": "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MGZmMzMwNzNjYzZlNTYxYWNmZGZmNCIsImlhdCI6MTY5NTU0NDYxNywiZXhwIjoxNjk1NTQ4MjE3fQ.V6rMI7t8OyAJHkvfTpT1i1XyMxXTyJsYFjLDrv0uYfI; Path=/"
+    },
+    "_subscriptions": [],
+    "responseURL": "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/login"
+  }
+}

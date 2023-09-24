@@ -11,6 +11,7 @@ import { Colors } from "./src/constants/Colors";
 // Components
 import StackNavigator from "./src/navigation/StackNavigation/StackNavigation";
 import { StatusBar } from "expo-status-bar";
+import { AuthProvider } from "./src/context/AuthContext";
 
 export default function App() {
   const [fontsLoaded] = useFonts(fonts);
@@ -19,9 +20,11 @@ export default function App() {
   }
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <NavigationContainer>
-        <StackNavigator />
-      </NavigationContainer>
+      <AuthProvider>
+        <NavigationContainer>
+          <StackNavigator />
+        </NavigationContainer>
+      </AuthProvider>
       <StatusBar backgroundColor={Colors.secondary} />
     </SafeAreaView>
   );

@@ -10,12 +10,12 @@ type StackScreenProps = {
 
 export const StackNavigationConstants = {
   stackScreenProps: [
-    {
+    /*{
       name: 'TabNavigation',
       component: TabNavigation,
       options: { headerShown: false },
     },
-    /*{
+    {
       name: 'MenuDetail',
       component: MenuDetail,
       options: { headerShown: false, animation: 'slide_from_bottom' },

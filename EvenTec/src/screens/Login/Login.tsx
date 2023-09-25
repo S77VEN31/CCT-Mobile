@@ -5,6 +5,7 @@ import { useAuth } from "../../context/AuthContext";
 import IconTextButton from "../../components/Buttons/IconTextButton/IconTextButton";
 import { useNavigation } from "@react-navigation/native";
 const Login = () => {
+  const xd = "xd";
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const { onLogin, onRegister } = useAuth();
@@ -27,7 +28,7 @@ const Login = () => {
       <IconTextButton
         text="GO"
         onPress={() => {
-          navigation.navigate("TabNavigation");
+          navigation.navigate("TabNavigation" as never);
         }}
       />
     </View>

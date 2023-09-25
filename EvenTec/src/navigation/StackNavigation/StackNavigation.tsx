@@ -1,29 +1,25 @@
 // React Native
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // Constants
-import { StackNavigationConstants } from "../../constants/StackNavigationConstants";
+import { StackNavigationConstants } from "./StackNavigationConstants";
 //
-import { AuthProvider, useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 
 import Login from "../../screens/Login/Login";
 import Home from "../../screens/Home/Home";
 import TabNavigation from "../TabNavigation/TabNavigation";
 
-
 const StackNavigator: React.FC = () => {
   const Stack = createNativeStackNavigator();
   const { stackScreenProps } = StackNavigationConstants;
-
-  const {authState, onLogout} = useAuth();
+  const { authState } = useAuth();
   return (
     <Stack.Navigator>
-      {
-        authState.authenticated ? (
-          <Stack.Screen name="Home" component={Home} />
-        ): (
-          <Stack.Screen name="Login" component={Login} />
-        )
-      }
+      {authState.authenticated ? (
+        <Stack.Screen name="Home" component={Home} />
+      ) : (
+        <Stack.Screen name="Login" component={Login} />
+      )}
       {stackScreenProps.map(({ ...props }, key) => {
         return <Stack.Screen {...props} key={key} />;
       })}

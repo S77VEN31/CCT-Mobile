@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 // Components
 import MainNavBar from "../../components/NavBars/MainNavBar/MainNavBar";
 // Constants
-import { TabNavigationConstants } from "../../constants/TabNavigationConstants";
+import { TabNavigationConstants } from "./TabNavigationConstants";
 // Styles
 import { styles } from "./TabNavigation.style";
 

@@ -1,9 +1,14 @@
+// React
 import React from "react";
+// React Native
 import { View, Text } from "react-native";
-
+// AuthContext
 import { useAuth } from "../../context/AuthContext";
+// Api Call
 import axios from "axios";
+// Components
 import IconTextButton from "../../components/Buttons/IconTextButton/IconTextButton";
+
 function Home() {
   const { onLogout } = useAuth();
   const profile = async () => {

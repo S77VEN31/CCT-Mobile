@@ -1,7 +1,11 @@
+// React
 import { createContext, useContext, useEffect, useState } from "react";
+// Api Call
 import axios from "axios";
+// Secure Store
 import * as SecureStore from "expo-secure-store";
-
+// Routes
+import { authRoutes } from "../api/authRoutes/authRoutes";
 interface AuthProps {
   authState: { token: string | null; authenticated: boolean | null };
   onRegister: (email: string, password: string) => Promise<void>;
@@ -16,6 +20,7 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }: any) => {
+  const { loginRoute, logoutRoute, registerRoute } = authRoutes;
   const [authState, setAuthState] = useState<{
     token: string | null;
     authenticated: boolean | null;
@@ -39,10 +44,10 @@ export const AuthProvider = ({ children }: any) => {
     loadToken();
   }, []);
 
-  const register = async (email: string, password: string) => {
+  const onRegister = async (email: string, password: string) => {
     try {
       return await axios.post(
-        "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/register",
+        registerRoute,
         {
           email,
           password,
@@ -55,17 +60,14 @@ export const AuthProvider = ({ children }: any) => {
     }
   };
 
-  const login = async (email: string, password: string) => {
+  const onLogin = async (email: string, password: string) => {
     try {
-      const result = await axios.post(
-        "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/login",
-        {
-          email,
-          password,
-        }
-      );
+      const result = await axios.post(loginRoute, {
+        email,
+        password,
+      });
       //console.log(JSON.stringify(result));
-      const cookie = result.headers["set-cookie"][0];
+      const cookie = result.headers["set-cookie"]?.[0] ?? "";
       const token = cookie
         .split(";")
         .find((cookie) => cookie.trim().startsWith("token="))
@@ -74,7 +76,6 @@ export const AuthProvider = ({ children }: any) => {
         token: token || null,
         authenticated: true,
       });
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
       await SecureStore.setItemAsync("token", token || "");
     } catch (error) {
@@ -82,21 +83,25 @@ export const AuthProvider = ({ children }: any) => {
     }
   };
 
-  const logout = async () => {
+  const onLogout = async () => {
+    await axios.post(logoutRoute, {});
     await SecureStore.deleteItemAsync("token");
     axios.defaults.headers.common["Authorization"] = "";
     setAuthState({
       token: null,
       authenticated: false,
     });
-    console.log("logout");
   };
 
   const value = {
-    onRegister: register,
-    onLogin: login,
-    onLogout: logout,
+    onRegister,
+    onLogin,
+    onLogout,
     authState,
   };
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={value as AuthProps}>
+      {children}
+    </AuthContext.Provider>
+  );
 };

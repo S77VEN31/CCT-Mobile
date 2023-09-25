@@ -11,7 +11,7 @@
     "connection": "keep-alive",
     "content-length": "119",
     "content-type": "application/json; charset=utf-8",
-    "date": "Sun, 24 Sep 2023 22:56:59 GMT",
+    "date": "Mon, 25 Sep 2023 03:51:27 GMT",
     "etag": "W/\"77-9K0fjhr3fok4FPOy/da7srH8duE\"",
     "server": "Cowboy",
     "vary": "Origin",
@@ -35,7 +35,7 @@
     "env": {},
     "headers": {
       "Accept": "application/json, text/plain, */*",
-      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MGZmMzMwNzNjYzZlNTYxYWNmZGZmNCIsImlhdCI6MTY5NTU5NjA5NiwiZXhwIjoxNjk1NTk5Njk2fQ.LotegtICi2P-FpjCkrSEXv7fIE-tlaDVuyVB7ydHKb8"
+      "Authorization": ""
     },
     "method": "get",
     "url": "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/profile"
@@ -63,25 +63,30 @@
     "_performanceLogger": {
       "_timespans": {
         "network_XMLHttpRequest_http://192.168.18.4:8081/logs": {
-          "startTime": 259703046.591658,
-          "endTime": 259703168.504991,
-          "totalTime": 121.9133329987526
+          "startTime": 41742278.3306,
+          "endTime": 41742370.096,
+          "totalTime": 91.76539999991655
         },
         "network_XMLHttpRequest_https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/login": {
-          "startTime": 259777260.900328,
-          "endTime": 259778114.762098,
-          "totalTime": 853.861770004034
+          "startTime": 42102384.0294,
+          "endTime": 42102830.5065,
+          "totalTime": 446.4770999997854
+        },
+        "network_XMLHttpRequest_https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/logout": {
+          "startTime": 42151910.5497,
+          "endTime": 42152003.4674,
+          "totalTime": 92.91770000010729
         },
         "network_XMLHttpRequest_https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/profile": {
-          "startTime": 259780018.678087,
-          "endTime": 259780169.302462,
-          "totalTime": 150.6243750154972
+          "startTime": 42460427.5369,
+          "endTime": 42460505.516,
+          "totalTime": 77.97910000383854
         }
       },
       "_extras": {},
       "_points": {
-        "initializeCore_start": 259702423.949106,
-        "initializeCore_end": 259702555.117543
+        "initializeCore_start": 41741262.8507,
+        "initializeCore_end": 41741486.3052
       },
       "_pointExtras": {},
       "_closed": false,
@@ -90,7 +95,7 @@
     "responseHeaders": {
       "Access-Control-Allow-Origin": "http://localhost:5173",
       "Content-Length": "119",
-      "Date": "Sun, 24 Sep 2023 22:56:59 GMT",
+      "Date": "Mon, 25 Sep 2023 03:51:27 GMT",
       "Via": "1.1 vegur",
       "Vary": "Origin",
       "X-Powered-By": "Express",
@@ -102,14 +107,14 @@
     "_requestId": null,
     "_headers": {
       "accept": "application/json, text/plain, */*",
-      "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MGZmMzMwNzNjYzZlNTYxYWNmZGZmNCIsImlhdCI6MTY5NTU5NjA5NiwiZXhwIjoxNjk1NTk5Njk2fQ.LotegtICi2P-FpjCkrSEXv7fIE-tlaDVuyVB7ydHKb8"
+      "authorization": ""
     },
     "_responseType": "",
     "_sent": true,
     "_lowerCaseResponseHeaders": {
       "access-control-allow-origin": "http://localhost:5173",
       "content-length": "119",
-      "date": "Sun, 24 Sep 2023 22:56:59 GMT",
+      "date": "Mon, 25 Sep 2023 03:51:27 GMT",
       "via": "1.1 vegur",
       "vary": "Origin",
       "x-powered-by": "Express",

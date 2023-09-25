@@ -6,7 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 // Styles
 import { styles } from "./MainNavBar.style";
 // Constants
-import { TabNavigationConstants } from "../../../constants/TabNavigationConstants";
+import { TabNavigationConstants } from "../../../navigation/TabNavigation/TabNavigationConstants";
 // Icons
 import { MaterialIcons } from "@expo/vector-icons";
 

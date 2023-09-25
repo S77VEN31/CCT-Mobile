@@ -1,11 +1,11 @@
 // Tab Screens
-import About from "../screens/About/About";
-import Menu from "../screens/Menu/Menu";
+import About from "../../screens/About/About";
+import Menu from "../../screens/Menu/Menu";
 
 // Testing Screens
-import Wander from "../screens/Testing/Wander/Wander";
-import Mariana from "../screens/Testing/Mariana/Mariana";
-import Joselyn from "../screens/Testing/Joselyn/Joselyn";
+import Wander from "../../screens/Testing/Wander/Wander";
+import Mariana from "../../screens/Testing/Mariana/Mariana";
+import Joselyn from "../../screens/Testing/Joselyn/Joselyn";
 
 type TabScreenProps = {
   name: string;

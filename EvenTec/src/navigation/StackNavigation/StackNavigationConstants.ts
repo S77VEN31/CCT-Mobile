@@ -1,5 +1,6 @@
 // Stack Screens
-import TabNavigation from '../navigation/TabNavigation/TabNavigation'; // Navigation
+import TabNavigation from '../TabNavigation/TabNavigation';
+// Navigation
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
 type StackScreenProps = {
@@ -10,11 +11,12 @@ type StackScreenProps = {
 
 export const StackNavigationConstants = {
   stackScreenProps: [
-    /*{
+    {
       name: 'TabNavigation',
       component: TabNavigation,
       options: { headerShown: false },
     },
+    /*
     {
       name: 'MenuDetail',
       component: MenuDetail,

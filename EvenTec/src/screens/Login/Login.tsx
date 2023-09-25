@@ -3,11 +3,12 @@ import React from "react";
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import IconTextButton from "../../components/Buttons/IconTextButton/IconTextButton";
-
+import { useNavigation } from "@react-navigation/native";
 const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const { onLogin, onRegister } = useAuth();
+  const navigation = useNavigation();
   return (
     <View>
       <Text>Email</Text>
@@ -23,6 +24,12 @@ const Login = () => {
         placeholder="Password"
       />
       <IconTextButton text="Login" onPress={() => onLogin(email, password)} />
+      <IconTextButton
+        text="GO"
+        onPress={() => {
+          navigation.navigate("TabNavigation");
+        }}
+      />
     </View>
   );
 };

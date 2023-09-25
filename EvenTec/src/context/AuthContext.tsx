@@ -46,15 +46,12 @@ export const AuthProvider = ({ children }: any) => {
 
   const onRegister = async (email: string, password: string) => {
     try {
-      return await axios.post(
-        registerRoute,
-        {
-          email,
-          password,
-          userName: "test",
-          isOrganization: false,
-        }
-      );
+      return await axios.post(registerRoute, {
+        email,
+        password,
+        userName: "test",
+        isOrganization: false,
+      });
     } catch (error) {
       console.log(error);
     }

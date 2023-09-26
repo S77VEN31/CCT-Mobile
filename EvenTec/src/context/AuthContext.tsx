@@ -96,6 +96,7 @@ export const AuthProvider = ({ children }: any) => {
     onLogout,
     authState,
   };
+
   return (
     <AuthContext.Provider value={value as AuthProps}>
       {children}

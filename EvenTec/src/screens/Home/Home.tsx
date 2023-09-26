@@ -28,7 +28,7 @@ function Home() {
         onPress={() => {
           profile();
         }}
-      ></IconTextButton>
+      />
       <Text onPress={() => onLogout()}>Logout</Text>
     </View>
   );

@@ -7,7 +7,7 @@ import { useNavigation } from "@react-navigation/native";
 const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const { onLogin, onRegister } = useAuth();
+  const { onLogin } = useAuth();
   const navigation = useNavigation();
   return (
     <View>

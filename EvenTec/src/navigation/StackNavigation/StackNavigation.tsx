@@ -2,9 +2,9 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // Constants
 import { StackNavigationConstants } from "./StackNavigationConstants";
-//
+// AuthContext
 import { useAuth } from "../../context/AuthContext";
-
+// Screens
 import Login from "../../screens/Login/Login";
 import Home from "../../screens/Home/Home";
 import TabNavigation from "../TabNavigation/TabNavigation";

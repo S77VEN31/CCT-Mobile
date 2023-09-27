@@ -1,8 +1,13 @@
 // React
-import { View, Text, Modal, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  Modal,
+  Pressable,
+  GestureResponderEvent,
+} from "react-native";
 // Styles
 import { styles } from "./ProcessModal.style";
-import { GestureResponderEvent } from "react-native";
 // Types
 type ModalAnimation = "slide" | "fade" | "none";
 // Interfaces

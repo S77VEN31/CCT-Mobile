@@ -3,7 +3,15 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
-    height: 50,
-    gap: 10,
+    display: "flex",
+    padding: 20,
+  },
+  inputs: {
+    display: "flex",
+  },
+  buttons: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
 });

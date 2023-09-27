@@ -1,37 +1,65 @@
-import { View, Text, TextInput, Pressable } from "react-native";
-import React from "react";
+// React
 import { useState } from "react";
+import { View, Modal, Text } from "react-native";
+// Styles
+import { styles } from "./Login.style";
+// Auth Context
 import { useAuth } from "../../context/AuthContext";
+// Components
+import TextInput from "../../components/Inputs/TextInput/TextInput";
 import IconTextButton from "../../components/Buttons/IconTextButton/IconTextButton";
+// Navigation
 import { useNavigation } from "@react-navigation/native";
+
 const Login = () => {
+  // Inputs states
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  // Auth Context
   const { onLogin } = useAuth();
+  // Navigation
   const navigation = useNavigation();
+  // Inputs props
+  const inputs = [
+    {
+      title: "Email",
+      value: email,
+      onChangeText: (text: string) => setEmail(text),
+      placeholder: "Email",
+    },
+    {
+      title: "Password",
+      value: password,
+      onChangeText: (text: string) => setPassword(text),
+      placeholder: "Password",
+    },
+  ];
+  // Buttons props
+  const buttons = [
+    {
+      text: "Login",
+      onPress: () => onLogin(email, password),
+    },
+    {
+      text: "GO",
+      onPress: () => {
+        navigation.navigate("TabNavigation" as never);
+      },
+    },
+  ];
   return (
-    <View>
-      <Text>Email</Text>
-      <TextInput
-        value={email}
-        onChangeText={(text) => setEmail(text)}
-        placeholder="Email"
-      />
-      <Text>Password</Text>
-      <TextInput
-        value={password}
-        onChangeText={(text) => setPassword(text)}
-        placeholder="Password"
-      />
-      <IconTextButton text="Login" onPress={() => onLogin(email, password)} />
-      <IconTextButton
-        text="GO"
-        onPress={() => {
-          navigation.navigate("TabNavigation" as never);
-        }}
-      />
+    <View style={styles.container}>
+      <View style={styles.inputs}>
+        {inputs.map((inputProps) => {
+          return <TextInput {...inputProps} />;
+        })}
+      </View>
+      <View style={styles.buttons}>
+        {buttons.map((buttonProps) => {
+          return <IconTextButton {...buttonProps} />;
+        })}
+      </View>
     </View>
   );
 };
-
 export default Login;

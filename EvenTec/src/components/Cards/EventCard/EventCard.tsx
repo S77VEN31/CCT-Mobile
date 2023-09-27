@@ -11,16 +11,16 @@ interface EventCardProps {
   image?: string;
 }
 
-const EventCard = (props: EventCardProps) => {
+const EventCard = ({ organizer, eventName, image }: EventCardProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.headerTexts}>
-          <Text style={styles.organizer}>{props.organizer}</Text>
-          <Text style={styles.eventName}>{props.eventName}</Text>
+          <Text style={styles.organizer}>{organizer}</Text>
+          <Text style={styles.eventName}>{eventName}</Text>
         </View>
         <View style={styles.imageContainer}>
-          <Image style={styles.image} source={{ uri: props.image }}></Image>
+          <Image style={styles.image} source={{ uri: image }}></Image>
         </View>
       </View>
       <View style={styles.dateContainer}>

@@ -63,7 +63,6 @@ export const AuthProvider = ({ children }: any) => {
         email,
         password,
       });
-      //console.log(JSON.stringify(result));
       const cookie = result.headers["set-cookie"]?.[0] ?? "";
       const token = cookie
         .split(";")
@@ -73,10 +72,9 @@ export const AuthProvider = ({ children }: any) => {
         token: token || null,
         authenticated: true,
       });
-
       await SecureStore.setItemAsync("token", token || "");
     } catch (error) {
-      console.log(error);
+      console.log("Error response data:", error.response.data);
     }
   };
 

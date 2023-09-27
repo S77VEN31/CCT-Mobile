@@ -4,7 +4,7 @@ import { Pressable, Text, ViewStyle } from "react-native";
 import { styles } from "./IconTextButton.style";
 // Icons
 import { MaterialIcons } from "@expo/vector-icons";
-
+// Types
 interface IconTextButtonProps {
   icon?: string;
   text?: string;
@@ -12,18 +12,23 @@ interface IconTextButtonProps {
   className?: ViewStyle;
 }
 
-const IconTextButton = (props: IconTextButtonProps) => {
+const IconTextButton = ({
+  icon,
+  text,
+  onPress,
+  className,
+}: IconTextButtonProps) => {
   return (
     <Pressable
-      onPress={props.onPress}
-      style={[styles.container, props.className ? props.className : undefined]}
+      {...{ onPress }}
+      style={[styles.container, className ? className : undefined]}
     >
-      {props.text && <Text style={styles.text}>{props.text}</Text>}
-      {props.icon && (
+      {text && <Text style={styles.text}>{text}</Text>}
+      {icon && (
         <MaterialIcons
           style={styles.icon}
           // @ts-ignore
-          name={props.icon}
+          name={icon}
           size={30}
         />
       )}

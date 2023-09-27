@@ -12,7 +12,7 @@ import { styles } from "./ProcessModal.style";
 type ModalAnimation = "slide" | "fade" | "none";
 // Interfaces
 interface ProcessModalProps {
-  animation?: ModalAnimation;
+  animationType?: ModalAnimation;
   visible: boolean;
   transparent?: boolean;
   content: any;
@@ -20,7 +20,7 @@ interface ProcessModalProps {
 }
 
 const ProcessModal = ({
-  animation,
+  animationType,
   visible,
   transparent,
   content,
@@ -33,7 +33,7 @@ const ProcessModal = ({
   };
 
   return (
-    <Modal {...{ animation, visible, transparent }}>
+    <Modal {...{ animationType, visible, transparent }}>
       <Pressable style={styles.container} onPress={handleOnPressOut}>
         <View style={styles.modal}>
           <Text>{content.message}</Text>

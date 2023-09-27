@@ -18,10 +18,10 @@ const Login = () => {
   const [password, setPassword] = useState<string>("");
   // Auth Context
   const { onLogin } = useAuth();
+  // Modal Context
+  const { handleModal } = useModal();
   // Navigation
   const navigation = useNavigation();
- // Modal Context
-  const { handleModal } = useModal();
   // Inputs props
   const inputs = [
     {
@@ -59,13 +59,13 @@ const Login = () => {
       </View>
       <View style={styles.buttons}>
         {buttons.map((buttonProps) => {
-          return <IconTextButton {...buttonProps} />;
+          return <IconTextButton className={styles.button} {...buttonProps} />;
         })}
       </View>
 
       <IconTextButton
         text="show modal"
-        onPress={()=> handleModal({message: "hola"}, "slide")}
+        onPress={() => handleModal({ message: "hola" }, "fade")}
       />
     </View>
   );

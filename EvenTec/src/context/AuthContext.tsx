@@ -6,6 +6,8 @@ import axios from "axios";
 import * as SecureStore from "expo-secure-store";
 // Routes
 import { authRoutes } from "../api/authRoutes/authRoutes";
+// Modal Context
+import { useModal } from "./ModalContext";
 interface AuthProps {
   authState: { token: string | null; authenticated: boolean | null };
   onRegister: (email: string, password: string) => Promise<void>;
@@ -20,6 +22,7 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }: any) => {
+  const { handleModal } = useModal();
   const { loginRoute, logoutRoute, registerRoute } = authRoutes;
   const [authState, setAuthState] = useState<{
     token: string | null;
@@ -73,8 +76,10 @@ export const AuthProvider = ({ children }: any) => {
         authenticated: true,
       });
       await SecureStore.setItemAsync("token", token || "");
-    } catch (error) {
-      console.log("Error response data:", error.response.data.message);
+    } catch (error: any) {
+       // Modal Context
+      handleModal({message: error.response.data.message.issues[0].message}, "fade");
+      console.log("Error response data:", error.response.data.message.issues[0].message);
     }
   };
 

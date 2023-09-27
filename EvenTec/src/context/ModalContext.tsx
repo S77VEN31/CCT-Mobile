@@ -6,7 +6,7 @@ import ProcessModal from "../components/Modals/ProcessModal/ProcessModal";
 type ModalAnimation = "slide" | "fade" | "none";
 // Interfaces
 interface ModalProps {
-  handleModal: (data: any, animation?: ModalAnimation) => void;
+  handleModal: (data: any, animationType?: ModalAnimation) => void;
 }
 
 const ModalContext = createContext<ModalProps>({} as ModalProps);
@@ -18,14 +18,14 @@ export const useModal = () => {
 export const ModalProvider = ({ children }: any) => {
   const transparent = true;
   const [visible, setVisible] = useState<boolean>(false);
-  const [animation, setAnimation] = useState<ModalAnimation>("slide");
+  const [animationType, setAnimationType] = useState<ModalAnimation>("slide");
   const [content, setContent] = useState<any>({
     message: "no hay info",
   });
 
-  const handleModal = (data: any, animation?: ModalAnimation) => {
-    if (animation) {
-      setAnimation(animation);
+  const handleModal = (data: any, animationType?: ModalAnimation) => {
+    if (animationType) {
+      setAnimationType(animationType);
     }
     setContent(data), setVisible(!visible);
   };
@@ -38,7 +38,7 @@ export const ModalProvider = ({ children }: any) => {
     <ModalContext.Provider value={value as ModalProps}>
       {children}
       <ProcessModal
-        {...{ visible, animation, content, transparent, setVisible }}
+        {...{ visible, animationType, content, transparent, setVisible }}
       />
     </ModalContext.Provider>
   );

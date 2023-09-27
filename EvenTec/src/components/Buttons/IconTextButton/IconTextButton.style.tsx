@@ -11,7 +11,6 @@ export const styles = StyleSheet.create({
     gap: 10,
     padding: 10,
     borderRadius: 16,
-    minWidth: 125,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-evenly",

@@ -14,4 +14,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
+  button: {
+    minWidth: 125,
+  },
 });

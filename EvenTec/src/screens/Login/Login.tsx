@@ -18,8 +18,6 @@ const Login = () => {
   const [password, setPassword] = useState<string>("");
   // Auth Context
   const { onLogin } = useAuth();
-  // Modal Context
-  const { handleModal } = useModal();
   // Navigation
   const navigation = useNavigation();
   // Inputs props
@@ -62,11 +60,6 @@ const Login = () => {
           return <IconTextButton className={styles.button} {...buttonProps} />;
         })}
       </View>
-
-      <IconTextButton
-        text="show modal"
-        onPress={() => handleModal({ message: "hola" }, "fade")}
-      />
     </View>
   );
 };

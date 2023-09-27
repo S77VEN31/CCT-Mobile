@@ -3,6 +3,8 @@ import { StyleSheet } from "react-native";
 // Colors
 import { Colors } from "../../../constants/Colors";
 
+// HOLA !
+
 export const styles = StyleSheet.create({
   container: {
     minHeight: 50,

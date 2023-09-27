@@ -1,8 +1,10 @@
+// React
 import { createContext, useContext, useState } from "react";
-import { Modal, Text } from "react-native";
-
+// Components
+import ProcessModal from "../components/Modals/ProcessModal/ProcessModal";
+// Types
 type ModalAnimation = "slide" | "fade" | "none";
-
+// Interfaces
 interface ModalProps {
   handleModal: (data: any, animation?: ModalAnimation) => void;
 }
@@ -14,16 +16,18 @@ export const useModal = () => {
 };
 
 export const ModalProvider = ({ children }: any) => {
-  const [modalState, setModalState] = useState<Boolean>(false);
-  const [modalAnimation, setModalAnimation] = useState<ModalAnimation>("slide");
-  const [modalContent, setModalContent] = useState<any>({
+  const transparent = true;
+  const [visible, setVisible] = useState<boolean>(false);
+  const [animation, setAnimation] = useState<ModalAnimation>("slide");
+  const [content, setContent] = useState<any>({
     message: "no hay info",
   });
+
   const handleModal = (data: any, animation?: ModalAnimation) => {
-    setModalContent(data), setModalState(!modalState);
     if (animation) {
-      setModalAnimation(animation);
+      setAnimation(animation);
     }
+    setContent(data), setVisible(!visible);
   };
 
   const value = {
@@ -33,9 +37,9 @@ export const ModalProvider = ({ children }: any) => {
   return (
     <ModalContext.Provider value={value as ModalProps}>
       {children}
-      <Modal animationType={modalAnimation} visible={modalState as boolean}>
-        {<Text>{modalContent.message}</Text>}
-      </Modal>
+      <ProcessModal
+        {...{ visible, animation, content, transparent, setVisible }}
+      />
     </ModalContext.Provider>
   );
 };

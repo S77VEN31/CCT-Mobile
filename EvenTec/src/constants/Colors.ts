@@ -10,5 +10,6 @@ export const Colors = {
   error: '#FF3B30',
   success: '#4CD964',
   warning: '#FFCC00',
+  transparentBackground: 'rgba(0,0,0,0.5)',
 };
 

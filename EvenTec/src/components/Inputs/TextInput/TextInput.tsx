@@ -2,7 +2,7 @@
 import { View, Text, TextInput as Input } from "react-native";
 // Styles
 import { styles } from "./TextInput.style";
-// Types
+// Interfaces
 interface TextInputProps {
   title?: string;
   placeholder?: string;

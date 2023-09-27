@@ -10,7 +10,8 @@ import TextInput from "../../components/Inputs/TextInput/TextInput";
 import IconTextButton from "../../components/Buttons/IconTextButton/IconTextButton";
 // Navigation
 import { useNavigation } from "@react-navigation/native";
-
+// Modal Context
+import { useModal } from "../../context/ModalContext";
 const Login = () => {
   // Inputs states
   const [email, setEmail] = useState<string>("");
@@ -19,6 +20,8 @@ const Login = () => {
   const { onLogin } = useAuth();
   // Navigation
   const navigation = useNavigation();
+ // Modal Context
+  const { handleModal } = useModal();
   // Inputs props
   const inputs = [
     {
@@ -59,6 +62,11 @@ const Login = () => {
           return <IconTextButton {...buttonProps} />;
         })}
       </View>
+
+      <IconTextButton
+        text="show modal"
+        onPress={()=> handleModal({message: "hola"}, "slide")}
+      />
     </View>
   );
 };

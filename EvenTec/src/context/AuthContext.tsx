@@ -74,7 +74,7 @@ export const AuthProvider = ({ children }: any) => {
       });
       await SecureStore.setItemAsync("token", token || "");
     } catch (error) {
-      console.log("Error response data:", error.response.data);
+      console.log("Error response data:", error.response.data.message);
     }
   };
 

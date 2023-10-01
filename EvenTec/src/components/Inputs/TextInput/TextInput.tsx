@@ -18,8 +18,8 @@ const TextInput = ({
 }: TextInputProps) => {
   return (
     <View style={styles.container}>
-      <Text>{title}</Text>
-      <Input {...{ placeholder, value, onChangeText }} />
+      <Text style={styles.label}>{title}</Text>
+      <Input style={styles.input} {...{ placeholder, value, onChangeText }} />
     </View>
   );
 };

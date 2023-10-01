@@ -13,6 +13,7 @@ import StackNavigator from "./src/navigation/StackNavigation/StackNavigation";
 import { StatusBar } from "expo-status-bar";
 import { AuthProvider } from "./src/context/AuthContext";
 import { ModalProvider } from "./src/context/ModalContext";
+import { KeyboardAvoidingView } from "react-native";
 
 export default function App() {
   const [fontsLoaded] = useFonts(fonts);

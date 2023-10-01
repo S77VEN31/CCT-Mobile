@@ -1,6 +1,6 @@
 // React
 import { useState } from "react";
-import { View, Modal, Text } from "react-native";
+import { View, Text, ScrollView, KeyboardAvoidingView } from "react-native";
 // Styles
 import { styles } from "./Login.style";
 // Auth Context
@@ -10,8 +10,7 @@ import TextInput from "../../components/Inputs/TextInput/TextInput";
 import IconTextButton from "../../components/Buttons/IconTextButton/IconTextButton";
 // Navigation
 import { useNavigation } from "@react-navigation/native";
-// Modal Context
-import { useModal } from "../../context/ModalContext";
+
 const Login = () => {
   // Inputs states
   const [email, setEmail] = useState<string>("");
@@ -23,22 +22,22 @@ const Login = () => {
   // Inputs props
   const inputs = [
     {
-      title: "Email",
+      title: "Correo",
       value: email,
       onChangeText: (text: string) => setEmail(text),
-      placeholder: "Email",
+      placeholder: "estudiante@estudiantec.cr",
     },
     {
-      title: "Password",
+      title: "Contraseña",
       value: password,
       onChangeText: (text: string) => setPassword(text),
-      placeholder: "Password",
+      placeholder: "Contraseña",
     },
   ];
   // Buttons props
   const buttons = [
     {
-      text: "Login",
+      text: "Iniciar sesión",
       onPress: () => onLogin(email, password),
     },
     {
@@ -48,19 +47,29 @@ const Login = () => {
       },
     },
   ];
+
   return (
-    <View style={styles.container}>
-      <View style={styles.inputs}>
-        {inputs.map((inputProps) => {
-          return <TextInput {...inputProps} />;
-        })}
-      </View>
-      <View style={styles.buttons}>
-        {buttons.map((buttonProps) => {
-          return <IconTextButton className={styles.button} {...buttonProps} />;
-        })}
-      </View>
-    </View>
+    <KeyboardAvoidingView style={styles.keyboardAvoidingView} behavior="height">
+      <ScrollView contentContainerStyle={styles.content}>
+        <Text style={styles.title}>Iniciar sesión</Text>
+        <View style={styles.inputs}>
+          {inputs.map((inputProps, key) => {
+            return <TextInput {...inputProps} key={key} />;
+          })}
+        </View>
+        <View style={styles.buttons}>
+          {buttons.map((buttonProps, key) => {
+            return (
+              <IconTextButton
+                className={styles.button}
+                {...buttonProps}
+                key={key}
+              />
+            );
+          })}
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 export default Login;

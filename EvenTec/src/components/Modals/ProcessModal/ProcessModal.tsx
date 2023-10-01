@@ -38,27 +38,23 @@ const ProcessModal = ({
       handleClose();
     }
   };
-  console.log("content is:", content);
-  const {message} = content;
-  const {code} = message;
-  console.log("message is:", message);
 
-console.log("code is:", code);
+  const { code, message } = content;
+
   return (
     <Modal {...{ animationType, visible, transparent }}>
       <Pressable style={styles.container} onPress={handleOnPressOut}>
         <View style={styles.modal}>
           <View style={styles.header}>
-            <Text>
-             { code}
-            </Text>
-          <Pressable onPress={() => handleClose()}>
-            <MaterialIcons name="close" size={30} color="black" />
-          </Pressable>
+            <Text style={styles.title}>{code}</Text>
+            <Pressable onPress={() => handleClose()}>
+              <MaterialIcons name="close" style={styles.headerIcon} />
+            </Pressable>
           </View>
-          
-          <MaterialIcons name="error" size={30} color="black" />
-          <Text>message</Text>
+          <View style={styles.content}>
+            <Text style={styles.contentTitle}>{message}</Text>
+            <MaterialIcons name="error" style={styles.contentIcon} />
+          </View>
         </View>
       </Pressable>
     </Modal>

@@ -2,8 +2,8 @@
 import { StyleSheet } from "react-native";
 // Colors
 import { Colors } from "../../../constants/Colors";
-
-// HOLA !
+// Fonts
+import { Fonts } from "../../../constants/Fonts";
 
 export const styles = StyleSheet.create({
   container: {
@@ -19,7 +19,8 @@ export const styles = StyleSheet.create({
   },
   text: {
     color: Colors.white,
-    fontWeight: "bold",
+    ...Fonts.h5,
+    ...Fonts.textMedium,
   },
   icon: {
     color: Colors.white,

@@ -21,11 +21,40 @@ export const styles = StyleSheet.create({
     height: "40%",
     borderRadius: 16,
     backgroundColor: Colors.white,
+    elevation: 10,
   },
   header: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+  },
+  title: {
+    ...Fonts.h3,
+    ...Fonts.textSemiBold,
+    textTransform: "uppercase",
+  },
+  headerIcon: {
+    color: Colors.black,
+    fontSize: 40,
+  },
+  content: {
+    display: "flex",
+    flexDirection: "column",
+    flex: 1,
+    gap: 20,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  contentTitle: {
+    ...Fonts.h3,
+    ...Fonts.textBold,
+    textTransform: "uppercase",
+    borderBottomColor: Colors.error,
+    borderBottomWidth: 2,
+  },
+  contentIcon: {
+    color: Colors.error,
+    fontSize: 60,
   },
 });

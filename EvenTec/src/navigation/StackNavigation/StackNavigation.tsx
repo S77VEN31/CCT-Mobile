@@ -18,7 +18,11 @@ const StackNavigator: React.FC = () => {
       {authState.authenticated ? (
         <Stack.Screen name="Home" component={Home} />
       ) : (
-        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{ headerShown: false }}
+        />
       )}
       {stackScreenProps.map(({ ...props }, key) => {
         return <Stack.Screen {...props} key={key} />;

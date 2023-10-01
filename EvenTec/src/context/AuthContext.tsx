@@ -79,7 +79,7 @@ export const AuthProvider = ({ children }: any) => {
     } catch (error: any) {
       // Modal Context
       console.log(error.response.data.message.issues[0]);
-      handleModal({ message: error.response.data.message.issues[0] }, "fade");
+      handleModal(error.response.data.message.issues[0], "fade");
     }
   };
 

@@ -77,9 +77,9 @@ export const AuthProvider = ({ children }: any) => {
       });
       await SecureStore.setItemAsync("token", token || "");
     } catch (error: any) {
-       // Modal Context
-      handleModal({message: error.response.data.message.issues[0].message}, "fade");
-      console.log("Error response data:", error.response.data.message.issues[0].message);
+      // Modal Context
+      console.log(error.response.data.message.issues[0]);
+      handleModal({ message: error.response.data.message.issues[0] }, "fade");
     }
   };
 

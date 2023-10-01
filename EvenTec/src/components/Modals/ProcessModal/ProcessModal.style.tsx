@@ -22,4 +22,10 @@ export const styles = StyleSheet.create({
     borderRadius: 16,
     backgroundColor: Colors.white,
   },
+  header: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
 });

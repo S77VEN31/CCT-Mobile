@@ -1,5 +1,6 @@
 // Stack Screens
 import TabNavigation from '../TabNavigation/TabNavigation';
+import Register from '../../screens/Register/Register';
 // Navigation
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
@@ -14,6 +15,11 @@ export const StackNavigationConstants = {
     {
       name: 'TabNavigation',
       component: TabNavigation,
+      options: { headerShown: false },
+    },
+    {
+      name: 'Register',
+      component: Register,
       options: { headerShown: false },
     },
     /*

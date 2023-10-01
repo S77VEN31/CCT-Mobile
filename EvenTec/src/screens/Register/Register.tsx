@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { View, Text, ScrollView, KeyboardAvoidingView } from "react-native";
 // Styles
-import { styles } from "./Login.style";
+import { styles } from "./Register.style";
 // Auth Context
 import { useAuth } from "../../context/AuthContext";
 // Components
@@ -11,16 +11,23 @@ import IconTextButton from "../../components/Buttons/IconTextButton/IconTextButt
 // Navigation
 import { useNavigation } from "@react-navigation/native";
 
-const Login = () => {
+const Register = () => {
   // Inputs states
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [userName, setUserName] = useState<string>("");
   // Auth Context
-  const { onLogin } = useAuth();
+  const { onRegister } = useAuth();
   // Navigation
   const navigation = useNavigation();
   // Inputs props
   const inputs = [
+    {
+      title: "Nombre de usuario",
+      value: userName,
+      onChangeText: (text: string) => setUserName(text),
+      placeholder: "Nombre de usuario",
+    },
     {
       title: "Correo",
       value: email,
@@ -37,19 +44,13 @@ const Login = () => {
   // Buttons props
   const buttons = [
     {
-      text: "Iniciar sesión",
-      onPress: () => onLogin(email, password),
-    },
-    {
       text: "Registrarse",
-      onPress: () => {
-        navigation.navigate("Register" as never);
-      },
+      onPress: () => onRegister(email, password, userName),
     },
     {
-      text: "GO",
+      text: "Iniciar sesión",
       onPress: () => {
-        navigation.navigate("TabNavigation" as never);
+        navigation.navigate("Login" as never);
       },
     },
   ];
@@ -57,7 +58,7 @@ const Login = () => {
   return (
     <KeyboardAvoidingView style={styles.keyboardAvoidingView} behavior="height">
       <ScrollView contentContainerStyle={styles.content}>
-        <Text style={styles.title}>Iniciar sesión</Text>
+        <Text style={styles.title}>Registrarse</Text>
         <View style={styles.inputs}>
           {inputs.map((inputProps, key) => {
             return <TextInput {...inputProps} key={key} />;
@@ -78,4 +79,4 @@ const Login = () => {
     </KeyboardAvoidingView>
   );
 };
-export default Login;
+export default Register;

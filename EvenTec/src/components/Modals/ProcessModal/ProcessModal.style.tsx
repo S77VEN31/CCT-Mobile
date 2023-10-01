@@ -52,6 +52,7 @@ export const styles = StyleSheet.create({
     textTransform: "uppercase",
     borderBottomColor: Colors.error,
     borderBottomWidth: 2,
+    textAlign: "center",
   },
   contentIcon: {
     color: Colors.error,

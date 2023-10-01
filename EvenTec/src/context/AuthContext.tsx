@@ -10,7 +10,11 @@ import { authRoutes } from "../api/authRoutes/authRoutes";
 import { useModal } from "./ModalContext";
 interface AuthProps {
   authState: { token: string | null; authenticated: boolean | null };
-  onRegister: (email: string, password: string) => Promise<void>;
+  onRegister: (
+    email: string,
+    password: string,
+    userName: string
+  ) => Promise<void>;
   onLogin: (email: string, password: string) => Promise<void>;
   onLogout: () => Promise<void>;
 }
@@ -47,16 +51,23 @@ export const AuthProvider = ({ children }: any) => {
     loadToken();
   }, []);
 
-  const onRegister = async (email: string, password: string) => {
+  const onRegister = async (
+    email: string,
+    password: string,
+    userName: string
+  ) => {
     try {
-      return await axios.post(registerRoute, {
+      const result = await axios.post(registerRoute, {
         email,
         password,
-        userName: "test",
+        userName,
         isOrganization: false,
       });
-    } catch (error) {
-      console.log(error);
+      return result;
+    } catch (error: any) {
+      // Modal Context
+      console.log(error.response.data.message.issues[0]);
+      handleModal(error.response.data.message.issues[0], "fade");
     }
   };
 

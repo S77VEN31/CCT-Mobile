@@ -12,8 +12,8 @@ export const styles = StyleSheet.create({
   content: {
     padding: 20,
     display: "flex",
-    minHeight: 600,
     flex: 1,
+    minHeight: 600,
     justifyContent: "space-evenly",
   },
   title: {
@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
   inputs: {
     display: "flex",
     flexDirection: "column",
-    gap: 32,
+    gap: 16,
   },
   buttons: {
     display: "flex",

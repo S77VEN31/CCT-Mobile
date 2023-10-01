@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
     borderRadius: 16,
     padding: 16,
     gap: 8,
+    elevation: 8,
   },
   label: {
     paddingLeft: 8,

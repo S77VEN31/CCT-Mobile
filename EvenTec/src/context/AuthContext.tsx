@@ -13,8 +13,9 @@ interface AuthProps {
   onRegister: (
     email: string,
     password: string,
-    userName: string
-  ) => Promise<void>;
+    userName: string,
+    isOrganization: boolean
+  ) => Promise<boolean>;
   onLogin: (email: string, password: string) => Promise<void>;
   onLogout: () => Promise<void>;
 }
@@ -54,20 +55,21 @@ export const AuthProvider = ({ children }: any) => {
   const onRegister = async (
     email: string,
     password: string,
-    userName: string
+    userName: string,
+    isOrganization: boolean
   ) => {
     try {
       const result = await axios.post(registerRoute, {
         email,
         password,
         userName,
-        isOrganization: false,
+        isOrganization,
       });
-      return result;
+      return true;
     } catch (error: any) {
       // Modal Context
-      console.log(error.response.data.message.issues[0]);
       handleModal(error.response.data.message.issues[0], "fade");
+      return false;
     }
   };
 
@@ -87,6 +89,7 @@ export const AuthProvider = ({ children }: any) => {
         authenticated: true,
       });
       await SecureStore.setItemAsync("token", token || "");
+      return result;
     } catch (error: any) {
       // Modal Context
       console.log(error.response.data.message.issues[0]);

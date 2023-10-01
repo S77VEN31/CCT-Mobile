@@ -1,6 +1,7 @@
 // React
 import { useState } from "react";
 import { View, Text, ScrollView, KeyboardAvoidingView } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 // Styles
 import { styles } from "./Login.style";
 // Auth Context
@@ -8,8 +9,6 @@ import { useAuth } from "../../context/AuthContext";
 // Components
 import TextInput from "../../components/Inputs/TextInput/TextInput";
 import IconTextButton from "../../components/Buttons/IconTextButton/IconTextButton";
-// Navigation
-import { useNavigation } from "@react-navigation/native";
 
 const Login = () => {
   // Inputs states

@@ -9,6 +9,9 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@dicebear/collection": "^7.0.1",
+    "@dicebear/core": "^7.0.1",
+    "@dicebear/icons": "^7.0.1",
     "@expo-google-fonts/concert-one": "^0.2.3",
     "@expo-google-fonts/inter": "^0.2.3",
     "@expo-google-fonts/kanit": "^0.2.3",
@@ -19,6 +22,7 @@
     "axios": "^1.5.0",
     "dotenv": "^16.3.1",
     "expo": "~49.0.11",
+    "expo-image-picker": "~14.3.2",
     "expo-location": "~16.1.0",
     "expo-secure-store": "~12.3.1",
     "expo-status-bar": "~1.6.0",

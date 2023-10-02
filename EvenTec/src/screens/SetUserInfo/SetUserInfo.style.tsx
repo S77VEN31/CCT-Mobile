@@ -27,15 +27,17 @@ export const styles = StyleSheet.create({
     flexDirection: "column",
     gap: 16,
   },
-  buttons: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    flexWrap: "wrap",
-    gap: 16,
-  },
   button: {
-    minWidth: 125,
     elevation: 8,
+  },
+  imageContainer: {
+    display: "flex",
+    alignItems: "center",
+  },
+  image: {
+    backgroundColor: Colors.white,
+    width: 200,
+    height: 200,
+    borderRadius: 100,
   },
 });

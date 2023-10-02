@@ -30,8 +30,8 @@ const SetUserInfo = () => {
   const [name, setName] = useState<string>("");
   const [carne, setCarne] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
-  const [image, setImage] = useState<any>("");
-
+  const [image, setImage] = useState<string>("");
+  const [blob, setBlob] = useState<any>("");
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -47,10 +47,15 @@ const SetUserInfo = () => {
 
       const reader = new FileReader();
       reader.readAsDataURL(blob);
-      reader.onloadend = () => {
-        const base64data = reader.result;
+      reader.onloadend = async () => {
+        // Convert the blob to base64
+        const base64data = reader.result.split(",")[1];
         const binaryData = Buffer.from(base64data, "base64");
-        setImage(binaryData);
+        setBlob(binaryData);
+        // Read the image blob and set it as the image uri
+        const img = Buffer.from(binaryData).toString("base64");
+        const imageUri = `data:image/png;base64,${img}`;
+        setImage(imageUri);
       };
     }
   };
@@ -63,12 +68,13 @@ const SetUserInfo = () => {
           name: name,
           carne: carne,
           phone: phone,
-          profilePicture: image,
+          profilePicture: blob,
         }
       );
       console.log(response.data.message);
     } catch (error) {
       // Handle the error here
+      console.error(error);
       console.error("An error occurred while updating profile info:");
     }
   };
@@ -103,14 +109,14 @@ const SetUserInfo = () => {
       <ScrollView contentContainerStyle={styles.content}>
         <Text style={styles.title}>Completa tu información</Text>
         <View style={styles.imageContainer}>
-          {/*<Image
+          <Image
             source={
               image
                 ? { uri: image }
                 : require("../../../assets/images/edit-image.png")
             }
             style={styles.image}
-          />*/}
+          />
         </View>
         <IconTextButton
           className={styles.button}

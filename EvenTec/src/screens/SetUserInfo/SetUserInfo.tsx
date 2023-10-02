@@ -1,62 +1,62 @@
 // React
 import { useState } from "react";
 import { View, Text, ScrollView, KeyboardAvoidingView } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 // Styles
-import { styles } from "./Login.style";
-// Auth Context
-import { useAuth } from "../../context/AuthContext";
+import { styles } from "./SetUserInfo.style";
 // Components
 import TextInput from "../../components/Inputs/TextInput/TextInput";
 import IconTextButton from "../../components/Buttons/IconTextButton/IconTextButton";
+// Types
+type KeyboardType =
+  | "default"
+  | "number-pad"
+  | "decimal-pad"
+  | "numeric"
+  | "email-address"
+  | "phone-pad"
+  | "url";
 
-const Login = () => {
+const SetUserInfo = () => {
   // Inputs states
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  // Auth Context
-  const { onLogin } = useAuth();
-  // Navigation
-  const navigation = useNavigation();
+  const [userName, setUserName] = useState<string>("");
+
   // Inputs props
   const inputs = [
     {
-      title: "Correo",
-      value: email,
-      onChangeText: (text: string) => setEmail(text),
-      placeholder: "estudiante@estudiantec.cr",
+      title: "Nombre",
+      value: userName,
+      onChangeText: (text: string) => setUserName(text),
+      placeholder: "Nombre del estudiante",
+      keyboardType: "default" as KeyboardType,
     },
     {
-      title: "Contraseña",
+      title: "Carné",
+      value: email,
+      onChangeText: (text: string) => setEmail(text),
+      placeholder: "##########",
+      keyboardType: "numeric" as KeyboardType,
+    },
+    {
+      title: "Número de teléfono",
       value: password,
       onChangeText: (text: string) => setPassword(text),
-      placeholder: "Contraseña",
+      placeholder: "########",
+      keyboardType: "numeric" as KeyboardType,
     },
   ];
   // Buttons props
   const buttons = [
     {
-      text: "Iniciar sesión",
-      onPress: () => onLogin(email, password),
-    },
-    {
       text: "Registrarse",
-      onPress: () => {
-        navigation.navigate("Register" as never);
-      },
-    },
-    {
-      text: "GO",
-      onPress: () => {
-        navigation.navigate("SetUserInfo" as never);
-      },
+      onPress: () => {},
     },
   ];
-
   return (
     <KeyboardAvoidingView style={styles.keyboardAvoidingView} behavior="height">
       <ScrollView contentContainerStyle={styles.content}>
-        <Text style={styles.title}>Iniciar sesión</Text>
+        <Text style={styles.title}>Completa la información de usuario</Text>
         <View style={styles.inputs}>
           {inputs.map((inputProps, key) => {
             return <TextInput {...inputProps} key={key} />;
@@ -77,4 +77,4 @@ const Login = () => {
     </KeyboardAvoidingView>
   );
 };
-export default Login;
+export default SetUserInfo;

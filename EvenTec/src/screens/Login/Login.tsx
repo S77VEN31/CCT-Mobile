@@ -48,7 +48,7 @@ const Login = () => {
     {
       text: "GO",
       onPress: () => {
-        navigation.navigate("TabNavigation" as never);
+        navigation.navigate("SetUserInfo" as never);
       },
     },
   ];

@@ -1,7 +1,6 @@
 // Stack Screens
 import TabNavigation from '../TabNavigation/TabNavigation';
 import Register from '../../screens/Register/Register';
-import SetUserInfo from '../../screens/SetUserInfo/SetUserInfo';
 // Navigation
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
@@ -23,11 +22,6 @@ export const StackNavigationConstants = {
       component: Register,
       options: { headerShown: false },
     },
-    {
-      name: 'SetUserInfo',
-      component: SetUserInfo,
-      options: { headerShown: false },
-    }
     /*
     {
       name: 'MenuDetail',

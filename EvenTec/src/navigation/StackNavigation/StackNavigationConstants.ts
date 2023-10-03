@@ -1,6 +1,8 @@
 // Stack Screens
 import TabNavigation from '../TabNavigation/TabNavigation';
 import Register from '../../screens/Register/Register';
+import Create from '../../screens/Event/Create';
+
 // Navigation
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
@@ -22,6 +24,13 @@ export const StackNavigationConstants = {
       component: Register,
       options: { headerShown: false },
     },
+    {
+      name: 'Create',
+      component: Create,
+      options: { headerShown: false },
+    },
+
+
     /*
     {
       name: 'MenuDetail',

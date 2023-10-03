@@ -28,7 +28,7 @@ export default function App() {
           </NavigationContainer>
         </AuthProvider>
       </ModalProvider>
-      <StatusBar backgroundColor={Colors.secondaryLight} />
+      <StatusBar backgroundColor={Colors.secondary} style="light" />
     </SafeAreaView>
   );
 }

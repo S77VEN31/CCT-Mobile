@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
   content: {
     padding: 20,
     display: "flex",
-    minHeight: 700,
+    minHeight: 1100,
     gap: 32,
     justifyContent: "space-evenly",
   },
@@ -30,9 +30,18 @@ export const styles = StyleSheet.create({
   button: {
     elevation: 8,
   },
+  setImageContainer: {
+    display: "flex",
+    gap: 32,
+  },
   imageContainer: {
     display: "flex",
     alignItems: "center",
+  },
+  imageButton: {
+    width: 200,
+    height: 200,
+    borderRadius: 100,
   },
   image: {
     backgroundColor: Colors.white,

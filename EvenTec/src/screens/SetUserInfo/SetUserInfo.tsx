@@ -6,6 +6,7 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Image,
+  Pressable,
 } from "react-native";
 // Styles
 import { styles } from "./SetUserInfo.style";
@@ -100,21 +101,25 @@ const SetUserInfo = () => {
     <KeyboardAvoidingView style={styles.keyboardAvoidingView} behavior="height">
       <ScrollView contentContainerStyle={styles.content}>
         <Text style={styles.title}>Completa tu información</Text>
-        <View style={styles.imageContainer}>
-          <Image
-            source={
-              image
-                ? { uri: image }
-                : require("../../../assets/images/edit-image.png")
-            }
-            style={styles.image}
+        <View style={styles.setImageContainer}>
+          <View style={styles.imageContainer}>
+            <Pressable style={styles.imageButton} onPress={pickImage}>
+              <Image
+                source={
+                  image
+                    ? { uri: image }
+                    : require("../../../assets/images/edit-image.png")
+                }
+                style={styles.image}
+              />
+            </Pressable>
+          </View>
+          <IconTextButton
+            className={styles.button}
+            text="Pick a profile picture"
+            onPress={pickImage}
           />
         </View>
-        <IconTextButton
-          className={styles.button}
-          text="Pick a profile picture"
-          onPress={pickImage}
-        />
         <View style={styles.inputs}>
           {inputs.map((inputProps, key) => {
             return <TextInput {...inputProps} key={key} />;

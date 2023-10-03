@@ -12,6 +12,10 @@ import { styles } from "./SetUserInfo.style";
 // Components
 import TextInput from "../../components/Inputs/TextInput/TextInput";
 import IconTextButton from "../../components/Buttons/IconTextButton/IconTextButton";
+// API
+import { updateProfileInfo } from "../../api/users/users";
+// Buffer
+const Buffer = require("buffer").Buffer;
 // Libraries
 import * as ImagePicker from "expo-image-picker";
 // Types
@@ -23,15 +27,14 @@ type KeyboardType =
   | "email-address"
   | "phone-pad"
   | "url";
-import axios from "axios";
-const Buffer = require("buffer").Buffer;
+
 const SetUserInfo = () => {
   // Inputs states
   const [name, setName] = useState<string>("");
   const [carne, setCarne] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
+  const [profilePicture, setProfilePicture] = useState<string>("");
   const [image, setImage] = useState<string>("");
-  const [blob, setBlob] = useState<any>("");
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -49,9 +52,10 @@ const SetUserInfo = () => {
       reader.readAsDataURL(blob);
       reader.onloadend = async () => {
         // Convert the blob to base64
+        // @ts-ignore
         const base64data = reader.result.split(",")[1];
         const binaryData = Buffer.from(base64data, "base64");
-        setBlob(binaryData);
+        setProfilePicture(binaryData);
         // Read the image blob and set it as the image uri
         const img = Buffer.from(binaryData).toString("base64");
         const imageUri = `data:image/png;base64,${img}`;
@@ -59,26 +63,14 @@ const SetUserInfo = () => {
       };
     }
   };
-
   const handleUpdateProfileInfo = async () => {
-    try {
-      const response = await axios.put(
-        "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/users/updateProfileInfo",
-        {
-          name: name,
-          carne: carne,
-          phone: phone,
-          profilePicture: blob,
-        }
-      );
-      console.log(response.data.message);
-    } catch (error) {
-      // Handle the error here
-      console.error(error);
-      console.error("An error occurred while updating profile info:");
-    }
+    await updateProfileInfo({
+      name,
+      carne,
+      phone,
+      profilePicture,
+    });
   };
-
   // Inputs props
   const inputs = [
     {
@@ -130,7 +122,7 @@ const SetUserInfo = () => {
         </View>
         <IconTextButton
           className={styles.button}
-          text="Registrarse"
+          text="Confirmar"
           onPress={() => {
             handleUpdateProfileInfo();
           }}

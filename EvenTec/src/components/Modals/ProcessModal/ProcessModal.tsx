@@ -39,21 +39,40 @@ const ProcessModal = ({
     }
   };
 
-  const { code, message } = content;
-
+  const { code, message, name } = content;
   return (
     <Modal {...{ animationType, visible, transparent }}>
       <Pressable style={styles.container} onPress={handleOnPressOut}>
         <View style={styles.modal}>
           <View style={styles.header}>
-            <Text style={styles.title}>{code}</Text>
+            <Text style={styles.title}>{name}</Text>
             <Pressable onPress={() => handleClose()}>
               <MaterialIcons name="close" style={styles.headerIcon} />
             </Pressable>
           </View>
           <View style={styles.content}>
-            <Text style={styles.contentTitle}>{message}</Text>
-            <MaterialIcons name="error" style={styles.contentIcon} />
+            <Text
+              style={[styles.contentTitle, code === 200 && styles.successLine]}
+            >
+              {message}
+            </Text>
+            <View style={styles.codeIconContainer}>
+              <MaterialIcons
+                name="error"
+                style={[
+                  styles.contentIcon,
+                  code === 200 && styles.successColor,
+                ]}
+              />
+              <Text
+                style={[
+                  styles.contentCode,
+                  code === 200 && styles.successColor,
+                ]}
+              >
+                CODE: {code}
+              </Text>
+            </View>
           </View>
         </View>
       </Pressable>

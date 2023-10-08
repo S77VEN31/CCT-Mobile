@@ -17,8 +17,9 @@ export const styles = StyleSheet.create({
   modal: {
     display: "flex",
     padding: 16,
+    gap: 20,
     width: "80%",
-    height: "40%",
+    minHeight: "30%",
     borderRadius: 16,
     backgroundColor: Colors.white,
     elevation: 10,
@@ -28,6 +29,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    flexWrap: "wrap-reverse",
   },
   title: {
     ...Fonts.h3,
@@ -41,7 +43,6 @@ export const styles = StyleSheet.create({
   content: {
     display: "flex",
     flexDirection: "column",
-    flex: 1,
     gap: 20,
     justifyContent: "center",
     alignItems: "center",
@@ -54,8 +55,22 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 2,
     textAlign: "center",
   },
+  codeIconContainer: {
+    alignItems: "center",
+  },
   contentIcon: {
     color: Colors.error,
     fontSize: 60,
+  },
+  contentCode: {
+    ...Fonts.h3,
+    ...Fonts.textBold,
+    color: Colors.error,
+  },
+  successColor: {
+    color: Colors.success,
+  },
+  successLine: {
+    borderBottomColor: Colors.success,
   },
 });

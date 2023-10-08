@@ -3,3 +3,7 @@ export const authRoutes = {
     logoutRoute: "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/logout",
     registerRoute: "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/register"
 }
+
+export const userRoutes = {
+    updateProfileInformation: "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/users/updateProfileInfo"
+}

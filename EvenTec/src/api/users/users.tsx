@@ -1,5 +1,9 @@
+// Routes
+import { userRoutes } from "../routes/routes";
 // Axios
 import axios from "axios";
+// Use Modal
+import { useModal } from "../../context/ModalContext";
 // Interfaces
 interface profileInfo {
   name: string;
@@ -8,23 +12,23 @@ interface profileInfo {
   profilePicture: string;
 }
 
+const { updateProfileInformation } = userRoutes;
+
 export const updateProfileInfo = async ({
   name,
   carne,
   phone,
   profilePicture,
 }: profileInfo) => {
+  const { handleModal } = useModal();
   try {
-    const response = await axios.put(
-      "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/users/updateProfileInfo",
-      {
-        name,
-        carne,
-        phone,
-        profilePicture,
-      }
-    );
-    console.log(response.data.message);
+    const response = await axios.put(updateProfileInformation, {
+      name,
+      carne,
+      phone,
+      profilePicture,
+    });
+    console.log(response);
   } catch (error) {
     // Handle the error here
     console.error(error);

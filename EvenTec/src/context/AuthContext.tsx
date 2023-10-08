@@ -5,7 +5,7 @@ import axios from "axios";
 // Secure Store
 import * as SecureStore from "expo-secure-store";
 // Routes
-import { authRoutes } from "../api/authRoutes/authRoutes";
+import { authRoutes } from "../api/routes/routes";
 // Modal Context
 import { useModal } from "./ModalContext";
 interface AuthProps {
@@ -67,8 +67,10 @@ export const AuthProvider = ({ children }: any) => {
       });
       return true;
     } catch (error: any) {
-      // Modal Context
-      handleModal(error.response.data.message.issues[0], "fade");
+      handleModal(
+        { ...error.response.data, code: error.response.status },
+        "fade"
+      );
       return false;
     }
   };
@@ -91,9 +93,10 @@ export const AuthProvider = ({ children }: any) => {
       await SecureStore.setItemAsync("token", token || "");
       return result;
     } catch (error: any) {
-      // Modal Context
-      console.log(error.response.data.message.issues[0]);
-      handleModal(error.response.data.message.issues[0], "fade");
+      handleModal(
+        { ...error.response.data, code: error.response.status },
+        "fade"
+      );
     }
   };
 

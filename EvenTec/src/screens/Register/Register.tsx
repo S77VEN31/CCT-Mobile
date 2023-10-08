@@ -31,7 +31,7 @@ const Register = () => {
     );
     if (!register) return;
     await onLogin(email, password);
-    navigation.navigate("Home" as never);
+    navigation.navigate("SetUserInfo" as never);
   };
 
   // Inputs props

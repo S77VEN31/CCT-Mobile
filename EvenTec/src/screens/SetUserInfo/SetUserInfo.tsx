@@ -19,6 +19,8 @@ import { updateProfileInfo } from "../../api/users/users";
 const Buffer = require("buffer").Buffer;
 // Libraries
 import * as ImagePicker from "expo-image-picker";
+// Modal Context
+import { useModal } from "../../context/ModalContext";
 // Types
 type KeyboardType =
   | "default"
@@ -36,6 +38,8 @@ const SetUserInfo = () => {
   const [phone, setPhone] = useState<string>("");
   const [profilePicture, setProfilePicture] = useState<string>("");
   const [image, setImage] = useState<string>("");
+  // Modal Context
+  const { handleModal } = useModal();
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -65,12 +69,16 @@ const SetUserInfo = () => {
     }
   };
   const handleUpdateProfileInfo = async () => {
-    await updateProfileInfo({
-      name,
-      carne,
-      phone,
-      profilePicture,
-    });
+      const response = await updateProfileInfo({
+        name,
+        carne,
+        phone,
+        profilePicture,
+      });
+      handleModal(
+        { ...response.data, code: response.status },
+        "fade"
+      )
   };
   // Inputs props
   const inputs = [

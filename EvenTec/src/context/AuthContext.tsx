@@ -9,7 +9,7 @@ import { authRoutes } from "../api/routes/routes";
 // Modal Context
 import { useModal } from "./ModalContext";
 interface AuthProps {
-  authState: { token: string | null; authenticated: boolean | null };
+  authState: { token: string | null; authenticated: boolean | null; data: any };
   onRegister: (
     email: string,
     password: string,
@@ -32,20 +32,25 @@ export const AuthProvider = ({ children }: any) => {
   const [authState, setAuthState] = useState<{
     token: string | null;
     authenticated: boolean | null;
+    data: any;
   }>({
     token: null,
     authenticated: null,
+    data: null,
   });
 
   useEffect(() => {
     const loadToken = async () => {
       const token = await SecureStore.getItemAsync("token");
+      const data = await SecureStore.getItemAsync("user");
       console.log("token is:", token);
+      console.log("data is:", data);
       if (token) {
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         setAuthState({
           token: token,
           authenticated: true,
+          data: data ? JSON.parse(data) : null,
         });
       }
     };
@@ -89,8 +94,10 @@ export const AuthProvider = ({ children }: any) => {
       setAuthState({
         token: token || null,
         authenticated: true,
+        data: result.data,
       });
       await SecureStore.setItemAsync("token", token || "");
+      await SecureStore.setItemAsync("user", JSON.stringify(result.data));
       return result;
     } catch (error: any) {
       handleModal(
@@ -103,10 +110,12 @@ export const AuthProvider = ({ children }: any) => {
   const onLogout = async () => {
     await axios.post(logoutRoute, {});
     await SecureStore.deleteItemAsync("token");
+    await SecureStore.deleteItemAsync("user");
     axios.defaults.headers.common["Authorization"] = "";
     setAuthState({
       token: null,
       authenticated: false,
+      data: null,
     });
   };
 

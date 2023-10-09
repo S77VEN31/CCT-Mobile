@@ -18,6 +18,9 @@ const Login = () => {
   const { onLogin } = useAuth();
   // Navigation
   const navigation = useNavigation();
+  const handleLogin = () => {
+    onLogin(email, password);
+  };
   // Inputs props
   const inputs = [
     {
@@ -37,18 +40,12 @@ const Login = () => {
   const buttons = [
     {
       text: "Iniciar sesión",
-      onPress: () => onLogin(email, password),
+      onPress: () => handleLogin(),
     },
     {
       text: "Registrarse",
       onPress: () => {
         navigation.navigate("Register" as never);
-      },
-    },
-    {
-      text: "GO",
-      onPress: () => {
-        navigation.navigate("SetOrganizationInfo" as never);
       },
     },
   ];

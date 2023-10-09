@@ -8,6 +8,7 @@ import {
   Image,
   Pressable,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 // Styles
 import { styles } from "./SetUserInfo.style";
 // Components
@@ -42,6 +43,9 @@ const SetUserInfo = () => {
   });
   // Modal Context
   const { handleModal } = useModal();
+  // Navigation
+  const navigation = useNavigation();
+
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -141,6 +145,7 @@ const SetUserInfo = () => {
           text="Confirmar"
           onPress={() => {
             handleUpdateProfileInfo();
+            navigation.navigate("Home" as never);
           }}
         />
       </ScrollView>

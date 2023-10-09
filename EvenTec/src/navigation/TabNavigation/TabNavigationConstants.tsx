@@ -35,7 +35,29 @@ export const TabNavigationConstants = {
       component: Wander,
     },
   ] as TabScreenProps[],
-  tabMainNavBar: [
+  tabMainNavBarUser: [
+    {
+      name: "Menu",
+      icon: "menu",
+    },
+    {
+      name: "About",
+      icon: "info",
+    },
+    {
+      name: "Joselyn",
+      icon: "badge",
+    },
+    {
+      name: "Mariana",
+      icon: "badge",
+    },
+    {
+      name: "Wander",
+      icon: "badge",
+    },
+  ],
+  tabMainNavBarOrganization: [
     {
       name: "Menu",
       icon: "menu",

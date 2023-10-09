@@ -1,0 +1,56 @@
+Gestion de asociaciones:
+- Registro de asociaciones:
+  - [x] nombre
+  - [x] descripción
+  - [x] correo
+  - [x] contacto
+  - [x] código de carrera
+  - [] miembros
+  - [x] create
+  - [x] read
+  - [x] update
+  - [] delete
+- Asignación de colaboradores:
+  - [] asignación de colaboradores a eventos segun la cantidad establecida deben estar registrados como estudiantes
+- Creación de eventos:
+  - [] título
+  - [] descripción
+  - [] fecha
+  - [] lugar
+  - [] duración
+  - [] categoría
+  - [] requisitos especiales
+  - [] capacidad
+  - [] cantidad de colaboradores requerida
+  - [] encuesta de retroalimentación
+- Programación de actividades/agenda:
+  - [] horarios
+  - [] ubicaciones
+  - [] colaborador responsable
+  - [] recursos necesarios
+- Control de capacidad:
+  - [] alertar si la actividad está llena
+  - [] alertar si se alcanza el limite
+- Control de acceso:
+  - [] Validacion de boletos qr, enviar correo despues de apuntarse a evento
+Gestion de estudiantes:
+- Registro de estudiantes:
+  - [x] nombre
+  - [x] correo
+  - [x] descripción
+  - [x] contacto
+  - [x] carnet
+  - [] carrera
+  - [x] create
+  - [x] read
+  - [x] update
+  - [] delete
+- Calendario de eventos:
+  - [] Ver calendario eventos
+  - [] Inscribirse en eventos
+- Inscripción a eventos:
+  - [] Inscripción basado en capacidad
+  - [] Cancelar inscripción
+- Formulario de propuestas:
+  - [] Permitir a los estudiantes enviar propuestas de eventos detalles sobre la temática, objetivos, actividades planificadas, 
+  

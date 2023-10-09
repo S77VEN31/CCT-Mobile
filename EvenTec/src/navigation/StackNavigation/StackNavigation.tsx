@@ -6,7 +6,6 @@ import { StackNavigationConstants } from "./StackNavigationConstants";
 import { useAuth } from "../../context/AuthContext";
 // Screens
 import Login from "../../screens/Login/Login";
-import Home from "../../screens/Home/Home";
 import TabNavigation from "../TabNavigation/TabNavigation";
 
 const StackNavigator: React.FC = () => {
@@ -16,7 +15,12 @@ const StackNavigator: React.FC = () => {
   return (
     <Stack.Navigator>
       {authState.authenticated ? (
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen
+          name="TabNavigation"
+          component={TabNavigation}
+          options={{ headerShown: false }}
+          initialParams={{ isOrganization: authState.data?.isOrganization }}
+        />
       ) : (
         <Stack.Screen
           name="Login"

@@ -8,10 +8,12 @@ import MainNavBar from "../../components/NavBars/MainNavBar/MainNavBar";
 import { TabNavigationConstants } from "./TabNavigationConstants";
 // Styles
 import { styles } from "./TabNavigation.style";
-
-const TabNavigation: React.FC = () => {
+// @ts-ignore
+const TabNavigation: React.FC = ({ route }) => {
   const Tab = createBottomTabNavigator();
-  const { tabScreenProps } = TabNavigationConstants;
+  const { isOrganization } = route.params;
+  const { tabScreenProps, tabMainNavBarUser, tabMainNavBarOrganization } =
+    TabNavigationConstants;
   return (
     <Fragment>
       <Tab.Navigator
@@ -26,7 +28,11 @@ const TabNavigation: React.FC = () => {
         })}
       </Tab.Navigator>
       <View>
-        <MainNavBar />
+        <MainNavBar
+          // Change the data prop depending on the user type
+          // @ts-ignore
+          data={isOrganization ? tabMainNavBarOrganization : tabMainNavBarUser}
+        />
       </View>
     </Fragment>
   );

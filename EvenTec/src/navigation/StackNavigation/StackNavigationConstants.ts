@@ -15,11 +15,6 @@ type StackScreenProps = {
 export const StackNavigationConstants = {
   stackScreenProps: [
     {
-      name: 'TabNavigation',
-      component: TabNavigation,
-      options: { headerShown: false },
-    },
-    {
       name: 'Register',
       component: Register,
       options: { headerShown: false },
@@ -34,11 +29,5 @@ export const StackNavigationConstants = {
       component: SetOrganizationInfo,
       options: { headerShown: false },
     }
-    /*
-    {
-      name: 'MenuDetail',
-      component: MenuDetail,
-      options: { headerShown: false, animation: 'slide_from_bottom' },
-    },*/
   ] as StackScreenProps[],
 };

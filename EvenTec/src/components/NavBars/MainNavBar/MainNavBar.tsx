@@ -5,20 +5,17 @@ import { Text, View, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 // Styles
 import { styles } from "./MainNavBar.style";
-// Constants
-import { TabNavigationConstants } from "../../../navigation/TabNavigation/TabNavigationConstants";
 // Icons
 import { MaterialIcons } from "@expo/vector-icons";
 
-const MainNavBar: React.FC = () => {
+const MainNavBar: React.FC = ({ data }: any) => {
   const navigation = useNavigation();
-  const [screen, setScreen] = useState("Restaurants");
-  const { tabMainNavBar } = TabNavigationConstants;
+  const [screen, setScreen] = useState("Menu");
 
   return (
     <View style={styles.mainContainer}>
       <View style={styles.barContainer}>
-        {tabMainNavBar.map((item, key) => {
+        {data.map((item: any, key: number) => {
           const screenName = item.name;
           return (
             <Pressable

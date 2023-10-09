@@ -60,24 +60,28 @@ export const TabNavigationConstants = {
       name: "MyEvents",
       icon: "event",
       text: "Mis Eventos",
-    }
+    },
   ],
   tabMainNavBarOrganization: [
     {
       name: "Members",
       icon: "supervised-user-circle",
+      text: "Miembros",
     },
     {
       name: "HandleEvents",
       icon: "event",
+      text: "Eventos",
     },
     {
       name: "OrganizationNotifications",
       icon: "notifications",
+      text: "Alertas",
     },
     {
       name: "Stats",
       icon: "insert-chart",
+      text: "Estadísticas",
     },
   ],
 };

@@ -3,7 +3,11 @@ import { userRoutes } from "../routes/routes";
 // Axios
 import axios from "axios";
 
-const { updateProfileInformation, getProfileInformation } = userRoutes;
+const {
+  updateProfileInformation,
+  getProfileInformation,
+  getOrganizationMembers,
+} = userRoutes;
 
 export const updateProfileInfo = async (props: any) => {
   try {
@@ -23,3 +27,14 @@ export const getProfileInfo = async () => {
     return error.response;
   }
 };
+
+export const getMembers = async () => {
+  try {
+    const response = await axios.get(getOrganizationMembers);
+    return response;
+  } catch (error: any) {
+    return error.response;
+  }
+};
+
+

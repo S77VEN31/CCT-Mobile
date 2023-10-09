@@ -33,6 +33,8 @@ Gestion de asociaciones:
   - [] alertar si se alcanza el limite
 - Control de acceso:
   - [] Validacion de boletos qr, enviar correo despues de apuntarse a evento
+
+
 Gestion de estudiantes:
 - Registro de estudiantes:
   - [x] nombre
@@ -54,3 +56,15 @@ Gestion de estudiantes:
 - Formulario de propuestas:
   - [] Permitir a los estudiantes enviar propuestas de eventos detalles sobre la temática, objetivos, actividades planificadas, 
   
+
+Evaluación y retroalimentación:
+- Informes y estadísticas: 
+  - [] Participantes registrados
+  - [] Asistencia a actividades
+  - [] Inconvenientes
+- Encuestas y evaluaciones: 
+  - [] Retroalimentación de asistentes
+  - [] Calificación
+- Notificaciones automáticas:
+  - [] Informar por correo la cancelación de un evento
+  - [] O la disponibilidad de este

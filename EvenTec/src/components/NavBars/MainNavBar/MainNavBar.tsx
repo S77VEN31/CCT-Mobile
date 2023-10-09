@@ -46,7 +46,7 @@ const MainNavBar: React.FC = ({ data }: any) => {
                     : styles.buttonInactive,
                 ]}
               >
-                {screenName}
+                {item.text}
               </Text>
             </Pressable>
           );

@@ -1,8 +1,7 @@
 // Stack Screens
-import TabNavigation from '../TabNavigation/TabNavigation';
 import Register from '../../screens/Register/Register';
-import SetUserInfo from '../../screens/SetUserInfo/SetUserInfo';
-import SetOrganizationInfo from '../../screens/SetOrganizationInfo/SetOrganizationInfo';
+import SetUserInfo from '../../screens/User/SetUserInfo/SetUserInfo';
+import SetOrganizationInfo from '../../screens/Organization/SetOrganizationInfo/SetOrganizationInfo';
 // Navigation
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 

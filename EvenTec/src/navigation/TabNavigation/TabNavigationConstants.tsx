@@ -1,12 +1,14 @@
 // Tab Screens
-import About from "../../screens/About/About";
-import Menu from "../../screens/Menu/Menu";
-
-// Testing Screens
-import Wander from "../../screens/Testing/Wander/Wander";
-import Mariana from "../../screens/Testing/Mariana/Mariana";
-import Joselyn from "../../screens/Testing/Joselyn/Joselyn";
-
+// Organization
+import Members from "../../screens/Organization/Members/Members";
+import HandleEvents from "../../screens/Organization/HandleEvents/HandleEvents";
+import OrganizationNotifications from "../../screens/Organization/OrganizationNotifications/OrganizationNotifications";
+import Stats from "../../screens/Organization/Stats/Stats";
+// User
+import GetEvents from "../../screens/User/GetEvents/GetEvents";
+import SendProposal from "../../screens/User/SendProposal/SendProposal";
+import MyEvents from "../../screens/User/MyEvents/MyEvents";
+// Types
 type TabScreenProps = {
   name: string;
   component: React.FC;
@@ -15,68 +17,67 @@ type TabScreenProps = {
 export const TabNavigationConstants = {
   tabScreenProps: [
     {
-      name: "Menu",
-      component: Menu,
+      name: "Members",
+      component: Members,
     },
     {
-      name: "About",
-      component: About,
+      name: "HandleEvents",
+      component: HandleEvents,
     },
     {
-      name: "Joselyn",
-      component: Joselyn,
+      name: "OrganizationNotifications",
+      component: OrganizationNotifications,
     },
     {
-      name: "Mariana",
-      component: Mariana,
+      name: "Stats",
+      component: Stats,
     },
     {
-      name: "Wander",
-      component: Wander,
+      name: "GetEvents",
+      component: GetEvents,
+    },
+    {
+      name: "SendProposal",
+      component: SendProposal,
+    },
+    {
+      name: "MyEvents",
+      component: MyEvents,
     },
   ] as TabScreenProps[],
   tabMainNavBarUser: [
     {
-      name: "Menu",
-      icon: "menu",
+      name: "GetEvents",
+      icon: "event",
+      text: "Eventos",
     },
     {
-      name: "About",
-      icon: "info",
+      name: "SendProposal",
+      icon: "send",
+      text: "Propuesta",
     },
     {
-      name: "Joselyn",
-      icon: "badge",
-    },
-    {
-      name: "Mariana",
-      icon: "badge",
-    },
-    {
-      name: "Wander",
-      icon: "badge",
-    },
+      name: "MyEvents",
+      icon: "event",
+      text: "Mis Eventos",
+    }
   ],
   tabMainNavBarOrganization: [
     {
-      name: "Menu",
-      icon: "menu",
+      name: "Members",
+      icon: "supervised-user-circle",
     },
     {
-      name: "About",
-      icon: "info",
+      name: "HandleEvents",
+      icon: "event",
     },
     {
-      name: "Joselyn",
-      icon: "badge",
+      name: "OrganizationNotifications",
+      icon: "notifications",
     },
     {
-      name: "Mariana",
-      icon: "badge",
-    },
-    {
-      name: "Wander",
-      icon: "badge",
+      name: "Stats",
+      icon: "insert-chart",
     },
   ],
 };

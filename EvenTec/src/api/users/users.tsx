@@ -2,7 +2,6 @@
 import { userRoutes } from "../routes/routes";
 // Axios
 import axios from "axios";
-// Interfaces
 
 const { updateProfileInformation, getProfileInformation } = userRoutes;
 

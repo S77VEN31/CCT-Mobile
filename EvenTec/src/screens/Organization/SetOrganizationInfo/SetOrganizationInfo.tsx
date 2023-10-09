@@ -12,16 +12,16 @@ import { useNavigation } from "@react-navigation/native";
 // Styles
 import { styles } from "./SetOrganizationInfo.style";
 // Components
-import TextInput from "../../components/Inputs/TextInput/TextInput";
-import IconTextButton from "../../components/Buttons/IconTextButton/IconTextButton";
+import TextInput from "../../../components/Inputs/TextInput/TextInput";
+import IconTextButton from "../../../components/Buttons/IconTextButton/IconTextButton";
 // API
-import { updateProfileInfo } from "../../api/users/users";
+import { updateProfileInfo } from "../../../api/users/users";
 // Buffer
 const Buffer = require("buffer").Buffer;
 // Libraries
 import * as ImagePicker from "expo-image-picker";
 // Modal Context
-import { useModal } from "../../context/ModalContext";
+import { useModal } from "../../../context/ModalContext";
 // Types
 type KeyboardType =
   | "default"
@@ -125,7 +125,7 @@ const SetOrganizationInfo = () => {
                           data.profilePicture
                         ).toString("base64")}`,
                       }
-                    : require("../../../assets/images/edit-image.png")
+                    : require("../../../../assets/images/edit-image.png")
                 }
                 style={styles.image}
               />
@@ -147,7 +147,7 @@ const SetOrganizationInfo = () => {
           text="Confirmar"
           onPress={() => {
             handleUpdateProfileInfo();
-            navigation.navigate("Home" as never);
+            navigation.navigate("TabNavigation" as never);
           }}
         />
       </ScrollView>

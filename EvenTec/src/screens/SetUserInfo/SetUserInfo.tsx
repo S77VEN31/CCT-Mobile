@@ -33,11 +33,13 @@ type KeyboardType =
 
 const SetUserInfo = () => {
   // Inputs states
-  const [name, setName] = useState<string>("");
-  const [carne, setCarne] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
-  const [profilePicture, setProfilePicture] = useState<string>("");
-  const [image, setImage] = useState<string>("");
+  const [data, setData] = useState<any>({
+    name: "",
+    carne: "",
+    phone: "",
+    description: "",
+    profilePicture: "",
+  });
   // Modal Context
   const { handleModal } = useModal();
   const pickImage = async () => {
@@ -60,62 +62,63 @@ const SetUserInfo = () => {
         // @ts-ignore
         const base64data = reader.result.split(",")[1];
         const binaryData = Buffer.from(base64data, "base64");
-        setProfilePicture(binaryData);
-        // Read the image blob and set it as the image uri
-        const img = Buffer.from(binaryData).toString("base64");
-        const imageUri = `data:image/png;base64,${img}`;
-        setImage(imageUri);
+        setData({ ...data, profilePicture: binaryData });
       };
     }
   };
   const handleUpdateProfileInfo = async () => {
-      const response = await updateProfileInfo({
-        name,
-        carne,
-        phone,
-        profilePicture,
-      });
-      handleModal(
-        { ...response.data, code: response.status },
-        "fade"
-      )
+    const response = await updateProfileInfo(data);
+    handleModal({ ...response.data, code: response.status }, "fade");
   };
   // Inputs props
   const inputs = [
     {
       title: "Nombre",
-      value: name,
-      onChangeText: (text: string) => setName(text),
+      value: data.name,
+      onChangeText: (text: string) => setData({ ...data, name: text }),
       placeholder: "Nombre del estudiante",
       keyboardType: "default" as KeyboardType,
     },
     {
       title: "Carné",
-      value: carne,
-      onChangeText: (text: string) => setCarne(text),
+      value: data.carne,
+      onChangeText: (text: string) => setData({ ...data, carne: text }),
       placeholder: "##########",
       keyboardType: "numeric" as KeyboardType,
     },
     {
       title: "Número de teléfono",
-      value: phone,
-      onChangeText: (text: string) => setPhone(text),
+      value: data.phone,
+      onChangeText: (text: string) => setData({ ...data, phone: text }),
       placeholder: "########",
       keyboardType: "numeric" as KeyboardType,
+    },
+    {
+      title: "Descripción",
+      value: data.description,
+      onChangeText: (text: string) => setData({ ...data, description: text }),
+      placeholder: "Cuentanos un poco sobre ti",
+      keyboardType: "default" as KeyboardType,
+      numberOfLines: 4,
+      maxLength: 200,
     },
   ];
 
   return (
     <KeyboardAvoidingView style={styles.keyboardAvoidingView} behavior="height">
       <ScrollView contentContainerStyle={styles.content}>
-        <Text style={styles.title}>Completa tu información</Text>
+        <Text style={styles.title}>Edita tu información</Text>
         <View style={styles.setImageContainer}>
           <View style={styles.imageContainer}>
             <Pressable style={styles.imageButton} onPress={pickImage}>
               <Image
                 source={
-                  image
-                    ? { uri: image }
+                  data.profilePicture !== ""
+                    ? {
+                        uri: `data:image/png;base64,${Buffer.from(
+                          data.profilePicture
+                        ).toString("base64")}`,
+                      }
                     : require("../../../assets/images/edit-image.png")
                 }
                 style={styles.image}

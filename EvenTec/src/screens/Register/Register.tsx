@@ -31,7 +31,11 @@ const Register = () => {
     );
     if (!register) return;
     await onLogin(email, password);
-    navigation.navigate("SetUserInfo" as never);
+    if (isOrganization) {
+      navigation.navigate("SetOrganizationInfo" as never);
+    } else {
+      navigation.navigate("SetUserInfo" as never);
+    }
   };
 
   // Inputs props

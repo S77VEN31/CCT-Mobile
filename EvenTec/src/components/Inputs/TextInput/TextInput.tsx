@@ -18,6 +18,8 @@ interface TextInputProps {
   value?: string;
   onChangeText?: (text: string) => void;
   keyboardType?: KeyboardType | undefined;
+  numberOfLines?: number;
+  maxLength?: number;
 }
 
 const TextInput = ({
@@ -26,13 +28,24 @@ const TextInput = ({
   value,
   onChangeText,
   keyboardType,
+  numberOfLines,
+  maxLength,
 }: TextInputProps) => {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{title}</Text>
       <Input
         style={styles.input}
-        {...{ placeholder, value, onChangeText, keyboardType }}
+        textAlignVertical={numberOfLines ? "top" : "center"}
+        {...{
+          maxLength,
+          placeholder,
+          value,
+          onChangeText,
+          keyboardType,
+          numberOfLines,
+          multiline: numberOfLines ? true : false,
+        }}
       />
     </View>
   );

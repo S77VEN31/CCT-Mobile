@@ -48,7 +48,7 @@ const Login = () => {
     {
       text: "GO",
       onPress: () => {
-        navigation.navigate("SetUserInfo" as never);
+        navigation.navigate("SetOrganizationInfo" as never);
       },
     },
   ];

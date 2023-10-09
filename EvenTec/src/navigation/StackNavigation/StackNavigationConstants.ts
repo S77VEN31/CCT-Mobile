@@ -2,6 +2,7 @@
 import TabNavigation from '../TabNavigation/TabNavigation';
 import Register from '../../screens/Register/Register';
 import SetUserInfo from '../../screens/SetUserInfo/SetUserInfo';
+import SetOrganizationInfo from '../../screens/SetOrganizationInfo/SetOrganizationInfo';
 // Navigation
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
@@ -28,6 +29,11 @@ export const StackNavigationConstants = {
       component: SetUserInfo,
       options: { headerShown: false },
     },
+    {
+      name: 'SetOrganizationInfo',
+      component: SetOrganizationInfo,
+      options: { headerShown: false },
+    }
     /*
     {
       name: 'MenuDetail',

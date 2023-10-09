@@ -3,28 +3,12 @@ import { userRoutes } from "../routes/routes";
 // Axios
 import axios from "axios";
 // Interfaces
-interface profileInfo {
-  name: string;
-  carne: string;
-  phone: string;
-  profilePicture: string;
-}
 
 const { updateProfileInformation } = userRoutes;
 
-export const updateProfileInfo = async ({
-  name,
-  carne,
-  phone,
-  profilePicture,
-}: profileInfo) => {
+export const updateProfileInfo = async (props: any) => {
   try {
-    const response = await axios.put(updateProfileInformation, {
-      name,
-      carne,
-      phone,
-      profilePicture,
-    });
+    const response = await axios.put(updateProfileInformation, props);
     return response;
   } catch (error: any) {
     return error.response;

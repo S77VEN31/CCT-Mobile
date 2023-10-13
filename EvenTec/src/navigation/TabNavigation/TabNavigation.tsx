@@ -14,10 +14,11 @@ const TabNavigation: React.FC = ({ route }) => {
   const { isOrganization } = route.params;
   const { tabScreenProps, tabMainNavBarUser, tabMainNavBarOrganization } =
     TabNavigationConstants;
+  const initialRoute = isOrganization ? "Members" : "GetEvents";
   return (
     <Fragment>
       <Tab.Navigator
-        initialRouteName="Menu"
+        initialRouteName={initialRoute}
         screenOptions={{
           headerShown: false,
           tabBarStyle: styles.displayNone,
@@ -29,8 +30,9 @@ const TabNavigation: React.FC = ({ route }) => {
       </Tab.Navigator>
       <View>
         <MainNavBar
-          // Change the data prop depending on the user type
           // @ts-ignore
+          initialRoute={initialRoute}
+          // Change the data prop depending on the user type
           data={isOrganization ? tabMainNavBarOrganization : tabMainNavBarUser}
         />
       </View>

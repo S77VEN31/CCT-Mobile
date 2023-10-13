@@ -8,9 +8,9 @@ import { styles } from "./MainNavBar.style";
 // Icons
 import { MaterialIcons } from "@expo/vector-icons";
 
-const MainNavBar: React.FC = ({ data }: any) => {
+const MainNavBar: React.FC = ({ data, initialRoute }: any) => {
   const navigation = useNavigation();
-  const [screen, setScreen] = useState("Menu");
+  const [screen, setScreen] = useState(initialRoute);
 
   return (
     <View style={styles.mainContainer}>

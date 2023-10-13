@@ -147,6 +147,8 @@ const SetOrganizationInfo = () => {
           text="Confirmar"
           onPress={() => {
             handleUpdateProfileInfo();
+            // @ts-ignore
+            navigation.pop();
             navigation.navigate("TabNavigation" as never);
           }}
         />

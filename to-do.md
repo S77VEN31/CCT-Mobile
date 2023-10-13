@@ -5,7 +5,7 @@ Gestion de asociaciones:
   - [x] correo
   - [x] contacto
   - [x] código de carrera
-  - [] miembros
+  - [x] miembros
   - [x] create
   - [x] read
   - [x] update

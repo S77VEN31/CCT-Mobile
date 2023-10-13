@@ -7,7 +7,7 @@ const GetEvents = () => {
   return (
     <View>
       <IconTextButton text="logout" onPress={() => onLogout()} />
-      <Text>Members</Text>
+      <Text>Get events</Text>
     </View>
   );
 };

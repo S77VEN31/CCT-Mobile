@@ -46,7 +46,7 @@ export const styles = StyleSheet.create({
     color: Colors.backgroundDark,
   },
   buttonActive: {
-    color: Colors.primary,
+    color: Colors.secondaryLight,
     textShadowColor: Colors.black,
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 2,

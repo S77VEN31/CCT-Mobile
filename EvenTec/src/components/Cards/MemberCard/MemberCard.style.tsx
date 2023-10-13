@@ -8,7 +8,7 @@ import { Fonts } from "../../../constants/Fonts";
 export const styles = StyleSheet.create({
   container: {
     display: "flex",
-    height: 200,
+    minHeight: 200,
     margin: 20,
     padding: 20,
     borderRadius: 10,
@@ -30,14 +30,15 @@ export const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
   },
-  organizer: {
-    color: Colors.primary,
-    ...Fonts.textSemiBold,
-    ...Fonts.h2,
-  },
-  eventName: {
-    color: Colors.black,
+  name: {
+    color: Colors.secondary,
     ...Fonts.textBold,
+    ...Fonts.h2,
+    textTransform: "uppercase",
+  },
+  carne: {
+    color: Colors.text,
+    ...Fonts.textRegular,
     ...Fonts.h3,
   },
   imageContainer: {
@@ -48,34 +49,23 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
   },
   image: {
-    width: 50,
-    height: 50,
-    borderRadius: 16,
+    width: 70,
+    height: 70,
+    borderRadius: 50,
+    borderColor: Colors.secondary,
+    borderWidth: 2,
   },
-  dateContainer: {
+  descriptionContainer: {
     display: "flex",
   },
-  date: {
+  description: {
     ...Fonts.textRegular,
     ...Fonts.h6,
-    color: Colors.primary,
+    color: Colors.text,
   },
   footer: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-  },
-  ubicationContainer: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 16,
-  },
-  locationButton: {
-    borderRadius: 50,
-  },
-  locationText: {
-    ...Fonts.textMedium,
-    ...Fonts.h5,
   },
 });

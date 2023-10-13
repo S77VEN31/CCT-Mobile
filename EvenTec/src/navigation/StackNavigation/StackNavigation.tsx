@@ -6,6 +6,7 @@ import { StackNavigationConstants } from "./StackNavigationConstants";
 import { useAuth } from "../../context/AuthContext";
 // Screens
 import Login from "../../screens/Login/Login";
+import Register from "../../screens/Register/Register";
 import TabNavigation from "../TabNavigation/TabNavigation";
 
 const StackNavigator: React.FC = () => {
@@ -22,11 +23,18 @@ const StackNavigator: React.FC = () => {
           initialParams={{ isOrganization: authState.data?.isOrganization }}
         />
       ) : (
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{ headerShown: false }}
-        />
+        <>
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Register"
+            component={Register}
+            options={{ headerShown: false }}
+          />
+        </>
       )}
       {stackScreenProps.map(({ ...props }, key) => {
         return <Stack.Screen {...props} key={key} />;

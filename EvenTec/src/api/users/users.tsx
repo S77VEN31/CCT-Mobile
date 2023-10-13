@@ -7,6 +7,8 @@ const {
   updateProfileInformation,
   getProfileInformation,
   getOrganizationMembers,
+  addOrganizationMember,
+  deleteOrganizationMember,
 } = userRoutes;
 
 export const updateProfileInfo = async (props: any) => {
@@ -31,6 +33,24 @@ export const getProfileInfo = async () => {
 export const getMembers = async () => {
   try {
     const response = await axios.get(getOrganizationMembers);
+    return response;
+  } catch (error: any) {
+    return error.response;
+  }
+};
+
+export const addMember = async (props: any) => {
+  try {
+    const response = await axios.put(addOrganizationMember, props);
+    return response;
+  } catch (error: any) {
+    return error.response;
+  }
+};
+
+export const deleteMember = async (props: any) => {
+  try {
+    const response = await axios.put(deleteOrganizationMember, props);
     return response;
   } catch (error: any) {
     return error.response;

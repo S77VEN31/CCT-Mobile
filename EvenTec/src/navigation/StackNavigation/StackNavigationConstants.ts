@@ -14,11 +14,6 @@ type StackScreenProps = {
 export const StackNavigationConstants = {
   stackScreenProps: [
     {
-      name: 'Register',
-      component: Register,
-      options: { headerShown: false },
-    },
-    {
       name: 'SetUserInfo',
       component: SetUserInfo,
       options: { headerShown: false },

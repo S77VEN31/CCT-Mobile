@@ -1,25 +1,37 @@
 // React
-import { View, Text, Image } from "react-native";
+import { Image, Text, View } from "react-native";
 // Styles
 import { styles } from "./MemberCard.style";
-// Components
-import IconTextButton from "../../Buttons/IconTextButton/IconTextButton";
 // Buffer
 const Buffer = require("buffer").Buffer;
+// Components
+import IconTextButton from "../../Buttons/IconTextButton/IconTextButton";
 // Interfaces
 interface EventCardProps {
   name?: string;
   phone?: string;
   profilePicture?: string;
+  carne?: string;
+  description?: string;
+  email?: string;
+  handleDelete?: () => void;
 }
 
-const MemberCard = ({ phone, name, profilePicture }: EventCardProps) => {
+const MemberCard = ({
+  phone,
+  name,
+  profilePicture,
+  carne,
+  description,
+  email,
+  handleDelete,
+}: EventCardProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.headerTexts}>
-          <Text style={styles.organizer}>{phone}</Text>
-          <Text style={styles.eventName}>{name}</Text>
+          <Text style={styles.name}>{name}</Text>
+          <Text style={styles.carne}>Carné: {carne} </Text>
         </View>
         <View style={styles.imageContainer}>
           <Image
@@ -29,21 +41,28 @@ const MemberCard = ({ phone, name, profilePicture }: EventCardProps) => {
                 profilePicture
               ).toString("base64")}`,
             }}
-          ></Image>
+          />
         </View>
       </View>
-      <View style={styles.dateContainer}>
-        <Text style={styles.date}>19-20-2023</Text>
+      <View style={styles.descriptionContainer}>
+        <Text style={styles.description}>{description}</Text>
       </View>
       <View style={styles.footer}>
-        <IconTextButton text="Registrarse" />
-        <View style={styles.ubicationContainer}>
-          <IconTextButton
-            icon="location-pin"
-            className={styles.locationButton}
-          />
-          <Text style={styles.locationText}>Pretil</Text>
+        <View>
+          <View>
+            <Text>Teléfono: </Text>
+            <Text>{phone}</Text>
+          </View>
+          <View>
+            <Text>Correo: </Text>
+            <Text>{email}</Text>
+          </View>
         </View>
+        <IconTextButton
+          icon={"delete"}
+          // @ts-ignore
+          onPress={() => handleDelete(carne)}
+        ></IconTextButton>
       </View>
     </View>
   );

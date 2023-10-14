@@ -7,6 +7,7 @@ const Buffer = require("buffer").Buffer;
 // Components
 import IconTextButton from "../../Buttons/IconTextButton/IconTextButton";
 // Interfaces
+
 interface EventCardProps {
   name?: string;
   phone?: string;

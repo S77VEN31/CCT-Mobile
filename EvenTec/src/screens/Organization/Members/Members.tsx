@@ -1,15 +1,15 @@
 // React
-import { View, Text, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
+import { ScrollView, Text, View } from "react-native";
 // Styles
 import { styles } from "./Members.style";
 // Modal Context
 import { useModal } from "../../../context/ModalContext";
 // API
-import { getMembers, addMember, deleteMember } from "../../../api/users/users";
+import { addMember, deleteMember, getMembers } from "../../../api/users/users";
 // Components
-import MemberCard from "../../../components/Cards/MemberCard/MemberCard";
 import IconTextButton from "../../../components/Buttons/IconTextButton/IconTextButton";
+import MemberCard from "../../../components/Cards/MemberCard/MemberCard";
 import TextInput from "../../../components/Inputs/TextInput/TextInput";
 
 const Members = () => {

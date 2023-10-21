@@ -1,7 +1,7 @@
 // React Native
-import { View } from "react-native";
-import { Fragment } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Fragment } from "react";
+import { View } from "react-native";
 // Components
 import MainNavBar from "../../components/NavBars/MainNavBar/MainNavBar";
 // Constants
@@ -12,9 +12,16 @@ import { styles } from "./TabNavigation.style";
 const TabNavigation: React.FC = ({ route }) => {
   const Tab = createBottomTabNavigator();
   const { isOrganization } = route.params;
-  const { tabScreenProps, tabMainNavBarUser, tabMainNavBarOrganization } =
-    TabNavigationConstants;
+  const {
+    tabScreenPropsUser,
+    tabMainNavBarUser,
+    tabMainNavBarOrganization,
+    tabScreenPropsOrganization,
+  } = TabNavigationConstants;
   const initialRoute = isOrganization ? "Members" : "GetEvents";
+  const tabScreenProps = isOrganization
+    ? tabScreenPropsOrganization
+    : tabScreenPropsUser;
   return (
     <Fragment>
       <Tab.Navigator

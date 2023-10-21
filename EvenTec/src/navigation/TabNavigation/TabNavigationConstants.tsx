@@ -1,13 +1,13 @@
 // Tab Screens
 // Organization
-import Members from "../../screens/Organization/Members/Members";
 import HandleEvents from "../../screens/Organization/HandleEvents/HandleEvents";
+import Members from "../../screens/Organization/Members/Members";
 import OrganizationNotifications from "../../screens/Organization/OrganizationNotifications/OrganizationNotifications";
 import Stats from "../../screens/Organization/Stats/Stats";
 // User
 import GetEvents from "../../screens/User/GetEvents/GetEvents";
-import SendProposal from "../../screens/User/SendProposal/SendProposal";
 import MyEvents from "../../screens/User/MyEvents/MyEvents";
+import SendProposal from "../../screens/User/SendProposal/SendProposal";
 // Types
 type TabScreenProps = {
   name: string;
@@ -15,7 +15,21 @@ type TabScreenProps = {
 };
 
 export const TabNavigationConstants = {
-  tabScreenProps: [
+  tabScreenPropsUser: [
+    {
+      name: "GetEvents",
+      component: GetEvents,
+    },
+    {
+      name: "SendProposal",
+      component: SendProposal,
+    },
+    {
+      name: "MyEvents",
+      component: MyEvents,
+    },
+  ] as TabScreenProps[],
+  tabScreenPropsOrganization: [
     {
       name: "Members",
       component: Members,
@@ -31,18 +45,6 @@ export const TabNavigationConstants = {
     {
       name: "Stats",
       component: Stats,
-    },
-    {
-      name: "GetEvents",
-      component: GetEvents,
-    },
-    {
-      name: "SendProposal",
-      component: SendProposal,
-    },
-    {
-      name: "MyEvents",
-      component: MyEvents,
     },
   ] as TabScreenProps[],
   tabMainNavBarUser: [

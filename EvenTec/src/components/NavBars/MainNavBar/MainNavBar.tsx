@@ -1,8 +1,12 @@
 // React
 import { useState } from "react";
 // React Native
-import { Text, View, Pressable } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import {
+  useNavigation,
+  useNavigationState,
+  useRoute,
+} from "@react-navigation/native";
+import { Pressable, Text, View } from "react-native";
 // Styles
 import { styles } from "./MainNavBar.style";
 // Icons
@@ -11,6 +15,9 @@ import { MaterialIcons } from "@expo/vector-icons";
 const MainNavBar: React.FC = ({ data, initialRoute }: any) => {
   const navigation = useNavigation();
   const [screen, setScreen] = useState(initialRoute);
+  const route = useRoute();
+  const state = useNavigationState((state) => state);
+  const history = state.routes[0].state?.history;
 
   return (
     <View style={styles.mainContainer}>

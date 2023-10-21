@@ -1,19 +1,19 @@
 // React
+import { StackActions, useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import {
-  View,
-  Text,
-  ScrollView,
-  KeyboardAvoidingView,
   Image,
+  KeyboardAvoidingView,
   Pressable,
+  ScrollView,
+  Text,
+  View,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 // Styles
 import { styles } from "./SetUserInfo.style";
 // Components
-import TextInput from "../../../components/Inputs/TextInput/TextInput";
 import IconTextButton from "../../../components/Buttons/IconTextButton/IconTextButton";
+import TextInput from "../../../components/Inputs/TextInput/TextInput";
 // API
 import { updateProfileInfo } from "../../../api/users/users";
 // Buffer
@@ -146,8 +146,7 @@ const SetUserInfo = () => {
           onPress={() => {
             handleUpdateProfileInfo();
             //@ts-ignore
-            navigation.pop();
-            navigation.navigate("TabNavigation" as never);
+            navigation.dispatch(StackActions.popToTop());
           }}
         />
       </ScrollView>

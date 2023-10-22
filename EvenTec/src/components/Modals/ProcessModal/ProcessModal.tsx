@@ -1,20 +1,20 @@
 // React
 import {
-  View,
-  Text,
+  GestureResponderEvent,
   Modal,
   Pressable,
-  GestureResponderEvent,
+  Text,
+  View,
 } from "react-native";
 // Styles
 import { styles } from "./ProcessModal.style";
 // Icons
 import { MaterialIcons } from "@expo/vector-icons";
 // Types
-type ModalAnimation = "slide" | "fade" | "none";
+import { ModalAnimationTypes } from "../../../constants/Types";
 // Interfaces
 interface ProcessModalProps {
-  animationType?: ModalAnimation;
+  animationType?: ModalAnimationTypes;
   visible: boolean;
   transparent?: boolean;
   content: any;

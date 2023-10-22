@@ -9,11 +9,16 @@ export const styles = StyleSheet.create({
   keyboardAvoidingView: {
     flex: 1,
   },
+  header: {
+    paddingTop: 20,
+    paddingHorizontal: 20,
+    gap: 16,
+  },
   content: {
     padding: 20,
     display: "flex",
     flex: 1,
-    minHeight: 900,
+    minHeight: 1600,
     justifyContent: "space-evenly",
   },
   title: {
@@ -38,10 +43,15 @@ export const styles = StyleSheet.create({
     minWidth: 125,
     elevation: 8,
   },
-  dateTime: {
+  dateTimeTitle: {
     ...Fonts.h4,
-    color: Colors.secondary,
     ...Fonts.textSemiBold,
+    color: Colors.secondary,
+  },
+  dateTime: {
+    ...Fonts.h5,
+    ...Fonts.textMedium,
+    color: Colors.black,
   },
   dateTimeContainer: {
     display: "flex",
@@ -49,6 +59,15 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     gap: 16,
     padding: 20,
+    elevation: 8,
+    borderRadius: 16,
+  },
+  categoryContainer: {
+    display: "flex",
+    justifyContent: "space-between",
+    gap: 16,
+    padding: 20,
+    backgroundColor: Colors.white,
     elevation: 8,
     borderRadius: 16,
   },

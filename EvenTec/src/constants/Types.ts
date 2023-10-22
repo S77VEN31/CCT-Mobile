@@ -8,3 +8,5 @@ export type KeyboardType =
   | "url";
 
 export type DateTypes = "date" | "time";
+
+export type ModalAnimationTypes = "slide" | "fade" | "none";

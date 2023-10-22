@@ -12,7 +12,7 @@ import { DateTypes } from "../../../constants/Types";
 interface DateTimeInputProps {
   mode: DateTypes;
   dateTime: Date;
-  setDatetime: any;
+  setDatetime: (date: Date) => void;
 }
 
 const DateTimeInput = ({ mode, dateTime, setDatetime }: DateTimeInputProps) => {

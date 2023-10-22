@@ -9,10 +9,15 @@ export const styles = StyleSheet.create({
   keyboardAvoidingView: {
     flex: 1,
   },
+  header: {
+    paddingTop: 20,
+    paddingHorizontal: 20,
+    gap: 16,
+  },
   content: {
-    padding: 20,
+    paddingHorizontal: 20,
     display: "flex",
-    minHeight: 1100,
+    minHeight: 900,
     gap: 32,
     justifyContent: "space-evenly",
   },
@@ -29,6 +34,11 @@ export const styles = StyleSheet.create({
   },
   button: {
     elevation: 8,
+  },
+  confirmButton: {
+    elevation: 8,
+    borderBottomEndRadius: 0,
+    borderBottomStartRadius: 0,
   },
   setImageContainer: {
     display: "flex",

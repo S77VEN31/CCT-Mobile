@@ -1,6 +1,6 @@
 // React
 import { StackActions, useNavigation } from "@react-navigation/native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Image,
   KeyboardAvoidingView,
@@ -12,9 +12,11 @@ import {
 // Styles
 import { styles } from "./SetUserInfo.style";
 // Components
+import DropDownPicker from "react-native-dropdown-picker";
 import IconTextButton from "../../../components/Buttons/IconTextButton/IconTextButton";
 import TextInput from "../../../components/Inputs/TextInput/TextInput";
 // API
+import { getCarrersList } from "../../../api/data/data";
 import { updateProfileInfo } from "../../../api/users/users";
 // Buffer
 const Buffer = require("buffer").Buffer;
@@ -33,19 +35,42 @@ type KeyboardType =
   | "url";
 
 const SetUserInfo = () => {
+  // Modal Context
+  const { handleModal } = useModal();
+  // Navigation
+  const navigation = useNavigation();
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState("");
+  const [items, setItems] = useState([
+    { label: "Cargando...", value: "Cargando..." },
+  ]);
   // Inputs states
   const [data, setData] = useState<any>({
     name: "",
     carne: "",
     phone: "",
+    carrer: "",
     description: "",
     profilePicture: "",
   });
-  // Modal Context
-  const { handleModal } = useModal();
-  // Navigation
-  const navigation = useNavigation();
-
+  // Get carrers list
+  const getCarrers = async () => {
+    const response = await getCarrersList();
+    const carrers = response.data.map((carrer: any) => {
+      return {
+        label: carrer.name,
+        value: carrer.code,
+      };
+    });
+    setItems(carrers);
+  };
+  useEffect(() => {
+    getCarrers();
+  }, []);
+  useEffect(() => {
+    setData({ ...data, carrer: value });
+  }, [value]);
+  // Image picker
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -58,7 +83,6 @@ const SetUserInfo = () => {
       const imageUri = result.assets[0].uri;
       const response = await fetch(imageUri);
       const blob = await response.blob();
-
       const reader = new FileReader();
       reader.readAsDataURL(blob);
       reader.onloadend = async () => {
@@ -70,7 +94,9 @@ const SetUserInfo = () => {
       };
     }
   };
+  // Update profile info
   const handleUpdateProfileInfo = async () => {
+    console.log(data);
     const response = await updateProfileInfo(data);
     handleModal({ ...response.data, code: response.status }, "fade");
   };
@@ -110,8 +136,19 @@ const SetUserInfo = () => {
 
   return (
     <KeyboardAvoidingView style={styles.keyboardAvoidingView} behavior="height">
-      <ScrollView contentContainerStyle={styles.content}>
+      <View style={styles.header}>
         <Text style={styles.title}>Edita tu información</Text>
+        <DropDownPicker
+          placeholder="Selecciona tu carrera"
+          open={open}
+          value={value}
+          items={items}
+          setOpen={setOpen}
+          setValue={setValue}
+          setItems={setItems}
+        />
+      </View>
+      <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.setImageContainer}>
           <View style={styles.imageContainer}>
             <Pressable style={styles.imageButton} onPress={pickImage}>
@@ -140,16 +177,16 @@ const SetUserInfo = () => {
             return <TextInput {...inputProps} key={key} />;
           })}
         </View>
-        <IconTextButton
-          className={styles.button}
-          text="Confirmar"
-          onPress={() => {
-            handleUpdateProfileInfo();
-            //@ts-ignore
-            navigation.dispatch(StackActions.popToTop());
-          }}
-        />
       </ScrollView>
+      <IconTextButton
+        className={styles.confirmButton}
+        text="Confirmar"
+        onPress={() => {
+          handleUpdateProfileInfo();
+          //@ts-ignore
+          navigation.dispatch(StackActions.popToTop());
+        }}
+      />
     </KeyboardAvoidingView>
   );
 };

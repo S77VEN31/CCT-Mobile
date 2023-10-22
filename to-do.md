@@ -4,7 +4,7 @@ Gestion de asociaciones:
   - [x] descripción
   - [x] correo
   - [x] contacto
-  - [x] código de carrera
+  - [x] carrera
   - [x] miembros
   - [x] create
   - [x] read
@@ -42,7 +42,7 @@ Gestion de estudiantes:
   - [x] descripción
   - [x] contacto
   - [x] carnet
-  - [] carrera
+  - [x] carrera
   - [x] create
   - [x] read
   - [x] update

@@ -1,6 +1,6 @@
 // React
 import { StackActions, useNavigation } from "@react-navigation/native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Image,
   KeyboardAvoidingView,
@@ -12,9 +12,11 @@ import {
 // Styles
 import { styles } from "./SetOrganizationInfo.style";
 // Components
+import DropDownPicker from "react-native-dropdown-picker";
 import IconTextButton from "../../../components/Buttons/IconTextButton/IconTextButton";
 import TextInput from "../../../components/Inputs/TextInput/TextInput";
 // API
+import { getCarrersList } from "../../../api/data/data";
 import { updateProfileInfo } from "../../../api/users/users";
 // Buffer
 const Buffer = require("buffer").Buffer;
@@ -33,19 +35,41 @@ type KeyboardType =
   | "url";
 
 const SetOrganizationInfo = () => {
-  // Inputs states
-  const [data, setData] = useState<any>({
-    name: "",
-    carrerCode: "",
-    phone: "",
-    description: "",
-    profilePicture: "",
-  });
   // Modal Context
   const { handleModal } = useModal();
   // Navigation
   const navigation = useNavigation();
-
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState("");
+  const [items, setItems] = useState([
+    { label: "Cargando...", value: "Cargando..." },
+  ]);
+  // Inputs states
+  const [data, setData] = useState<any>({
+    name: "",
+    carrer: "",
+    phone: "",
+    description: "",
+    profilePicture: "",
+  });
+  // Get carrers list
+  const getCarrers = async () => {
+    const response = await getCarrersList();
+    const carrers = response.data.map((carrer: any) => {
+      return {
+        label: carrer.name,
+        value: carrer.code,
+      };
+    });
+    setItems(carrers);
+  };
+  useEffect(() => {
+    getCarrers();
+  }, []);
+  useEffect(() => {
+    setData({ ...data, carrer: value });
+  }, [value]);
+  // Image picker
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -70,6 +94,7 @@ const SetOrganizationInfo = () => {
       };
     }
   };
+  // Update profile info
   const handleUpdateProfileInfo = async () => {
     const response = await updateProfileInfo(data);
     handleModal({ ...response.data, code: response.status }, "fade");
@@ -81,13 +106,6 @@ const SetOrganizationInfo = () => {
       value: data.name,
       onChangeText: (text: string) => setData({ ...data, name: text }),
       placeholder: "Nombre de la organización",
-      keyboardType: "default" as KeyboardType,
-    },
-    {
-      title: "Codigo de carrera",
-      value: data.carrerCode,
-      onChangeText: (text: string) => setData({ ...data, carrerCode: text }),
-      placeholder: "XX####",
       keyboardType: "default" as KeyboardType,
     },
     {
@@ -110,10 +128,21 @@ const SetOrganizationInfo = () => {
 
   return (
     <KeyboardAvoidingView style={styles.keyboardAvoidingView} behavior="height">
-      <ScrollView contentContainerStyle={styles.content}>
+      <View style={styles.header}>
         <Text style={styles.title}>
           Edita la información de la organización
         </Text>
+        <DropDownPicker
+          placeholder="Selecciona tu carrera"
+          open={open}
+          value={value}
+          items={items}
+          setOpen={setOpen}
+          setValue={setValue}
+          setItems={setItems}
+        />
+      </View>
+      <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.setImageContainer}>
           <View style={styles.imageContainer}>
             <Pressable style={styles.imageButton} onPress={pickImage}>
@@ -142,16 +171,16 @@ const SetOrganizationInfo = () => {
             return <TextInput {...inputProps} key={key} />;
           })}
         </View>
-        <IconTextButton
-          className={styles.button}
-          text="Confirmar"
-          onPress={() => {
-            handleUpdateProfileInfo();
-            // @ts-ignore
-            navigation.dispatch(StackActions.popToTop());
-          }}
-        />
       </ScrollView>
+      <IconTextButton
+        className={styles.confirmButton}
+        text="Confirmar"
+        onPress={() => {
+          handleUpdateProfileInfo();
+          //@ts-ignore
+          navigation.dispatch(StackActions.popToTop());
+        }}
+      />
     </KeyboardAvoidingView>
   );
 };

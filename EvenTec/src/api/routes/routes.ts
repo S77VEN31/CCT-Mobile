@@ -11,3 +11,8 @@ export const userRoutes = {
     addOrganizationMember: 'https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/organization/addMember',
     deleteOrganizationMember: 'https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/organization/deleteMember',
 }
+
+export const dataRoutes = {
+  getCarrers:
+    "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/data/carrers",
+};

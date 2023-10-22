@@ -40,23 +40,4 @@ export const styles = StyleSheet.create({
     borderBottomEndRadius: 0,
     borderBottomStartRadius: 0,
   },
-  setImageContainer: {
-    display: "flex",
-    gap: 32,
-  },
-  imageContainer: {
-    display: "flex",
-    alignItems: "center",
-  },
-  imageButton: {
-    width: 200,
-    height: 200,
-    borderRadius: 100,
-  },
-  image: {
-    backgroundColor: Colors.white,
-    width: 200,
-    height: 200,
-    borderRadius: 100,
-  },
 });

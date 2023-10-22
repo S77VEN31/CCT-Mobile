@@ -1,9 +1,9 @@
 // Stack Screens
-import Register from '../../screens/Register/Register';
-import SetUserInfo from '../../screens/User/SetUserInfo/SetUserInfo';
-import SetOrganizationInfo from '../../screens/Organization/SetOrganizationInfo/SetOrganizationInfo';
+import CreateEvent from "../../screens/Organization/CreateEvent/CreateEvent";
+import SetOrganizationInfo from "../../screens/Organization/SetOrganizationInfo/SetOrganizationInfo";
+import SetUserInfo from "../../screens/User/SetUserInfo/SetUserInfo";
 // Navigation
-import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
 
 type StackScreenProps = {
   name: string;
@@ -14,14 +14,19 @@ type StackScreenProps = {
 export const StackNavigationConstants = {
   stackScreenProps: [
     {
-      name: 'SetUserInfo',
+      name: "SetUserInfo",
       component: SetUserInfo,
       options: { headerShown: false },
     },
     {
-      name: 'SetOrganizationInfo',
+      name: "SetOrganizationInfo",
       component: SetOrganizationInfo,
       options: { headerShown: false },
-    }
+    },
+    {
+      name: "CreateEvent",
+      component: CreateEvent,
+      options: { headerShown: false },
+    },
   ] as StackScreenProps[],
 };

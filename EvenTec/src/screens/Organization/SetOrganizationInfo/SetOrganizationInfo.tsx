@@ -1,38 +1,24 @@
 // React
 import { StackActions, useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
-import {
-  Image,
-  KeyboardAvoidingView,
-  Pressable,
-  ScrollView,
-  Text,
-  View,
-} from "react-native";
+import { KeyboardAvoidingView, ScrollView, Text, View } from "react-native";
 // Styles
 import { styles } from "./SetOrganizationInfo.style";
 // Components
+import * as ImagePicker from "expo-image-picker";
 import DropDownPicker from "react-native-dropdown-picker";
 import IconTextButton from "../../../components/Buttons/IconTextButton/IconTextButton";
+import ImageInput from "../../../components/Inputs/ImageInput/ImageInput";
 import TextInput from "../../../components/Inputs/TextInput/TextInput";
 // API
 import { getCarrersList } from "../../../api/data/data";
 import { updateProfileInfo } from "../../../api/users/users";
 // Buffer
 const Buffer = require("buffer").Buffer;
-// Libraries
-import * as ImagePicker from "expo-image-picker";
 // Modal Context
 import { useModal } from "../../../context/ModalContext";
 // Types
-type KeyboardType =
-  | "default"
-  | "number-pad"
-  | "decimal-pad"
-  | "numeric"
-  | "email-address"
-  | "phone-pad"
-  | "url";
+import { KeyboardType } from "../../../constants/Types";
 
 const SetOrganizationInfo = () => {
   // Modal Context
@@ -66,9 +52,6 @@ const SetOrganizationInfo = () => {
   useEffect(() => {
     getCarrers();
   }, []);
-  useEffect(() => {
-    setData({ ...data, carrer: value });
-  }, [value]);
   // Image picker
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -82,7 +65,6 @@ const SetOrganizationInfo = () => {
       const imageUri = result.assets[0].uri;
       const response = await fetch(imageUri);
       const blob = await response.blob();
-
       const reader = new FileReader();
       reader.readAsDataURL(blob);
       reader.onloadend = async () => {
@@ -133,6 +115,9 @@ const SetOrganizationInfo = () => {
           Edita la información de la organización
         </Text>
         <DropDownPicker
+          onChangeValue={(value) => {
+            setData({ ...data, carrer: value });
+          }}
           placeholder="Selecciona tu carrera"
           open={open}
           value={value}
@@ -143,29 +128,7 @@ const SetOrganizationInfo = () => {
         />
       </View>
       <ScrollView contentContainerStyle={styles.content}>
-        <View style={styles.setImageContainer}>
-          <View style={styles.imageContainer}>
-            <Pressable style={styles.imageButton} onPress={pickImage}>
-              <Image
-                source={
-                  data.profilePicture !== ""
-                    ? {
-                        uri: `data:image/png;base64,${Buffer.from(
-                          data.profilePicture
-                        ).toString("base64")}`,
-                      }
-                    : require("../../../../assets/images/edit-image.png")
-                }
-                style={styles.image}
-              />
-            </Pressable>
-          </View>
-          <IconTextButton
-            className={styles.button}
-            text="Pick a profile picture"
-            onPress={pickImage}
-          />
-        </View>
+        <ImageInput onPress={pickImage} data={data} />
         <View style={styles.inputs}>
           {inputs.map((inputProps, key) => {
             return <TextInput {...inputProps} key={key} />;

@@ -13,13 +13,12 @@ Gestion de asociaciones:
 - Asignación de colaboradores:
   - [] asignación de colaboradores a eventos segun la cantidad establecida deben estar registrados como estudiantes
 - Creación de eventos:
-  - [] título
-  - [] descripción
-  - [] fecha
-  - [] lugar
-  - [] duración
+  - [x] título
+  - [x] descripción
+  - [x] fecha
+  - [x] lugar
+  - [x] duración
   - [] categoría
-  - [] requisitos especiales
   - [] capacidad
   - [] cantidad de colaboradores requerida
   - [] encuesta de retroalimentación

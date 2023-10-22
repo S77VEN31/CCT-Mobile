@@ -1,11 +1,9 @@
 // React Native
 import { StyleSheet } from "react-native";
 // Colors
-import { Colors } from "../../constants/Colors";
+import { Colors } from "../../../constants/Colors";
 // Fonts
-import { Fonts } from "../../constants/Fonts";
-
-
+import { Fonts } from "../../../constants/Fonts";
 
 export const styles = StyleSheet.create({
   keyboardAvoidingView: {
@@ -15,7 +13,7 @@ export const styles = StyleSheet.create({
     padding: 20,
     display: "flex",
     flex: 1,
-    minHeight: 600,
+    minHeight: 900,
     justifyContent: "space-evenly",
   },
   title: {
@@ -39,5 +37,19 @@ export const styles = StyleSheet.create({
   button: {
     minWidth: 125,
     elevation: 8,
+  },
+  dateTime: {
+    ...Fonts.h4,
+    color: Colors.secondary,
+    ...Fonts.textSemiBold,
+  },
+  dateTimeContainer: {
+    display: "flex",
+    backgroundColor: Colors.white,
+    justifyContent: "space-between",
+    gap: 16,
+    padding: 20,
+    elevation: 8,
+    borderRadius: 16,
   },
 });

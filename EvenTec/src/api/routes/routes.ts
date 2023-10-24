@@ -15,4 +15,11 @@ export const userRoutes = {
 export const dataRoutes = {
   getCarrers:
     "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/data/carrers",
+  getEventCategories:
+    "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/data/event/categories",
+};
+
+export const eventRoutes = {
+  postNewEvent:
+    "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/create/event",
 };

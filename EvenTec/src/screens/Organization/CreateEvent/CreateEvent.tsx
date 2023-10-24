@@ -11,9 +11,16 @@ import NumericInput from "../../../components/Inputs/NumericInput/NumericInput";
 import TextInput from "../../../components/Inputs/TextInput/TextInput";
 import DropdownModal from "../../../components/Modals/DropdownModal/DropdownModal";
 // API
-import { getCarrersList } from "../../../api/data/data";
+import { getCategoriesList } from "../../../api/data/data";
+import { createEvent } from "../../../api/events/events";
+// Modal Context
+import { useModal } from "../../../context/ModalContext";
+
 const CreateEvent = () => {
+  // Navigation
   const navigation = useNavigation();
+  // Modal Context
+  const { handleModal } = useModal();
   // Set modal visibility
   const [visible, setVisible] = useState<boolean>(false);
   const [data, setData] = useState<any>({
@@ -22,27 +29,24 @@ const CreateEvent = () => {
     startTime: new Date(),
     endTime: new Date(),
     location: "",
-    capacity: 0,
-    requiredCollaborators: 0,
-    category: "",
+    capacity: 1,
+    requiredCollaborators: 1,
+    categoryName: "",
   });
 
   // Get categories
   const [categories, setCategories] = useState<any>([]);
   const getCategories = async () => {
-    const response = await getCarrersList();
+    const response = await getCategoriesList();
     setCategories(response.data);
   };
   useEffect(() => {
     getCategories();
   }, []);
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
-  const handleSubmit = () => {
-    console.log("Evento creado");
+  const handleCreateEvent = async () => {
+    const response = await createEvent(data);
+    handleModal({ ...response.data, code: response.status }, "fade");
   };
 
   const inputs = [
@@ -71,7 +75,7 @@ const CreateEvent = () => {
   const buttons = [
     {
       text: "Crear Evento",
-      onPress: () => handleSubmit(),
+      onPress: () => handleCreateEvent(),
     },
     {
       text: "Volver atrás",
@@ -95,16 +99,16 @@ const CreateEvent = () => {
             <DateTimeInput
               mode="date"
               dateTime={data.startTime}
-              setDatetime={(date: Date) =>
-                setData({ ...data, startTime: date })
-              }
+              setDatetime={(date: Date) => {
+                setData({ ...data, startTime: date });
+              }}
             />
             <DateTimeInput
               mode="time"
               dateTime={data.startTime}
-              setDatetime={(date: Date) =>
-                setData({ ...data, startTime: date })
-              }
+              setDatetime={(date: Date) => {
+                setData({ ...data, startTime: date });
+              }}
             />
           </View>
           <View style={styles.dateTimeContainer}>
@@ -144,7 +148,8 @@ const CreateEvent = () => {
           <View style={styles.categoryContainer}>
             <Text style={styles.dateTimeTitle}>Categoria del evento</Text>
             <IconTextButton
-              text={data.category || "Selecciona la categoria"}
+              className={styles.button}
+              text={data.categoryName || "Selecciona la categoria"}
               onPress={() => setVisible(true)}
             />
           </View>
@@ -162,11 +167,12 @@ const CreateEvent = () => {
         </View>
       </ScrollView>
       <DropdownModal
+        dropdownText="Selecciona la categoria"
         data={categories}
         visible={visible}
         setVisible={setVisible}
-        setSelected={(category: string | null) => {
-          setData({ ...data, category: category });
+        setSelected={(categoryName: string | null) => {
+          setData({ ...data, categoryName: categoryName });
         }}
         transparent={true}
       />

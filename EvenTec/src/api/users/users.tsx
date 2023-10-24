@@ -1,7 +1,7 @@
-// Routes
-import { userRoutes } from "../routes/routes";
 // Axios
 import axios from "axios";
+// Routes
+import { userRoutes } from "../routes/routes";
 
 const {
   updateProfileInformation,
@@ -56,5 +56,3 @@ export const deleteMember = async (props: any) => {
     return error.response;
   }
 };
-
-

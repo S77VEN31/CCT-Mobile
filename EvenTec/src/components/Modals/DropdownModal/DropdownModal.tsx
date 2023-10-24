@@ -17,6 +17,7 @@ interface DropdownModalProps {
   setVisible: (visible: boolean) => void;
   setSelected: (selected: string | null) => void;
   data: any;
+  dropdownText: string;
 }
 
 const DropdownModal = ({
@@ -26,6 +27,7 @@ const DropdownModal = ({
   setVisible,
   setSelected,
   data,
+  dropdownText,
 }: DropdownModalProps) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
@@ -33,10 +35,10 @@ const DropdownModal = ({
     { label: "Cargando...", value: "Cargando..." },
   ]);
   useEffect(() => {
-    const formatedData = data.map((carrer: any) => {
+    const formatedData = data.map((item: any) => {
       return {
-        label: carrer.name,
-        value: carrer.name,
+        label: item.name,
+        value: item.name,
       };
     });
     setItems(formatedData);
@@ -60,8 +62,9 @@ const DropdownModal = ({
           <DropDownPicker
             onChangeValue={(value) => {
               setSelected(value);
+              handleClose();
             }}
-            placeholder="Selecciona tu carrera"
+            placeholder={dropdownText}
             open={open}
             value={value}
             items={items}

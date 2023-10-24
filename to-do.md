@@ -18,9 +18,9 @@ Gestion de asociaciones:
   - [x] fecha
   - [x] lugar
   - [x] duración
-  - [] categoría
-  - [] capacidad
-  - [] cantidad de colaboradores requerida
+  - [x] categoría
+  - [x] capacidad
+  - [x] cantidad de colaboradores requerida
   - [] encuesta de retroalimentación
 - Programación de actividades/agenda:
   - [] horarios

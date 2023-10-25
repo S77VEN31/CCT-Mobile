@@ -1,25 +1,27 @@
+const baseRoute = "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api";
+
 export const authRoutes = {
-    loginRoute: "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/login",
-    logoutRoute: "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/logout",
-    registerRoute: "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/register"
-}
+  loginRoute: `${baseRoute}/login`,
+  logoutRoute: `${baseRoute}/logout`,
+  registerRoute: `${baseRoute}/register`,
+};
 
 export const userRoutes = {
-    updateProfileInformation: "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/users/updateProfileInfo",
-    getProfileInformation: "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/profile",
-    getOrganizationMembers: 'https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/organization/getMembers',
-    addOrganizationMember: 'https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/organization/addMember',
-    deleteOrganizationMember: 'https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/organization/deleteMember',
-}
+  updateProfileInformation: `${baseRoute}/users/updateProfileInfo`,
+  getProfileInformation: `${baseRoute}/profile`,
+  getOrganizationMembers: `${baseRoute}/organization/getMembers`,
+  addOrganizationMember: `${baseRoute}/organization/addMember`,
+  deleteOrganizationMember: `${baseRoute}/organization/deleteMember`,
+};
 
 export const dataRoutes = {
-  getCarrers:
-    "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/data/carrers",
-  getEventCategories:
-    "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/data/event/categories",
+  getCarrers: `${baseRoute}/data/carrers`,
+  getEventCategories: `${baseRoute}/data/eventCategories`,
 };
 
 export const eventRoutes = {
-  postNewEvent:
-    "https://campustecgatoapi-ccf0e8a36684.herokuapp.com/api/create/event",
+  getAllEvents: `${baseRoute}/getAllEvents`,
+  addEvent: `${baseRoute}/organization/createEvent`,
+  getOrganizationEvents: `${baseRoute}/organization/getMyEvents`,
+  getUserEvents: `${baseRoute}/user/getMyEvents`,
 };

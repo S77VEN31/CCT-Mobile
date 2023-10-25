@@ -47,6 +47,9 @@ const CreateEvent = () => {
   const handleCreateEvent = async () => {
     const response = await addEvent(data);
     handleModal({ ...response.data, code: response.status }, "fade");
+    if (response.status === 200) {
+      navigation.goBack();
+    }
   };
 
   const inputs = [

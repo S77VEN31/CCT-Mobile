@@ -8,7 +8,6 @@ import { Fonts } from "../../../constants/Fonts";
 export const styles = StyleSheet.create({
   container: {
     display: "flex",
-    minHeight: 200,
     margin: 20,
     padding: 20,
     borderRadius: 10,
@@ -22,30 +21,34 @@ export const styles = StyleSheet.create({
     elevation: 5,
   },
   header: {
-    display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between",
+    gap: 8,
   },
   headerTexts: {
     display: "flex",
     flexDirection: "column",
+    flex: 1,
   },
   name: {
     color: Colors.secondary,
     ...Fonts.textBold,
     ...Fonts.h2,
+    flexWrap: "wrap",
     textTransform: "uppercase",
   },
-  carne: {
+  subtitle: {
+    color: Colors.secondary,
+    textTransform: "uppercase",
+    ...Fonts.textSemiBold,
+    ...Fonts.h4,
+  },
+  content: {
     color: Colors.text,
     ...Fonts.textRegular,
-    ...Fonts.h3,
+    ...Fonts.h5,
   },
   imageContainer: {
     display: "flex",
-    justifyContent: "flex-end",
-    alignItems: "center",
-    flex: 1,
     flexDirection: "row",
   },
   image: {
@@ -57,15 +60,25 @@ export const styles = StyleSheet.create({
   },
   descriptionContainer: {
     display: "flex",
+    backgroundColor: Colors.secondaryLight,
+    padding: 10,
+    borderRadius: 10,
+    marginVertical: 10,
   },
   description: {
     ...Fonts.textRegular,
     ...Fonts.h6,
+    textAlign: "justify",
     color: Colors.text,
   },
   footer: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
+  },
+  buttonContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "flex-end",
   },
 });

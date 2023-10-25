@@ -20,12 +20,13 @@ const Members = () => {
   // Modal Context
   const { handleModal } = useModal();
   // Inputs states
-  const [members, setMembers] = useState<any>([]);
-  const [carne, setCarne] = useState<any>("");
+  const [members, setMembers] = useState([]);
+  const [carne, setCarne] = useState("");
 
   const getMembersFromOrganization = async () => {
-    const members = await getOrganizationMembers();
-    setMembers(members.data);
+    const response = await getOrganizationMembers();
+
+    setMembers(response.data);
   };
   useEffect(() => {
     getMembersFromOrganization();
@@ -34,12 +35,12 @@ const Members = () => {
   const addMemberToOrganization = async () => {
     const response = await addOrganizationMember({ carne });
     handleModal({ ...response.data, code: response.status }, "fade");
-    getOrganizationMembers();
+    getMembersFromOrganization();
   };
   const deleteMemberFromOrganization = async (carne: string) => {
     const response = await deleteOrganizationMember({ carne: carne });
     handleModal({ ...response.data, code: response.status }, "fade");
-    getOrganizationMembers();
+    getMembersFromOrganization();
   };
 
   return (

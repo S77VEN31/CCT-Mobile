@@ -1,5 +1,5 @@
 // React
-import { StackActions, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
 import { KeyboardAvoidingView, ScrollView, Text, View } from "react-native";
 // Styles
@@ -83,8 +83,12 @@ const SetOrganizationInfo = () => {
   const handleUpdateProfileInfo = async () => {
     const response = await updateProfile(data);
     handleModal({ ...response.data, code: response.status }, "fade");
+    if (response.status === 200) {
+      //@ts-ignore
+      navigation.dispatch(StackActions.popToTop());
+    }
   };
-  
+
   // Inputs props
   const inputs = [
     {
@@ -144,8 +148,6 @@ const SetOrganizationInfo = () => {
         text="Confirmar"
         onPress={() => {
           handleUpdateProfileInfo();
-          //@ts-ignore
-          navigation.dispatch(StackActions.popToTop());
         }}
       />
     </KeyboardAvoidingView>

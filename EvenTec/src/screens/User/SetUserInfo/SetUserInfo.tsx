@@ -84,6 +84,10 @@ const SetUserInfo = () => {
   const handleUpdateProfileInfo = async () => {
     const response = await updateProfile(data);
     handleModal({ ...response.data, code: response.status }, "fade");
+    if (response.status === 200) {
+      //@ts-ignore
+      navigation.dispatch(StackActions.popToTop());
+    }
   };
 
   // Inputs props
@@ -150,8 +154,6 @@ const SetUserInfo = () => {
         text="Confirmar"
         onPress={() => {
           handleUpdateProfileInfo();
-          //@ts-ignore
-          navigation.dispatch(StackActions.popToTop());
         }}
       />
     </KeyboardAvoidingView>

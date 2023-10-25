@@ -32,7 +32,9 @@ const MemberCard = ({
       <View style={styles.header}>
         <View style={styles.headerTexts}>
           <Text style={styles.name}>{name}</Text>
-          <Text style={styles.carne}>Carné: {carne} </Text>
+          <Text style={styles.content}>
+            <Text style={styles.subtitle}>Carné:</Text> {carne}
+          </Text>
         </View>
         <View style={styles.imageContainer}>
           <Image
@@ -51,19 +53,21 @@ const MemberCard = ({
       <View style={styles.footer}>
         <View>
           <View>
-            <Text>Teléfono: </Text>
-            <Text>{phone}</Text>
+            <Text style={styles.subtitle}>Teléfono: </Text>
+            <Text style={styles.content}>{phone}</Text>
           </View>
           <View>
-            <Text>Correo: </Text>
-            <Text>{email}</Text>
+            <Text style={styles.subtitle}>Correo: </Text>
+            <Text style={styles.content}>{email}</Text>
           </View>
         </View>
-        <IconTextButton
-          icon={"delete"}
-          // @ts-ignore
-          onPress={() => handleDelete(carne)}
-        ></IconTextButton>
+        <View style={styles.buttonContainer}>
+          <IconTextButton
+            icon={"delete"}
+            // @ts-ignore
+            onPress={() => handleDelete(carne)}
+          />
+        </View>
       </View>
     </View>
   );

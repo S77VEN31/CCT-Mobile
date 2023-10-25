@@ -18,7 +18,6 @@ const HandleEvents = () => {
 
   const getMembersFromOrganization = async () => {
     const response = await getOrganizationEvents();
-    console.log(response);
     setEvents(response.data);
   };
   useFocusEffect(

@@ -65,7 +65,6 @@ export const AuthProvider = ({ children }: any) => {
         });
       }
     };
-
     setupAxiosHeaders();
   }, []);
 

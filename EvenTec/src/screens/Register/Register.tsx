@@ -1,26 +1,26 @@
 // React
-import { useState } from "react";
-import { View, Text, ScrollView, KeyboardAvoidingView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
+import { KeyboardAvoidingView, ScrollView, Text, View } from "react-native";
 // Styles
 import { styles } from "./Register.style";
 // Auth Context
 import { useAuth } from "../../context/AuthContext";
 // Components
-import TextInput from "../../components/Inputs/TextInput/TextInput";
 import IconTextButton from "../../components/Buttons/IconTextButton/IconTextButton";
 import SwitchInput from "../../components/Inputs/SwitchInput/SwitchInput";
+import TextInput from "../../components/Inputs/TextInput/TextInput";
 
 const Register = () => {
+  // Navigation
+  const navigation = useNavigation();
+  // Auth Context
+  const { onRegister, onLogin } = useAuth();
   // Inputs states
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
   const [isOrganization, setIsOrganization] = useState<boolean>(false);
-  // Auth Context
-  const { onRegister, onLogin } = useAuth();
-  // Navigation
-  const navigation = useNavigation();
 
   const handleRegister = async () => {
     const register = await onRegister(
@@ -59,6 +59,7 @@ const Register = () => {
       placeholder: "Contraseña",
     },
   ];
+
   // Buttons props
   const buttons = [
     {

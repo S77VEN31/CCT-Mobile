@@ -1,26 +1,29 @@
 // React
-import { useState } from "react";
-import { View, Text, ScrollView, KeyboardAvoidingView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
+import { KeyboardAvoidingView, ScrollView, Text, View } from "react-native";
 // Styles
 import { styles } from "./Login.style";
 // Auth Context
 import { useAuth } from "../../context/AuthContext";
 // Components
-import TextInput from "../../components/Inputs/TextInput/TextInput";
 import IconTextButton from "../../components/Buttons/IconTextButton/IconTextButton";
+import TextInput from "../../components/Inputs/TextInput/TextInput";
 
 const Login = () => {
-  // Inputs states
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
   // Auth Context
   const { onLogin } = useAuth();
   // Navigation
   const navigation = useNavigation();
+  // Inputs states
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  // Handle login
   const handleLogin = () => {
     onLogin(email, password);
   };
+
   // Inputs props
   const inputs = [
     {

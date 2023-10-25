@@ -8,7 +8,9 @@ import { styles } from "./HandleEvents.style";
 import IconTextButton from "../../../components/Buttons/IconTextButton/IconTextButton";
 
 const HandleEvents = () => {
+  // Navigation
   const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <IconTextButton

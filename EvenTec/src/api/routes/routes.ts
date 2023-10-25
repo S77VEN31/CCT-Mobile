@@ -7,21 +7,22 @@ export const authRoutes = {
 };
 
 export const userRoutes = {
-  updateProfileInformation: `${baseRoute}/users/updateProfileInfo`,
-  getProfileInformation: `${baseRoute}/profile`,
-  getOrganizationMembers: `${baseRoute}/organization/getMembers`,
-  addOrganizationMember: `${baseRoute}/organization/addMember`,
-  deleteOrganizationMember: `${baseRoute}/organization/deleteMember`,
+  getProfileRoute: `${baseRoute}/profile`,
+  updateProfileRoute: `${baseRoute}/profile/update`,
+  getOrganizationMembersRoute: `${baseRoute}/organization/members`,
+  addOrganizationMemberRoute: `${baseRoute}/organization/member/join`,
+  deleteOrganizationMemberRoute: `${baseRoute}/organization/member/delete`,
 };
 
 export const dataRoutes = {
-  getCarrers: `${baseRoute}/data/carrers`,
-  getEventCategories: `${baseRoute}/data/eventCategories`,
+  getCarrersRoute: `${baseRoute}/data/carrers`,
+  getEventCategoriesRoute: `${baseRoute}/data/event/categories`,
 };
 
 export const eventRoutes = {
-  getAllEvents: `${baseRoute}/getAllEvents`,
-  addEvent: `${baseRoute}/organization/createEvent`,
-  getOrganizationEvents: `${baseRoute}/organization/getMyEvents`,
-  getUserEvents: `${baseRoute}/user/getMyEvents`,
+  getEventsRoute: `${baseRoute}/events`,
+  getOrganizationEventsRoute: `${baseRoute}/organization/events`,
+  addEventRoute: `${baseRoute}/organization/event/create`,
+  getUserEventsRoute: `${baseRoute}/user/events`,
+  addUserEventJoinRoute: `${baseRoute}/user/event/join`,
 };

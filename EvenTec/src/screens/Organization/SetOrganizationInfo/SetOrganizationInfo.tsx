@@ -4,32 +4,27 @@ import { useEffect, useState } from "react";
 import { KeyboardAvoidingView, ScrollView, Text, View } from "react-native";
 // Styles
 import { styles } from "./SetOrganizationInfo.style";
+// Modal Context
+import { useModal } from "../../../context/ModalContext";
+// API
+import { getCarrers } from "../../../api/data/data";
+import { updateProfile } from "../../../api/users/users";
+// Buffer
+const Buffer = require("buffer").Buffer;
+// Types
+import { KeyboardType } from "../../../constants/Types";
 // Components
 import * as ImagePicker from "expo-image-picker";
 import DropDownPicker from "react-native-dropdown-picker";
 import IconTextButton from "../../../components/Buttons/IconTextButton/IconTextButton";
 import ImageInput from "../../../components/Inputs/ImageInput/ImageInput";
 import TextInput from "../../../components/Inputs/TextInput/TextInput";
-// API
-import { getCarrersList } from "../../../api/data/data";
-import { updateProfileInfo } from "../../../api/users/users";
-// Buffer
-const Buffer = require("buffer").Buffer;
-// Modal Context
-import { useModal } from "../../../context/ModalContext";
-// Types
-import { KeyboardType } from "../../../constants/Types";
 
 const SetOrganizationInfo = () => {
   // Modal Context
   const { handleModal } = useModal();
   // Navigation
   const navigation = useNavigation();
-  const [open, setOpen] = useState(false);
-  const [value, setValue] = useState("");
-  const [items, setItems] = useState([
-    { label: "Cargando...", value: "Cargando..." },
-  ]);
   // Inputs states
   const [data, setData] = useState<any>({
     name: "",
@@ -38,9 +33,15 @@ const SetOrganizationInfo = () => {
     description: "",
     profilePicture: "",
   });
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState("");
+  const [items, setItems] = useState([
+    { label: "Cargando...", value: "Cargando..." },
+  ]);
+
   // Get carrers list
-  const getCarrers = async () => {
-    const response = await getCarrersList();
+  const getCarrersList = async () => {
+    const response = await getCarrers();
     const carrers = response.data.map((carrer: any) => {
       return {
         label: carrer.name,
@@ -50,8 +51,9 @@ const SetOrganizationInfo = () => {
     setItems(carrers);
   };
   useEffect(() => {
-    getCarrers();
+    getCarrersList();
   }, []);
+
   // Image picker
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -76,11 +78,13 @@ const SetOrganizationInfo = () => {
       };
     }
   };
+
   // Update profile info
   const handleUpdateProfileInfo = async () => {
-    const response = await updateProfileInfo(data);
+    const response = await updateProfile(data);
     handleModal({ ...response.data, code: response.status }, "fade");
   };
+  
   // Inputs props
   const inputs = [
     {

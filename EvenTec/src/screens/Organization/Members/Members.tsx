@@ -6,34 +6,42 @@ import { styles } from "./Members.style";
 // Modal Context
 import { useModal } from "../../../context/ModalContext";
 // API
-import { addMember, deleteMember, getMembers } from "../../../api/users/users";
+import {
+  addOrganizationMember,
+  deleteOrganizationMember,
+  getOrganizationMembers,
+} from "../../../api/users/users";
 // Components
 import IconTextButton from "../../../components/Buttons/IconTextButton/IconTextButton";
 import MemberCard from "../../../components/Cards/MemberCard/MemberCard";
 import TextInput from "../../../components/Inputs/TextInput/TextInput";
 
 const Members = () => {
+  // Modal Context
+  const { handleModal } = useModal();
+  // Inputs states
   const [members, setMembers] = useState<any>([]);
   const [carne, setCarne] = useState<any>("");
-  const { handleModal } = useModal();
-  useEffect(() => {
-    getOrganizationMembers();
-  }, []);
-  const getOrganizationMembers = async () => {
-    const members = await getMembers();
+
+  const getMembersFromOrganization = async () => {
+    const members = await getOrganizationMembers();
     setMembers(members.data);
   };
+  useEffect(() => {
+    getMembersFromOrganization();
+  }, []);
 
   const addMemberToOrganization = async () => {
-    const response = await addMember({ carne });
+    const response = await addOrganizationMember({ carne });
     handleModal({ ...response.data, code: response.status }, "fade");
     getOrganizationMembers();
   };
   const deleteMemberFromOrganization = async (carne: string) => {
-    const response = await deleteMember({ carne: carne });
+    const response = await deleteOrganizationMember({ carne: carne });
     handleModal({ ...response.data, code: response.status }, "fade");
     getOrganizationMembers();
   };
+
   return (
     <View style={styles.container}>
       <View style={styles.addMember}>

@@ -4,25 +4,26 @@ import React, { useEffect, useState } from "react";
 import { KeyboardAvoidingView, ScrollView, Text, View } from "react-native";
 // Styles
 import { styles } from "./CreateEvent.style";
+// Modal Context
+import { useModal } from "../../../context/ModalContext";
+// API
+import { getEventCategories } from "../../../api/data/data";
+import { addEvent } from "../../../api/events/events";
 // Components
 import IconTextButton from "../../../components/Buttons/IconTextButton/IconTextButton";
 import DateTimeInput from "../../../components/Inputs/DateTimeInput/DateTimeInput";
 import NumericInput from "../../../components/Inputs/NumericInput/NumericInput";
 import TextInput from "../../../components/Inputs/TextInput/TextInput";
 import DropdownModal from "../../../components/Modals/DropdownModal/DropdownModal";
-// API
-import { getCategoriesList } from "../../../api/data/data";
-import { createEvent } from "../../../api/events/events";
-// Modal Context
-import { useModal } from "../../../context/ModalContext";
 
 const CreateEvent = () => {
-  // Navigation
-  const navigation = useNavigation();
   // Modal Context
   const { handleModal } = useModal();
+  // Navigation
+  const navigation = useNavigation();
   // Set modal visibility
   const [visible, setVisible] = useState<boolean>(false);
+  // Inputs states
   const [data, setData] = useState<any>({
     title: "",
     description: "",
@@ -33,11 +34,10 @@ const CreateEvent = () => {
     requiredCollaborators: 1,
     categoryName: "",
   });
-
   // Get categories
   const [categories, setCategories] = useState<any>([]);
   const getCategories = async () => {
-    const response = await getCategoriesList();
+    const response = await getEventCategories();
     setCategories(response.data);
   };
   useEffect(() => {
@@ -45,7 +45,7 @@ const CreateEvent = () => {
   }, []);
 
   const handleCreateEvent = async () => {
-    const response = await createEvent(data);
+    const response = await addEvent(data);
     handleModal({ ...response.data, code: response.status }, "fade");
   };
 
@@ -179,5 +179,4 @@ const CreateEvent = () => {
     </KeyboardAvoidingView>
   );
 };
-
 export default CreateEvent;

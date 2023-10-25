@@ -4,53 +4,52 @@ import axios from "axios";
 import { userRoutes } from "../routes/routes";
 
 const {
-  updateProfileInformation,
-  getProfileInformation,
-  getOrganizationMembers,
-  addOrganizationMember,
-  deleteOrganizationMember,
+  getProfileRoute,
+  updateProfileRoute,
+  getOrganizationMembersRoute,
+  addOrganizationMemberRoute,
+  deleteOrganizationMemberRoute,
 } = userRoutes;
 
-export const updateProfileInfo = async (props: any) => {
+export const getProfile = async () => {
   try {
-    const response = await axios.put(updateProfileInformation, props);
+    const response = await axios.get(getProfileRoute);
     return response;
   } catch (error: any) {
     return error.response;
   }
 };
 
-export const getProfileInfo = async () => {
+export const updateProfile = async (props: any) => {
   try {
-    const response = await axios.get(getProfileInformation);
-    console.log(JSON.stringify(response));
+    const response = await axios.put(updateProfileRoute, props);
     return response;
   } catch (error: any) {
     return error.response;
   }
 };
 
-export const getMembers = async () => {
+export const getOrganizationMembers = async () => {
   try {
-    const response = await axios.get(getOrganizationMembers);
+    const response = await axios.get(getOrganizationMembersRoute);
     return response;
   } catch (error: any) {
     return error.response;
   }
 };
 
-export const addMember = async (props: any) => {
+export const addOrganizationMember = async (props: any) => {
   try {
-    const response = await axios.put(addOrganizationMember, props);
+    const response = await axios.put(addOrganizationMemberRoute, props);
     return response;
   } catch (error: any) {
     return error.response;
   }
 };
 
-export const deleteMember = async (props: any) => {
+export const deleteOrganizationMember = async (props: any) => {
   try {
-    const response = await axios.put(deleteOrganizationMember, props);
+    const response = await axios.put(deleteOrganizationMemberRoute, props);
     return response;
   } catch (error: any) {
     return error.response;

@@ -1,11 +1,18 @@
+// React
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Text, View } from "react-native";
-import IconTextButton from "../../../components/Buttons/IconTextButton/IconTextButton";
+// Auth Context
 import { useAuth } from "../../../context/AuthContext";
+// Components
+import IconTextButton from "../../../components/Buttons/IconTextButton/IconTextButton";
+
 const GetEvents = () => {
-  const { onLogout } = useAuth();
+  // Navigation
   const navigation = useNavigation();
+  // Auth Context
+  const { onLogout } = useAuth();
+
   return (
     <View>
       <IconTextButton

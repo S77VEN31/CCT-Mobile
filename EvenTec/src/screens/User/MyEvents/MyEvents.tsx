@@ -1,5 +1,6 @@
-import { View, Text } from "react-native";
+// React
 import React from "react";
+import { Text, View } from "react-native";
 
 const MyEvents = () => {
   return (

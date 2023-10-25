@@ -8,9 +8,9 @@ import { Fonts } from "../../../constants/Fonts";
 export const styles = StyleSheet.create({
   container: {
     display: "flex",
-    height: 200,
     margin: 20,
     padding: 20,
+    gap: 16,
     borderRadius: 10,
     backgroundColor: Colors.white,
     justifyContent: "space-between",
@@ -71,8 +71,12 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     gap: 16,
   },
-  locationButton: {
+  locationIcon: {
     borderRadius: 50,
+    backgroundColor: Colors.secondary,
+    color: Colors.white,
+    fontSize: 20,
+    padding: 8,
   },
   locationText: {
     ...Fonts.textMedium,

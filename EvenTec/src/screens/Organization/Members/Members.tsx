@@ -25,8 +25,9 @@ const Members = () => {
 
   const getMembersFromOrganization = async () => {
     const response = await getOrganizationMembers();
-
-    setMembers(response.data);
+    if (response.status === 200) {
+      setMembers(response.data);
+    }
   };
   useEffect(() => {
     getMembersFromOrganization();

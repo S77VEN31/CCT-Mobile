@@ -8,7 +8,7 @@ import { styles } from "./HandleEvents.style";
 import { getOrganizationEvents } from "../../../api/events/events";
 // Components
 import IconTextButton from "../../../components/Buttons/IconTextButton/IconTextButton";
-import EventCard from "../../../components/Cards/EventCard/EventCard";
+import OrganizationEventCard from "../../../components/Cards/OrganizationEventCard/OrganizationEventCard";
 
 const HandleEvents = () => {
   // Navigation
@@ -18,6 +18,7 @@ const HandleEvents = () => {
 
   const getMembersFromOrganization = async () => {
     const response = await getOrganizationEvents();
+    console.log(response);
     setEvents(response.data);
   };
   useFocusEffect(
@@ -39,7 +40,7 @@ const HandleEvents = () => {
       {events.length > 0 ? (
         <ScrollView contentContainerStyle={styles.eventsContainer}>
           {events.map((event: any, key: number) => {
-            return <EventCard {...event} key={key} />;
+            return <OrganizationEventCard {...event} key={key} />;
           })}
         </ScrollView>
       ) : (

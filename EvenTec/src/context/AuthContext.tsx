@@ -39,22 +39,34 @@ export const AuthProvider = ({ children }: any) => {
     data: null,
   });
 
+  // Use useEffect to set the Axios default headers when the token changes
   useEffect(() => {
-    const loadToken = async () => {
-      const token = await SecureStore.getItemAsync("token");
+    const setupAxiosHeaders = async () => {
+      const storedToken = await SecureStore.getItemAsync("token");
       const data = await SecureStore.getItemAsync("user");
-      console.log("token is:", token);
-      //console.log("data is:", data);
-      if (token) {
-        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      console.log("token is:", storedToken);
+      // Check if there's a stored token
+      if (storedToken) {
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${storedToken}`;
         setAuthState({
-          token: token,
+          token: storedToken,
           authenticated: true,
           data: data ? JSON.parse(data) : null,
         });
+      } else {
+        // No stored token, clear Axios headers and set authenticated to false
+        delete axios.defaults.headers.common["Authorization"];
+        setAuthState({
+          token: null,
+          authenticated: false,
+          data: null,
+        });
       }
     };
-    loadToken();
+
+    setupAxiosHeaders();
   }, []);
 
   const onRegister = async (

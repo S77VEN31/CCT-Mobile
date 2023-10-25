@@ -13,6 +13,7 @@ const StackNavigator: React.FC = () => {
   const Stack = createNativeStackNavigator();
   const { stackScreenProps } = StackNavigationConstants;
   const { authState } = useAuth();
+
   return (
     <Stack.Navigator>
       {authState.authenticated ? (

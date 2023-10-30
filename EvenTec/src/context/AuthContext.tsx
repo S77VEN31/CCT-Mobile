@@ -55,8 +55,9 @@ export const AuthProvider = ({ children }: any) => {
           authenticated: true,
           data: data ? JSON.parse(data) : null,
         });
-      } else {
-        // No stored token, clear Axios headers and set authenticated to false
+      }
+      // No stored token, clear Axios headers and set authenticated to false
+      else {
         delete axios.defaults.headers.common["Authorization"];
         setAuthState({
           token: null,

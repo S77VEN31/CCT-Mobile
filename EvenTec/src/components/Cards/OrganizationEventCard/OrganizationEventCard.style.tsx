@@ -55,6 +55,12 @@ export const styles = StyleSheet.create({
   dateContainer: {
     display: "flex",
   },
+  dateLabel: {
+    ...Fonts.textMedium,
+    ...Fonts.h5,
+    color: Colors.black,
+    marginRight: 5,
+  },
   date: {
     ...Fonts.textRegular,
     ...Fonts.h6,

@@ -1,14 +1,16 @@
+// EditEvent.tsx
+
 // React
-import { useNavigation } from "@react-navigation/native";
+import { RouteProp, useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { KeyboardAvoidingView, ScrollView, Text, View } from "react-native";
 // Styles
-import { styles } from "./CreateEvent.style";
+import { styles } from "./EditEvent.style"; // Asegúrate de crear este archivo o usar otro ya existente.
 // Modal Context
 import { useModal } from "../../../context/ModalContext";
 // API
-import { getEventCategories } from "../../../api/data/data";
-import { addEvent } from "../../../api/events/events";
+import { getEventCategories, getEventCategory } from "../../../api/data/data";
+import { updateEvent } from "../../../api/events/events"; // Asegúrate de crear esta función en tu archivo de API.
 // Utils
 import { handleDate } from "../../../utils/handleDate";
 // Components
@@ -18,7 +20,39 @@ import NumericInput from "../../../components/Inputs/NumericInput/NumericInput";
 import TextInput from "../../../components/Inputs/TextInput/TextInput";
 import DropdownModal from "../../../components/Modals/DropdownModal/DropdownModal";
 
-const CreateEvent = () => {
+// Types
+type RootStackParamList = {
+  EditEvent: { event: EventProps };
+};
+type EditEventRouteProp = RouteProp<RootStackParamList, "EditEvent">;
+// Interfaces
+interface EventProps {
+  _id: string;
+  title: string;
+  description: string;
+  startTime: Date;
+  endTime: Date;
+  location: string;
+  capacity: number;
+  requiredCollaborators: number;
+  category: string;
+  // Agrega cualquier otra propiedad que necesites para tu objeto de evento.
+}
+interface EditEventProps {
+  route: EditEventRouteProp;
+}
+
+const EditEvent: React.FC<EditEventProps> = ({ route }) => {
+  const { event } = route.params;
+  console.log(event.category);
+
+  const getCategory = async () => {
+    const response = await getEventCategory(event.category);
+    console.log(response);
+  };
+  useEffect(() => {
+    getCategory();
+  }, []);
   // Modal Context
   const { handleModal } = useModal();
   // Navigation
@@ -26,16 +60,7 @@ const CreateEvent = () => {
   // Set modal visibility
   const [visible, setVisible] = useState<boolean>(false);
   // Inputs states
-  const [data, setData] = useState<any>({
-    title: "",
-    description: "",
-    startTime: new Date(),
-    endTime: new Date(),
-    location: "",
-    capacity: 1,
-    requiredCollaborators: 1,
-    categoryName: "",
-  });
+  const [data, setData] = useState<any>({ ...event });
   // Get categories
   const [categories, setCategories] = useState<any>([]);
   const getCategories = async () => {
@@ -46,8 +71,8 @@ const CreateEvent = () => {
     getCategories();
   }, []);
 
-  const handleCreateEvent = async () => {
-    const response = await addEvent(data);
+  const handleUpdateEvent = async () => {
+    const response = await updateEvent(data);
     handleModal({ ...response.data, code: response.status }, "fade");
     if (response.status === 200) {
       navigation.goBack();
@@ -79,8 +104,8 @@ const CreateEvent = () => {
 
   const buttons = [
     {
-      text: "Crear Evento",
-      onPress: () => handleCreateEvent(),
+      text: "Guardar cambios",
+      onPress: () => handleUpdateEvent(),
     },
     {
       text: "Volver atrás",
@@ -99,7 +124,9 @@ const CreateEvent = () => {
           <View style={styles.dateTimeContainer}>
             <View>
               <Text style={styles.dateTimeTitle}>Fecha y hora inicio</Text>
-              <Text style={styles.dateTime}>{handleDate(data.startTime.toString())}</Text>
+              <Text style={styles.dateTime}>
+                {handleDate(data.startTime.toString())}
+              </Text>
             </View>
             <DateTimeInput
               mode="date"
@@ -119,7 +146,9 @@ const CreateEvent = () => {
           <View style={styles.dateTimeContainer}>
             <View>
               <Text style={styles.dateTimeTitle}>Fecha y hora final</Text>
-              <Text style={styles.dateTime}>{handleDate(data.endTime.toString())}</Text>
+              <Text style={styles.dateTime}>
+                {handleDate(data.endTime.toString())}
+              </Text>
             </View>
             <DateTimeInput
               mode="date"
@@ -150,14 +179,6 @@ const CreateEvent = () => {
             }
             text="Colaboradores requeridos"
           />
-          <View style={styles.categoryContainer}>
-            <Text style={styles.dateTimeTitle}>Categoria del evento</Text>
-            <IconTextButton
-              className={styles.button}
-              text={data.categoryName || "Selecciona la categoria"}
-              onPress={() => setVisible(true)}
-            />
-          </View>
           <View style={styles.buttons}>
             {buttons.map((buttonProps, key) => {
               return (
@@ -184,4 +205,5 @@ const CreateEvent = () => {
     </KeyboardAvoidingView>
   );
 };
-export default CreateEvent;
+
+export default EditEvent;

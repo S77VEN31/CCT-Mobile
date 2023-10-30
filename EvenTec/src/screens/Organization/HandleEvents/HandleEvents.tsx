@@ -16,13 +16,14 @@ const HandleEvents = () => {
   // Inputs states
   const [events, setEvents] = useState([]);
 
-  const getMembersFromOrganization = async () => {
+  const getEventsFromOrganization = async () => {
     const response = await getOrganizationEvents();
     setEvents(response.data);
   };
+
   useFocusEffect(
     useCallback(() => {
-      getMembersFromOrganization();
+      getEventsFromOrganization();
     }, [])
   );
 
@@ -39,7 +40,13 @@ const HandleEvents = () => {
       {events.length > 0 ? (
         <ScrollView contentContainerStyle={styles.eventsContainer}>
           {events.map((event: any, key: number) => {
-            return <OrganizationEventCard {...event} key={key} />;
+            return (
+              <OrganizationEventCard
+                onEventDelete={getEventsFromOrganization}
+                event={event}
+                key={key}
+              />
+            );
           })}
         </ScrollView>
       ) : (

@@ -4,11 +4,21 @@ import axios from "axios";
 import { eventRoutes } from "../routes/routes";
 
 const {
+  getEventsRoute,
   getOrganizationEventsRoute,
   addEventRoute,
   updateEventRoute,
   deleteEventRoute,
 } = eventRoutes;
+
+export const getAllEvents = async () => {
+  try {
+    const response = await axios.get(getEventsRoute);
+    return response;
+  } catch (error: any) {
+    return error.response;
+  }
+};
 
 export const getOrganizationEvents = async () => {
   try {

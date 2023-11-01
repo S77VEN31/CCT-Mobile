@@ -1,7 +1,7 @@
 // React
-import { useNavigation, useFocusEffect } from "@react-navigation/native";
-import React, { useState, useCallback } from "react";
-import { Text, View, ScrollView } from "react-native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import React, { useCallback, useState } from "react";
+import { ScrollView, Text, View } from "react-native";
 // Styles
 import { styles } from "./GetEvents.style";
 // API
@@ -18,7 +18,6 @@ const GetEvents = () => {
   const getEvents = async () => {
     const response = await getAllEvents();
     setEvents(response.data);
-    console.log(response.data);
   };
 
   useFocusEffect(
@@ -37,9 +36,7 @@ const GetEvents = () => {
         </ScrollView>
       ) : (
         <View style={styles.noContent}>
-          <Text style={styles.noContentText}>
-            No tienes eventos registrados
-          </Text>
+          <Text style={styles.noContentText}>No hay eventos disponibles</Text>
         </View>
       )}
     </View>

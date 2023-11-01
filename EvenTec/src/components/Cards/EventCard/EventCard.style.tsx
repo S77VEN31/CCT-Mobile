@@ -22,35 +22,38 @@ export const styles = StyleSheet.create({
     elevation: 5,
   },
   header: {
-    display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between",
+    gap: 8,
   },
   headerTexts: {
     display: "flex",
     flexDirection: "column",
+    flex: 1,
   },
-  organizer: {
-    color: Colors.primary,
+  titleText: {
+    color: Colors.secondary,
     ...Fonts.textSemiBold,
     ...Fonts.h2,
+    flexWrap: "wrap",
   },
-  eventName: {
+  ownerName: {
     color: Colors.black,
     ...Fonts.textBold,
     ...Fonts.h3,
+    flexWrap: "wrap",
   },
   imageContainer: {
     display: "flex",
-    justifyContent: "flex-end",
-    alignItems: "center",
-    flex: 1,
     flexDirection: "row",
+    alignItems: "center",
   },
   image: {
     width: 50,
     height: 50,
+    borderColor: Colors.secondary,
+    borderWidth: 2,
     borderRadius: 16,
+    padding: 5,
   },
   dateContainer: {
     display: "flex",
@@ -64,28 +67,58 @@ export const styles = StyleSheet.create({
   date: {
     ...Fonts.textRegular,
     ...Fonts.h6,
-    color: Colors.primary,
+    color: Colors.secondary,
   },
   footer: {
     display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: "column",
+    gap: 10,
   },
-  ubicationContainer: {
+  iconsContainer: {
     display: "flex",
     flexDirection: "row",
-    alignItems: "center",
-    gap: 16,
+    justifyContent: "space-around",
   },
-  locationIcon: {
+  iconTextContainer: {
+    display: "flex",
+    alignItems: "center",
+    gap: 5,
+    flex: 1,
+  },
+  icon: {
     borderRadius: 50,
     backgroundColor: Colors.secondary,
     color: Colors.white,
     fontSize: 20,
     padding: 8,
   },
-  locationText: {
+  iconText: {
     ...Fonts.textMedium,
     ...Fonts.h5,
+  },
+  footerDivision: {
+    borderBottomColor: Colors.secondary,
+    borderBottomWidth: 2,
+  },
+  buttonsContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    gap: 10,
+  },
+  button: {
+    flex: 1,
+  },
+  descriptionContainer: {
+    display: "flex",
+    backgroundColor: Colors.secondaryLight,
+    padding: 10,
+    borderRadius: 10,
+  },
+  description: {
+    ...Fonts.textRegular,
+    ...Fonts.h6,
+    textAlign: "justify",
+    color: Colors.text,
   },
 });

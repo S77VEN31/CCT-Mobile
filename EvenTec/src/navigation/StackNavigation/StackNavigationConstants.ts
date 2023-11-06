@@ -1,4 +1,5 @@
 // Stack Screens
+import CreateActivity from "../../screens/Organization/CreateActivity/CreateActivity";
 import CreateEvent from "../../screens/Organization/CreateEvent/CreateEvent";
 import EditEvent from "../../screens/Organization/EditEvent/EditEvent";
 import SetOrganizationInfo from "../../screens/Organization/SetOrganizationInfo/SetOrganizationInfo";
@@ -32,6 +33,11 @@ export const StackNavigationConstants = {
     {
       name: "EditEvent",
       component: EditEvent,
+      options: { headerShown: false },
+    },
+    {
+      name: "CreateActivity",
+      component: CreateActivity,
       options: { headerShown: false },
     },
   ] as StackScreenProps[],

@@ -1,6 +1,7 @@
 // React
 import { useNavigation } from "@react-navigation/native";
-import { Image, Text, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import { Text, View } from "react-native";
 // Styles
 import { styles } from "./OrganizationEventCard.style";
 // Icons
@@ -10,6 +11,7 @@ import { useModal } from "../../../context/ModalContext";
 // Utils
 import { handleDate } from "../../../utils/handleDate";
 // API
+import { getEventCategory } from "../../../api/data/data";
 import { deleteEvent } from "../../../api/events/events";
 // Components
 import IconTextButton from "../../Buttons/IconTextButton/IconTextButton";
@@ -22,6 +24,9 @@ interface EventCardProps {
     endTime?: string;
     description?: string;
     location?: string;
+    category?: string;
+    capacity?: number;
+    requiredCollaborators?: number;
   };
   onEventDelete: () => void;
 }
@@ -32,10 +37,28 @@ const OrganizationEventCard = ({ event, onEventDelete }: EventCardProps) => {
   // Modal Context
   const { handleModal } = useModal();
   // Event props
-  const { title, image, description, location, _id } = event;
+  const {
+    title,
+    image,
+    description,
+    location,
+    _id,
+    category,
+    capacity,
+    requiredCollaborators,
+  } = event;
   //  Date props
   const start = handleDate(event.startTime);
   const end = handleDate(event.endTime);
+  // Get category
+  const [categoryName, setCategoryName] = useState<string>("");
+  const getCategory = async () => {
+    const response = await getEventCategory(category);
+    setCategoryName(response.name);
+  };
+  useEffect(() => {
+    getCategory();
+  }, []);
   // Delete event
   const handleDeleteEvent = async () => {
     const response = await deleteEvent(_id);
@@ -48,12 +71,11 @@ const OrganizationEventCard = ({ event, onEventDelete }: EventCardProps) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.headerTexts}>
-          <Text style={styles.organizer}>{title}</Text>
-          <Text style={styles.eventName}>{description}</Text>
+          <Text style={styles.title}>{title}</Text>
         </View>
-        <View style={styles.imageContainer}>
-          <Image style={styles.image} source={{ uri: image }}></Image>
-        </View>
+      </View>
+      <View style={styles.descriptionContainer}>
+        <Text style={styles.description}>{description}</Text>
       </View>
       <View style={styles.dateContainer}>
         <Text style={styles.dateLabel}>Inicio:</Text>
@@ -62,7 +84,30 @@ const OrganizationEventCard = ({ event, onEventDelete }: EventCardProps) => {
         <Text style={styles.date}>{end}</Text>
       </View>
       <View style={styles.footer}>
+        <View style={styles.iconsContainer}>
+          <View style={styles.iconTextContainer}>
+            <MaterialIcons name="location-pin" style={styles.icon} />
+            <Text style={styles.iconText}>{location}</Text>
+          </View>
+          <View style={styles.iconTextContainer}>
+            <MaterialIcons name="label" style={styles.icon} />
+            <Text style={styles.iconText}>{categoryName} </Text>
+          </View>
+          <View style={styles.iconTextContainer}>
+            <MaterialIcons name="people" style={styles.icon} />
+            <Text style={styles.iconText}>Aforo: {capacity} </Text>
+          </View>
+          <View style={styles.iconTextContainer}>
+            <MaterialIcons name="people" style={styles.icon} />
+            <Text style={styles.iconText}>Admins: {requiredCollaborators}</Text>
+          </View>
+        </View>
+        <View style={styles.footerDivision} />
+        <View style={styles.buttonsContainer}></View>
+      </View>
+      <View style={styles.buttonsContainer}>
         <IconTextButton
+          className={styles.button}
           icon="edit"
           onPress={() => {
             // @ts-ignore
@@ -70,15 +115,26 @@ const OrganizationEventCard = ({ event, onEventDelete }: EventCardProps) => {
           }}
         />
         <IconTextButton
+          className={styles.button}
           icon="delete"
           onPress={() => {
             handleDeleteEvent();
           }}
         />
-        <View style={styles.ubicationContainer}>
-          <Text style={styles.locationText}>{location}</Text>
-          <MaterialIcons name="location-pin" style={styles.locationIcon} />
-        </View>
+        <IconTextButton
+          className={styles.button}
+          icon="event-available"
+          onPress={() => {
+            navigation.navigate("CreateActivity", { event: event });
+          }}
+        />
+        <IconTextButton
+          className={styles.button}
+          icon="person-add"
+          onPress={() => {
+            handleDeleteEvent();
+          }}
+        />
       </View>
     </View>
   );

@@ -12,6 +12,7 @@ export const userRoutes = {
   getOrganizationMembersRoute: `${baseRoute}/organization/members`,
   addOrganizationMemberRoute: `${baseRoute}/organization/member/join`,
   deleteOrganizationMemberRoute: `${baseRoute}/organization/member/delete`,
+  getOrganizationsRoute: `${baseRoute}/organizations`,
 };
 
 export const dataRoutes = {
@@ -29,4 +30,9 @@ export const eventRoutes = {
   getUserEventsRoute: `${baseRoute}/user/events`,
   addUserEventJoinRoute: `${baseRoute}/user/event/join`,
   deleteUserEventLeaveRoute: `${baseRoute}/user/event/leave`,
+};
+
+export const proposalRoutes = {
+  sendProposalRoute: `${baseRoute}/proposal/send`,
+  getProposalsRoute: `${baseRoute}/proposals`,
 };

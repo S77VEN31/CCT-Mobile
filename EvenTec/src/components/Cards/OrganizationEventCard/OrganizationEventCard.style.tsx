@@ -29,17 +29,15 @@ export const styles = StyleSheet.create({
   headerTexts: {
     display: "flex",
     flexDirection: "column",
+    alignItems: "center",
+    flex: 1,
   },
-  organizer: {
-    color: Colors.primary,
+  title: {
+    color: Colors.secondary,
     ...Fonts.textSemiBold,
     ...Fonts.h2,
   },
-  eventName: {
-    color: Colors.black,
-    ...Fonts.textBold,
-    ...Fonts.h3,
-  },
+
   imageContainer: {
     display: "flex",
     justifyContent: "flex-end",
@@ -64,28 +62,58 @@ export const styles = StyleSheet.create({
   date: {
     ...Fonts.textRegular,
     ...Fonts.h6,
-    color: Colors.primary,
+    color: Colors.secondary,
   },
   footer: {
     display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: "column",
+    gap: 10,
   },
-  ubicationContainer: {
+  iconsContainer: {
     display: "flex",
     flexDirection: "row",
-    alignItems: "center",
-    gap: 16,
+    justifyContent: "space-evenly",
+    flexWrap: "wrap",
   },
-  locationIcon: {
+  iconTextContainer: {
+    display: "flex",
+    alignItems: "center",
+    gap: 5,
+  },
+  icon: {
     borderRadius: 50,
     backgroundColor: Colors.secondary,
     color: Colors.white,
     fontSize: 20,
     padding: 8,
   },
-  locationText: {
+  iconText: {
     ...Fonts.textMedium,
     ...Fonts.h5,
+  },
+  footerDivision: {
+    borderBottomColor: Colors.secondary,
+    borderBottomWidth: 2,
+  },
+  buttonsContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    gap: 10,
+  },
+  button: {
+    flex: 1,
+  },
+  descriptionContainer: {
+    display: "flex",
+    backgroundColor: Colors.secondaryLight,
+    padding: 10,
+    borderRadius: 10,
+  },
+  description: {
+    ...Fonts.textRegular,
+    ...Fonts.h6,
+    textAlign: "justify",
+    color: Colors.text,
   },
 });

@@ -18,6 +18,7 @@ const GetEvents = () => {
   const getEvents = async () => {
     const response = await getAllEvents();
     setEvents(response.data);
+    console.log(response.data);
   };
 
   useFocusEffect(

@@ -9,6 +9,7 @@ const {
   getOrganizationMembersRoute,
   addOrganizationMemberRoute,
   deleteOrganizationMemberRoute,
+  getOrganizationsRoute,
 } = userRoutes;
 
 export const getProfile = async () => {
@@ -50,6 +51,15 @@ export const addOrganizationMember = async (props: any) => {
 export const deleteOrganizationMember = async (props: any) => {
   try {
     const response = await axios.put(deleteOrganizationMemberRoute, props);
+    return response;
+  } catch (error: any) {
+    return error.response;
+  }
+};
+
+export const getOrganizations = async () => {
+  try {
+    const response = await axios.get(getOrganizationsRoute);
     return response;
   } catch (error: any) {
     return error.response;

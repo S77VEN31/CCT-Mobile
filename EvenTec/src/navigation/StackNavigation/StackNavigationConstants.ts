@@ -4,6 +4,8 @@ import CreateActivity from "../../screens/Organization/CreateActivity/CreateActi
 import CreateEvent from "../../screens/Organization/CreateEvent/CreateEvent";
 import EditEvent from "../../screens/Organization/EditEvent/EditEvent";
 import SetOrganizationInfo from "../../screens/Organization/SetOrganizationInfo/SetOrganizationInfo";
+import EventActivities from "../../screens/User/EventActivities/EventActivities";
+import RateActivity from "../../screens/User/RateActivity/RateActivity";
 import SetUserInfo from "../../screens/User/SetUserInfo/SetUserInfo";
 // Navigation
 import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
@@ -44,6 +46,16 @@ export const StackNavigationConstants = {
     {
       name: "AddCollaborators",
       component: AddCollaborators,
+      options: { headerShown: false },
+    },
+    {
+      name: "EventActivities",
+      component: EventActivities,
+      options: { headerShown: false },
+    },
+    {
+      name: "RateActivity",
+      component: RateActivity,
       options: { headerShown: false },
     },
   ] as StackScreenProps[],

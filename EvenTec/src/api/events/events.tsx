@@ -15,6 +15,7 @@ const {
   updateCollaboratorsEventListRoute,
   addEventActivityRoute,
   getEventActivitiesRoute,
+  rateEventActivityRoute,
 } = eventRoutes;
 
 export const getAllEvents = async () => {
@@ -108,9 +109,19 @@ export const addEventActivity = async (props: any) => {
   }
 };
 
-export const getEventActivities = async (props: any) => {
+export const getEventActivities = async (id: any) => {
   try {
-    const response = await axios.get(getEventActivitiesRoute, props);
+    const url = `${getEventActivitiesRoute}/${id}`;
+    const response = await axios.get(url);
+    return response;
+  } catch (error: any) {
+    return error.response;
+  }
+};
+
+export const rateEventActivity = async (props: any) => {
+  try {
+    const response = await axios.post(rateEventActivityRoute, props);
     return response;
   } catch (error: any) {
     return error.response;

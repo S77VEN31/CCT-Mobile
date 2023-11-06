@@ -43,7 +43,6 @@ const SendProposal = () => {
 
   const handleSendProposal = async () => {
     const response = await sendProposal(data);
-    console.log(response);
     handleModal({ ...response.data, code: response.status }, "fade");
   };
 

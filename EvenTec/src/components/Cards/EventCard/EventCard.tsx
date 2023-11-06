@@ -124,8 +124,13 @@ const EventCard = ({ event, isJoined, onLeave }: EventCardProps) => {
           <IconTextButton
             className={styles.button}
             icon={"event"}
-            // @ts-ignore
-            onPress={() => console.log("delete")}
+            onPress={() =>
+              // @ts-ignore
+              navigation.navigate("EventActivities", {
+                eventId: _id,
+                isJoined: isJoined,
+              })
+            }
           />
         </View>
       </View>

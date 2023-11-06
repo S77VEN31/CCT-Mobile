@@ -31,6 +31,8 @@ export const eventRoutes = {
   addUserEventJoinRoute: `${baseRoute}/user/event/join`,
   deleteUserEventLeaveRoute: `${baseRoute}/user/event/leave`,
   updateCollaboratorsEventListRoute: `${baseRoute}/organization/event/update/collaborators`,
+  addEventActivityRoute: `${baseRoute}/organization/event/activity/create`,
+  getEventActivitiesRoute: `${baseRoute}/organization/event/activities`,
 };
 
 export const proposalRoutes = {

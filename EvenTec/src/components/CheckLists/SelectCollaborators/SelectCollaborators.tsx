@@ -5,12 +5,12 @@ import { FlatList, ListRenderItemInfo, Text, View } from "react-native";
 import { styles } from "./SelectCollaborators.style";
 // Libraries
 import { Checkbox } from "react-native-paper";
-
+// Types
 type member = {
   id: string;
   name: string;
 };
-
+// Interfaces
 interface SelectCollaboratorsProps {
   members: member[];
   maxSelectable: number;

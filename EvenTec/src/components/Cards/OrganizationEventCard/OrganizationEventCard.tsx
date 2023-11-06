@@ -131,7 +131,10 @@ const OrganizationEventCard = ({ event, onEventDelete }: EventCardProps) => {
           icon="event-available"
           onPress={() => {
             //@ts-ignore
-            navigation.navigate("CreateActivity", { event: event });
+            navigation.navigate("CreateActivity", {
+              collaborators: collaborators,
+              eventId: _id,
+            });
           }}
         />
         <IconTextButton

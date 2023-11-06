@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 // Styles
@@ -15,6 +16,8 @@ import SelectCollaborators from "../../../components/CheckLists/SelectCollaborat
 const AddCollaborators = ({ route }: any) => {
   // Modal Context
   const { handleModal } = useModal();
+  // Navigation
+  const navigation = useNavigation();
   // Access parameters from the route
   const { collaborators, maxSelectable, eventId } = route.params || {};
   const [selectedCollaborators, setSelectedCollaborators] =
@@ -62,14 +65,23 @@ const AddCollaborators = ({ route }: any) => {
         members={membersList}
         maxSelectable={maxSelectable}
       />
-      <IconTextButton
-        text="Asignar Colaboradores"
-        onPress={() => {
-          handleUpdateCollaborators();
-        }}
-      />
+      <View style={styles.buttonsContainer}>
+        <IconTextButton
+          className={styles.button}
+          text="Asignar Colaboradores"
+          onPress={() => {
+            handleUpdateCollaborators();
+          }}
+        />
+        <IconTextButton
+          className={styles.button}
+          text="Volver"
+          onPress={() => {
+            navigation.goBack();
+          }}
+        />
+      </View>
     </View>
   );
 };
-
 export default AddCollaborators;

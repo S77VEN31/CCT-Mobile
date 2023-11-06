@@ -10,15 +10,20 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    paddingTop: 20,
-    paddingHorizontal: 20,
+    padding: 20,
     gap: 16,
+  },
+  checkbox: {
+    backgroundColor: Colors.white,
+    elevation: 8,
+    padding: 20,
+    borderRadius: 16,
   },
   content: {
     padding: 20,
     display: "flex",
     flex: 1,
-    minHeight: 1600,
+    minHeight: 1025,
     justifyContent: "space-evenly",
   },
   title: {
@@ -62,7 +67,7 @@ export const styles = StyleSheet.create({
     elevation: 8,
     borderRadius: 16,
   },
-  categoryContainer: {
+  collaboratorContainer: {
     display: "flex",
     justifyContent: "space-between",
     gap: 16,

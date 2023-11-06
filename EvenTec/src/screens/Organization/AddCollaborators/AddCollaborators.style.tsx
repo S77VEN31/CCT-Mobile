@@ -17,4 +17,11 @@ export const styles = StyleSheet.create({
     color: Colors.secondary,
     textAlign: "center",
   },
+  buttonsContainer: {
+    flexDirection: "row",
+    gap: 20,
+  },
+  button: {
+    flex: 1,
+  },
 });

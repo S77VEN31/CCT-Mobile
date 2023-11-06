@@ -116,12 +116,18 @@ const CreateActivity = ({ route }: any) => {
         <Text style={styles.title}>Crear Actividad</Text>
         <View style={styles.checkbox}>
           <Text style={styles.collaborator}>Seleccione el colaborador</Text>
-          <SelectCollaborators
-            selectedCollaborators={selectedCollaborator}
-            setSelectedCollaborators={setSelectedCollaborator}
-            members={membersList}
-            maxSelectable={1}
-          />
+          {selectedCollaborator.length > 0 ? (
+            <SelectCollaborators
+              selectedCollaborators={selectedCollaborator}
+              setSelectedCollaborators={setSelectedCollaborator}
+              members={membersList}
+              maxSelectable={1}
+            />
+          ) : (
+            <Text style={styles.noCollaboratorsAvailable}>
+              No hay colaboradores disponibles
+            </Text>
+          )}
         </View>
       </View>
       <ScrollView contentContainerStyle={styles.content}>

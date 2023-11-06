@@ -37,6 +37,11 @@ export const styles = StyleSheet.create({
     ...Fonts.textSemiBold,
     color: Colors.secondary,
   },
+  noCollaboratorsAvailable: {
+    ...Fonts.h5,
+    ...Fonts.textMedium,
+    color: Colors.black,
+  },
   inputs: {
     display: "flex",
     flexDirection: "column",

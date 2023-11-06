@@ -34,6 +34,7 @@ export const eventRoutes = {
   addEventActivityRoute: `${baseRoute}/organization/event/activity/create`,
   getEventActivitiesRoute: `${baseRoute}/organization/event/activities`,
   rateEventActivityRoute: `${baseRoute}/organization/event/activity/rate`,
+  getUserEventsAttendanceRequestRoute: `${baseRoute}/user/events/pending`,
 };
 
 export const proposalRoutes = {

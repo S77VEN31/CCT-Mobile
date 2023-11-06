@@ -9,6 +9,19 @@ export const styles = StyleSheet.create({
   container: {
     display: "flex",
     flex: 1,
+    paddingTop: 20,
+  },
+  pendingTitle: {
+    ...Fonts.textBold,
+    ...Fonts.h1,
+    color: Colors.secondary,
+    textAlign: "center",
+  },
+  eventsTitle: {
+    ...Fonts.textBold,
+    ...Fonts.h1,
+    color: Colors.secondary,
+    textAlign: "center",
   },
   addEvent: {
     display: "flex",

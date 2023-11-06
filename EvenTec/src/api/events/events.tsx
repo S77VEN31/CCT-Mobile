@@ -16,6 +16,7 @@ const {
   addEventActivityRoute,
   getEventActivitiesRoute,
   rateEventActivityRoute,
+  getUserEventsAttendanceRequestRoute,
 } = eventRoutes;
 
 export const getAllEvents = async () => {
@@ -39,6 +40,15 @@ export const getOrganizationEvents = async () => {
 export const getUserEvents = async () => {
   try {
     const response = await axios.get(getUserEventsRoute);
+    return response;
+  } catch (error: any) {
+    return error.response;
+  }
+};
+
+export const getUserEventsAttendanceRequest = async () => {
+  try {
+    const response = await axios.get(getUserEventsAttendanceRequestRoute);
     return response;
   } catch (error: any) {
     return error.response;

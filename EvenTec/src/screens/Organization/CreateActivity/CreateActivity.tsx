@@ -13,7 +13,6 @@ import { handleDate } from "../../../utils/handleDate";
 import IconTextButton from "../../../components/Buttons/IconTextButton/IconTextButton";
 import DateTimeInput from "../../../components/Inputs/DateTimeInput/DateTimeInput";
 import TextInput from "../../../components/Inputs/TextInput/TextInput";
-import DropdownModal from "../../../components/Modals/DropdownModal/DropdownModal";
 // Types
 type RootStackParamList = {
   CreateActivity: { eventId: string; collaborators: string[] };
@@ -23,13 +22,11 @@ type CreateActivityRouteProp = RouteProp<RootStackParamList, "CreateActivity">;
 interface EditEventProps {
   route: CreateActivityRouteProp;
 }
-const CreateActivity = () => {
+const CreateActivity = ({ route }) => {
   // Modal Context
   const { handleModal } = useModal();
   // Navigation
   const navigation = useNavigation();
-  // Set modal visibility
-  const [visible, setVisible] = useState<boolean>(false);
   // Inputs states
   const [data, setData] = useState<any>({
     title: "",
@@ -37,7 +34,7 @@ const CreateActivity = () => {
     startTime: new Date(),
     endTime: new Date(),
     location: "",
-    colaborator: "",
+    collaborator: "",
   });
 
   const handleCreateActivity = async () => {
@@ -126,14 +123,6 @@ const CreateActivity = () => {
               setDatetime={(date: Date) => setData({ ...data, endTime: date })}
             />
           </View>
-          <View style={styles.categoryContainer}>
-            <Text style={styles.dateTimeTitle}>Categoria del evento</Text>
-            <IconTextButton
-              className={styles.button}
-              text={data.colaborator || "Selecciona el colaborador"}
-              onPress={() => setVisible(true)}
-            />
-          </View>
           <View style={styles.buttons}>
             {buttons.map((buttonProps, key) => {
               return (
@@ -147,16 +136,6 @@ const CreateActivity = () => {
           </View>
         </View>
       </ScrollView>
-      <DropdownModal
-        dropdownText="Selecciona la categoria"
-        data={[{ name: "Categoria 1" }, { name: "Categoria 2" }]}
-        visible={visible}
-        setVisible={setVisible}
-        setSelected={(collaborator: string | null) => {
-          setData({ ...data, categoryName: collaborator });
-        }}
-        transparent={true}
-      />
     </KeyboardAvoidingView>
   );
 };

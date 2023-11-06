@@ -25,7 +25,7 @@ const OrganizationNotifications = () => {
         <ScrollView contentContainerStyle={styles.proposalsContainer}>
           <Text style={styles.proposalsTitle}>Propuestas</Text>
           {proposals.map((proposal: any, key: number) => {
-            return <ProposalCard {...proposal}></ProposalCard>;
+            return <ProposalCard {...proposal} key={key} />;
           })}
         </ScrollView>
       ) : (

@@ -30,6 +30,7 @@ export const eventRoutes = {
   getUserEventsRoute: `${baseRoute}/user/events`,
   addUserEventJoinRoute: `${baseRoute}/user/event/join`,
   deleteUserEventLeaveRoute: `${baseRoute}/user/event/leave`,
+  updateCollaboratorsEventListRoute: `${baseRoute}/organization/event/update/collaborators`,
 };
 
 export const proposalRoutes = {

@@ -27,6 +27,7 @@ interface EventCardProps {
     category?: string;
     capacity?: number;
     requiredCollaborators?: number;
+    collaborators?: string[];
   };
   onEventDelete: () => void;
 }
@@ -39,26 +40,25 @@ const OrganizationEventCard = ({ event, onEventDelete }: EventCardProps) => {
   // Event props
   const {
     title,
-    image,
     description,
     location,
     _id,
     category,
     capacity,
     requiredCollaborators,
+    collaborators,
   } = event;
   //  Date props
   const start = handleDate(event.startTime);
   const end = handleDate(event.endTime);
   // Get category
   const [categoryName, setCategoryName] = useState<string>("");
+
   const getCategory = async () => {
     const response = await getEventCategory(category);
     setCategoryName(response.name);
   };
-  useEffect(() => {
-    getCategory();
-  }, []);
+
   // Delete event
   const handleDeleteEvent = async () => {
     const response = await deleteEvent(_id);
@@ -67,6 +67,11 @@ const OrganizationEventCard = ({ event, onEventDelete }: EventCardProps) => {
       onEventDelete();
     }
   };
+
+  useEffect(() => {
+    getCategory();
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -110,7 +115,7 @@ const OrganizationEventCard = ({ event, onEventDelete }: EventCardProps) => {
           className={styles.button}
           icon="edit"
           onPress={() => {
-            // @ts-ignore
+            //@ts-ignore
             navigation.navigate("EditEvent", { event: event });
           }}
         />
@@ -125,6 +130,7 @@ const OrganizationEventCard = ({ event, onEventDelete }: EventCardProps) => {
           className={styles.button}
           icon="event-available"
           onPress={() => {
+            //@ts-ignore
             navigation.navigate("CreateActivity", { event: event });
           }}
         />
@@ -132,7 +138,12 @@ const OrganizationEventCard = ({ event, onEventDelete }: EventCardProps) => {
           className={styles.button}
           icon="person-add"
           onPress={() => {
-            handleDeleteEvent();
+            //@ts-ignore
+            navigation.navigate("AddCollaborators", {
+              collaborators: collaborators,
+              maxSelectable: requiredCollaborators,
+              eventId: _id,
+            });
           }}
         />
       </View>

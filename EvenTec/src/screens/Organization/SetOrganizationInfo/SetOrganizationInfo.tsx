@@ -85,7 +85,7 @@ const SetOrganizationInfo = () => {
     handleModal({ ...response.data, code: response.status }, "fade");
     if (response.status === 200) {
       //@ts-ignore
-      navigation.dispatch(StackActions.popToTop());
+      navigation.popToTop();
     }
   };
 

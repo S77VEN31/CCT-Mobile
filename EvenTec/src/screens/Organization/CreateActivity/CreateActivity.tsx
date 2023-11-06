@@ -116,13 +116,17 @@ const CreateActivity = ({ route }: any) => {
         <Text style={styles.title}>Crear Actividad</Text>
         <View style={styles.checkbox}>
           <Text style={styles.collaborator}>Seleccione el colaborador</Text>
-          {selectedCollaborator.length > 0 ? (
-            <SelectCollaborators
-              selectedCollaborators={selectedCollaborator}
-              setSelectedCollaborators={setSelectedCollaborator}
-              members={membersList}
-              maxSelectable={1}
-            />
+          {collaborators.length > 0 ? (
+            (console.log(membersList),
+            console.log(collaborators),
+            (
+              <SelectCollaborators
+                selectedCollaborators={selectedCollaborator}
+                setSelectedCollaborators={setSelectedCollaborator}
+                members={membersList}
+                maxSelectable={1}
+              />
+            ))
           ) : (
             <Text style={styles.noCollaboratorsAvailable}>
               No hay colaboradores disponibles

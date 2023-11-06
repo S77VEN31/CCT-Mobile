@@ -44,11 +44,9 @@ interface EditEventProps {
 
 const EditEvent: React.FC<EditEventProps> = ({ route }) => {
   const { event } = route.params;
-  console.log(event.category);
 
   const getCategory = async () => {
     const response = await getEventCategory(event.category);
-    console.log(response);
   };
   useEffect(() => {
     getCategory();

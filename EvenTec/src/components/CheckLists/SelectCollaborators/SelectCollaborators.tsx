@@ -6,13 +6,13 @@ import { styles } from "./SelectCollaborators.style";
 // Libraries
 import { Checkbox } from "react-native-paper";
 // Types
-type member = {
+type Member = {
   id: string;
   name: string;
 };
 // Interfaces
 interface SelectCollaboratorsProps {
-  members: member[];
+  members: Member[];
   maxSelectable: number;
   selectedCollaborators: string[];
   setSelectedCollaborators: (selectedCollaborators: string[]) => void;
@@ -24,6 +24,11 @@ const SelectCollaborators = ({
   selectedCollaborators,
   setSelectedCollaborators,
 }: SelectCollaboratorsProps) => {
+  // Filter out any members that are undefined or do not have an 'id' property
+  const validMembers = members.filter(
+    (member) => member && typeof member.id !== "undefined"
+  );
+
   const handleSelectCollaborator = (
     collaboratorId: string,
     isSelected: boolean
@@ -39,7 +44,7 @@ const SelectCollaborators = ({
     }
   };
 
-  const renderCollaborator = ({ item }: ListRenderItemInfo<member>) => (
+  const renderCollaborator = ({ item }: ListRenderItemInfo<Member>) => (
     <View style={styles.collaboratorItem}>
       <Text style={styles.collaboratorText}>{item.name}</Text>
       <Checkbox
@@ -56,18 +61,20 @@ const SelectCollaborators = ({
           !selectedCollaborators.includes(item.id) &&
           selectedCollaborators.length >= maxSelectable
         }
-        color={styles.checkboxSelected.color} // Checkbox color when selected/checked
+        color={styles.checkboxSelected.color} // Assuming styles.checkboxSelected.color is defined in your styles
       />
     </View>
   );
 
   return (
-    <FlatList<member>
+    <FlatList<Member>
       style={styles.collaboratorsList}
-      data={members}
+      data={validMembers} // Use validMembers here
       renderItem={renderCollaborator}
       keyExtractor={(item) => item.id}
+      extraData={selectedCollaborators}
     />
   );
 };
+
 export default SelectCollaborators;

@@ -1,6 +1,6 @@
 // React
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
 // Styles
 import { styles } from "./MyEvents.style";
@@ -28,10 +28,6 @@ const MyEvents = () => {
     const response = await getUserEventsAttendanceRequest();
     setPendingEvents(response.data);
   };
-
-  useEffect(() => {
-    console.log("pendingEvents", pendingEvents);
-  }, [pendingEvents]);
 
   useFocusEffect(
     useCallback(() => {

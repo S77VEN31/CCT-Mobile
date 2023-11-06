@@ -70,7 +70,10 @@ const CreateActivity = ({ route }: any) => {
 
   const handleCreateActivity = async () => {
     const response = await addEventActivity(data);
-    handleModal({ ...response.data, code: response.status }, "fade");
+    if (response.status === 200) {
+      handleModal({ ...response.data, code: response.status }, "fade");
+      navigation.goBack();
+    }
   };
 
   const inputs = [
@@ -112,9 +115,7 @@ const CreateActivity = ({ route }: any) => {
       <View style={styles.header}>
         <Text style={styles.title}>Crear Actividad</Text>
         <View style={styles.checkbox}>
-          <Text style={styles.title}>
-            Seleccione el colaborador responsable
-          </Text>
+          <Text style={styles.collaborator}>Seleccione el colaborador</Text>
           <SelectCollaborators
             selectedCollaborators={selectedCollaborator}
             setSelectedCollaborators={setSelectedCollaborator}

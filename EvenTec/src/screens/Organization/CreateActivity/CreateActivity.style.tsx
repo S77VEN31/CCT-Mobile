@@ -32,6 +32,11 @@ export const styles = StyleSheet.create({
     color: Colors.secondary,
     textAlign: "center",
   },
+  collaborator: {
+    ...Fonts.h4,
+    ...Fonts.textSemiBold,
+    color: Colors.secondary,
+  },
   inputs: {
     display: "flex",
     flexDirection: "column",
